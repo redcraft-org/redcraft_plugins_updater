@@ -3,133 +3,155 @@ from zipfile import ZipFile
 import json
 
 import yaml
-import cloudscraper
+import requests
 from tqdm import tqdm
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
-BASE_URL = 'https://www.spigotmc.org'
 
+class SpigotMcUpdater:
 
-def spigotmc_login(session):
-    session.get('{}/login'.format(BASE_URL))
+    base_url = 'https://www.spigotmc.org'
 
-    data = {
-        'login': os.environ.get('LOGIN'),
-        'password': os.environ.get('PASSWORD'),
-        'register': '0',
-        'remember': '0'
-    }
+    request_method = os.environ.get('REQUEST_METHOD', 'cloudproxy').lower()
+    session = None
+    cookies = {}
 
-    login_response = session.post('{}/login/login'.format(BASE_URL), data=data)
-    login_parser = BeautifulSoup(login_response.text, features='html.parser')
+    def init_session(self):
+        if self.request_method == 'cloudscraper':
+            import cloudscraper
+            self.session = cloudscraper.create_scraper()
+            return
 
-    logout_link = login_parser.find('a', {'class': 'LogOut'})
+        self.session = requests.self.session()
 
-    if logout_link is None:
-        raise ValueError('Couldn\'t get a logout link, login probably failed.')
+    def make_request(self, url, data=None, method='GET'):
+        if self.request_method == 'cloudproxy':
+            # Use requests
+            return
 
-    return logout_link.get('href')
+        return self.session.request(method, url, data=data)
 
+    def spigotmc_login(self):
+        self.make_request('{}/login'.format(self.base_url))
 
-def get_existing_plugins():
-    plugins = {}
+        data = {
+            'login': os.environ.get('LOGIN'),
+            'password': os.environ.get('PASSWORD'),
+            'register': '0',
+            'remember': '0'
+        }
 
-    output_folder = os.environ.get('OUTPUT_FOLDER')
-    for file_name in tqdm(os.listdir(output_folder), desc='Exploring current versions'):
-        file = '{}/{}'.format(output_folder, file_name)
-        if file.endswith('.jar'):
-            try:
-                with ZipFile(file, 'r') as plugin_contents:
-                    with plugin_contents.open('plugin.yml') as plugin_meta_file:
-                        plugin_metadata = yaml.safe_load(plugin_meta_file)
-                        plugin_name = plugin_metadata.get('name')
-                        plugin_version = plugin_metadata.get('version')
-                        if not plugin_name or not plugin_version:
-                            raise ValueError('plugin.yml is not a valid plugin metadata file')
+        login_response = self.make_request('{}/login/login'.format(self.base_url), method='POST', data=data)
+        login_parser = BeautifulSoup(login_response.text, features='html.parser')
 
-                        plugins[plugin_name] = {
-                            'name': plugin_name,
-                            'version': plugin_version
-                        }
-            except Exception as e:
-                print('An exception occurred while reading {} ({})'.format(file, e))
+        logout_link = login_parser.find('a', {'class': 'LogOut'})
 
-    return plugins
+        if logout_link is None:
+            raise ValueError('Couldn\'t get a logout link, login probably failed.')
 
+        return logout_link.get('href')
 
-def get_watched_plugins(session):
-    plugins = {}
+    def get_existing_plugins(self):
+        plugins = {}
 
-    first_watched_resources_response = session.get('{}/resources/watched'.format(BASE_URL))
-    first_watched_resources_parser = BeautifulSoup(first_watched_resources_response.text, features='html.parser')
+        output_folder = os.environ.get('OUTPUT_FOLDER')
+        for file_name in tqdm(os.listdir(output_folder), desc='Exploring current versions'):
+            file = '{}/{}'.format(output_folder, file_name)
+            if file.endswith('.jar'):
+                try:
+                    with ZipFile(file, 'r') as plugin_contents:
+                        with plugin_contents.open('plugin.yml') as plugin_meta_file:
+                            plugin_metadata = yaml.safe_load(plugin_meta_file)
+                            plugin_name = plugin_metadata.get('name')
+                            plugin_version = plugin_metadata.get('version')
+                            if not plugin_name or not plugin_version:
+                                raise ValueError('plugin.yml is not a valid plugin metadata file')
 
-    page_selector_element = first_watched_resources_parser.find('div', {'class': 'PageNav'})
-    last_page = int(page_selector_element.get('data-last') or 0) + 1
+                            plugins[plugin_name] = {
+                                'name': plugin_name,
+                                'version': plugin_version
+                            }
+                except Exception as e:
+                    print('An exception occurred while reading {} ({})'.format(file, e))
 
-    for page_number in tqdm(range(1, last_page), desc='Exploring watched plugins pages'):
-        current_watched_resources_response = session.get('{}/resources/watched?page={}'.format(BASE_URL, page_number))
-        current_watched_resources_parser = BeautifulSoup(current_watched_resources_response.text, features='html.parser')
+        return plugins
 
-        resources = current_watched_resources_parser.findAll('li', {'class': 'resourceListItem'})
-        for resource in resources:
-            plugin_url_element = resource.find('h3').find('a')
-            plugin_url = '{}/{}'.format(BASE_URL, plugin_url_element.get('href'))
-            plugin_name = plugin_url_element.text
-            plugin_version = resource.find('span', {'class': 'version'}).text
-            plugin_id = resource.find('input', {'name': 'resource_ids[]'}).get('value')
+    def get_watched_plugins(self):
+        plugins = {}
 
-            plugins[plugin_id] = {
-                'id': plugin_id,
-                'url': plugin_url,
-                'display_name': plugin_name,
-                'version': plugin_version
-            }
+        first_watched_resources_response = self.make_request('{}/resources/watched'.format(self.base_url))
+        first_watched_resources_parser = BeautifulSoup(first_watched_resources_response.text, features='html.parser')
 
-    return plugins
+        page_selector_element = first_watched_resources_parser.find('div', {'class': 'PageNav'})
+        last_page = int(page_selector_element.get('data-last') or 0) + 1
 
+        for page_number in tqdm(range(1, last_page), desc='Exploring watched plugins pages'):
+            current_watched_resources_response = self.make_request('{}/resources/watched?page={}'.format(self.base_url, page_number))
+            current_watched_resources_parser = BeautifulSoup(current_watched_resources_response.text, features='html.parser')
 
-def download_plugin(plugin, session):
-    plugin_page_response = session.get(plugin['url'])
-    plugin_page_parser = BeautifulSoup(plugin_page_response.text, features='html.parser')
+            resources = current_watched_resources_parser.findAll('li', {'class': 'resourceListItem'})
+            for resource in resources:
+                plugin_url_element = resource.find('h3').find('a')
+                plugin_url = '{}/{}'.format(self.base_url, plugin_url_element.get('href'))
+                plugin_name = plugin_url_element.text
+                plugin_version = resource.find('span', {'class': 'version'}).text
+                plugin_id = resource.find('input', {'name': 'resource_ids[]'}).get('value')
 
-    relative_download_link = plugin_page_parser.find('label', {'class': 'downloadButton'}).find('a').get('href')
-    plugin_download_link = '{}/{}'.format(BASE_URL, relative_download_link)
+                plugins[plugin_id] = {
+                    'id': plugin_id,
+                    'url': plugin_url,
+                    'display_name': plugin_name,
+                    'version': plugin_version
+                }
 
-    # The following statement currently fails because of this:
-    # https://github.com/VeNoMouS/cloudscraper/issues/258
+        return plugins
 
-    plugin_binary_response = session.get(plugin_download_link)
+    def download_plugin(self, plugin):
+        plugin_page_response = self.make_request(plugin['url'])
+        plugin_page_parser = BeautifulSoup(plugin_page_response.text, features='html.parser')
 
-    # TODO REMOVE DEBUG
+        relative_download_link = plugin_page_parser.find('label', {'class': 'downloadButton'}).find('a').get('href')
+        plugin_download_link = '{}/{}'.format(self.base_url, relative_download_link)
 
-    print(plugin_binary_response)
+        # The following statement currently fails because of this:
+        # https://github.com/VeNoMouS/cloudscraper/issues/258
 
-    exit(0)
+        plugin_binary_response = self.make_request(plugin_download_link)
 
-    plugin['name'] = plugin['display_name']
+        # TODO REMOVE DEBUG
 
-    return plugin
+        print(plugin_binary_response)
 
+        exit(0)
 
-def download_plugins(plugins, session):
-    updated_plugins = {}
-    for plugin_data in tqdm(plugins.values(), desc='Downloading plugins'):
-        new_plugin_data = download_plugin(plugin_data, session)
-        updated_plugins[new_plugin_data['name']] = new_plugin_data
+        plugin['name'] = plugin['display_name']
 
-    return updated_plugins
+        return plugin
+
+    def download_plugins(self, plugins):
+        updated_plugins = {}
+        for plugin_data in tqdm(plugins.values(), desc='Downloading plugins'):
+            new_plugin_data = self.download_plugin(plugin_data)
+            updated_plugins[new_plugin_data['name']] = new_plugin_data
+
+        return updated_plugins
+
+    def run_pipeline(self):
+        self.init_session()
+
+        logout_link = self.spigotmc_login()
+
+        current_plugins = self.get_existing_plugins()
+
+        watched_plugins = self.get_watched_plugins()
+
+        updated_plugins = self.download_plugins(watched_plugins)
+        print(json.dumps(updated_plugins, indent=4))  # TODO remove DEBUG
 
 
 if __name__ == '__main__':
     load_dotenv()
-    session = cloudscraper.create_scraper(debug=True)
 
-    logout_link = spigotmc_login(session)
-
-    current_plugins = get_existing_plugins()
-
-    watched_plugins = get_watched_plugins(session)
-
-    updated_plugins = download_plugins(watched_plugins, session)
-    print(json.dumps(updated_plugins, indent=4))  # TODO remove DEBUG
+    updater = SpigotMcUpdater()
+    updater.run_pipeline()
