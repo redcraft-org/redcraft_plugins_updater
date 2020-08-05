@@ -1,6 +1,7 @@
 import os
 from zipfile import ZipFile
 import json
+from urllib.parse import urlencode
 
 import yaml
 import requests
@@ -14,7 +15,12 @@ class SpigotMcUpdater:
     base_url = 'https://www.spigotmc.org'
 
     request_method = os.environ.get('REQUEST_METHOD', 'cloudproxy').lower()
+
+    cloudproxy_url = os.environ.get('CLOUDPROXY_URL', 'http://localhost:8191/v1')
+    cloudproxy_session_id = None
+
     session = None
+
     cookies = {}
 
     def init_session(self):
@@ -23,12 +29,52 @@ class SpigotMcUpdater:
             self.session = cloudscraper.create_scraper()
             return
 
-        self.session = requests.self.session()
+        self.session = requests.session()
+
+        if self.request_method == 'cloudproxy':
+            session_list_request = {
+                'cmd': 'sessions.list'
+            }
+            session_list_response = self.session.post(self.cloudproxy_url, json=session_list_request)
+
+            for session_id in session_list_response.json().get('sessions'):
+                session_destroy_request = {
+                    'cmd': 'sessions.destroy',
+                    'session': session_id
+                }
+                session_destroy_response = self.session.post(self.cloudproxy_url, json=session_destroy_request)
+
+            session_create_request = {
+                'cmd': 'sessions.create'
+            }
+            session_create_response = self.session.post(self.cloudproxy_url, json=session_create_request)
+
+            self.cloudproxy_session_id = session_create_response.json().get('session')
 
     def make_request(self, url, data=None, method='GET'):
         if self.request_method == 'cloudproxy':
-            # Use requests
-            return
+            cloudproxy_request = {
+                'cmd': 'request.get',
+                'url': url,
+                'maxTimeout': 60000,
+                'method': method
+            }
+
+            if data:
+                cloudproxy_request['postData'] = urlencode(data)
+                cloudproxy_request['headers'] = {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+
+
+            cloudproxy_response = self.session.post(self.cloudproxy_url, json=cloudproxy_request)
+            solution = cloudproxy_response.json().get('solution', {})
+
+            crafted_response = requests.models.Response()
+            crafted_response.status_code = solution.get('status')
+            crafted_response._content = solution.get('response').encode('utf-8')
+
+            return crafted_response
 
         return self.session.request(method, url, data=data)
 
