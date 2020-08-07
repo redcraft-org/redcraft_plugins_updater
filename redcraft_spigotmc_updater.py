@@ -18,11 +18,8 @@ class SpigotMcUpdater:
 
     cloudproxy_url = os.environ.get('CLOUDPROXY_URL', 'http://localhost:8191/v1')
     cloudproxy_session_id = None
-    cloudproxy_cookies = []
 
     session = None
-
-    cookies = {}
 
     def init_session(self):
         if self.request_method == 'cloudscraper':
@@ -57,13 +54,13 @@ class SpigotMcUpdater:
             cloudproxy_request = {
                 'cmd': 'request.get',
                 'url': url,
-                'maxTimeout': 60000,
                 'method': method,
-                'cookies': self.cloudproxy_cookies
+                'session': self.cloudproxy_session_id
             }
 
             if expect_download:
                 cloudproxy_request['download'] = True
+                cloudproxy_request['maxTimeout'] = 120000
 
             if data:
                 cloudproxy_request['postData'] = urlencode(data)
@@ -72,14 +69,15 @@ class SpigotMcUpdater:
             cloudproxy_response = self.session.post(self.cloudproxy_url, json=cloudproxy_request)
             solution = cloudproxy_response.json().get('solution', {})
 
-            self.cloudproxy_cookies = solution.get('cookies', [])
-
             crafted_response = requests.models.Response()
             crafted_response.status_code = solution.get('status')
             try:
                 crafted_response._content = solution.get('response').encode('utf-8')
             except Exception:
                 # TODO try to download
+                print('-- REQUEST --')
+                print(json.dumps(cloudproxy_request, indent=4))
+                print('-- RESPONSE --')
                 print(json.dumps(cloudproxy_response.json(), indent=4))
                 exit(1)
 
