@@ -18,6 +18,7 @@ class SpigotMcUpdater:
 
     cloudproxy_url = os.environ.get('CLOUDPROXY_URL', 'http://localhost:8191/v1')
     cloudproxy_session_id = None
+    cloudproxy_cookies = []
 
     session = None
 
@@ -51,32 +52,43 @@ class SpigotMcUpdater:
 
             self.cloudproxy_session_id = session_create_response.json().get('session')
 
-    def make_request(self, url, data=None, method='GET'):
+    def make_request(self, url, data=None, method='GET', expect_download=False):
         if self.request_method == 'cloudproxy':
             cloudproxy_request = {
                 'cmd': 'request.get',
                 'url': url,
                 'maxTimeout': 60000,
-                'method': method
+                'method': method,
+                'cookies': self.cloudproxy_cookies
             }
+
+            if expect_download:
+                cloudproxy_request['download'] = True
 
             if data:
                 cloudproxy_request['postData'] = urlencode(data)
-                cloudproxy_request['headers'] = {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-
+                cloudproxy_request['headers'] = {'Content-Type': 'application/x-www-form-urlencoded'}
 
             cloudproxy_response = self.session.post(self.cloudproxy_url, json=cloudproxy_request)
             solution = cloudproxy_response.json().get('solution', {})
 
+            self.cloudproxy_cookies = solution.get('cookies', [])
+
             crafted_response = requests.models.Response()
             crafted_response.status_code = solution.get('status')
-            crafted_response._content = solution.get('response').encode('utf-8')
+            try:
+                crafted_response._content = solution.get('response').encode('utf-8')
+            except Exception:
+                # TODO try to download
+                print(json.dumps(cloudproxy_response.json(), indent=4))
+                exit(1)
 
             return crafted_response
 
         return self.session.request(method, url, data=data)
+
+    def download_file(self, url):
+        return self.make_request(url, expect_download=True)
 
     def spigotmc_login(self):
         self.make_request('{}/login'.format(self.base_url))
@@ -160,10 +172,7 @@ class SpigotMcUpdater:
         relative_download_link = plugin_page_parser.find('label', {'class': 'downloadButton'}).find('a').get('href')
         plugin_download_link = '{}/{}'.format(self.base_url, relative_download_link)
 
-        # The following statement currently fails because of this:
-        # https://github.com/VeNoMouS/cloudscraper/issues/258
-
-        plugin_binary_response = self.make_request(plugin_download_link)
+        plugin_binary_response = self.download_file(plugin_download_link)
 
         # TODO REMOVE DEBUG
 
