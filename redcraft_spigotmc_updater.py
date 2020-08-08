@@ -200,7 +200,8 @@ class SpigotMcUpdater:
             plugin['name'] = plugin['display_name']
             file_name = '{name}.zip'.format(**plugin)
 
-        file_path = os.path.join(os.environ.get('OUTPUT_FOLDER', 'plugins'), file_name)
+        output_folder = os.environ.get('OUTPUT_FOLDER')
+        file_path = os.path.join(output_folder, file_name)
 
         with open(file_path, 'wb') as file:
             file.write(plugin_data)
