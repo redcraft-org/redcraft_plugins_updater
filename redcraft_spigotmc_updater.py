@@ -2,6 +2,8 @@ import os
 from zipfile import ZipFile
 import json
 from urllib.parse import urlencode
+import base64
+import io
 
 import yaml
 import requests
@@ -71,15 +73,7 @@ class SpigotMcUpdater:
 
             crafted_response = requests.models.Response()
             crafted_response.status_code = solution.get('status')
-            try:
-                crafted_response._content = solution.get('response').encode('utf-8')
-            except Exception:
-                # TODO try to download
-                print('-- REQUEST --')
-                print(json.dumps(cloudproxy_request, indent=4))
-                print('-- RESPONSE --')
-                print(json.dumps(cloudproxy_response.json(), indent=4))
-                exit(1)
+            crafted_response._content = solution.get('response', '').encode('utf-8')
 
             return crafted_response
 
@@ -87,6 +81,20 @@ class SpigotMcUpdater:
 
     def download_file(self, url):
         return self.make_request(url, expect_download=True)
+
+    def extract_plugin_info(self, file):
+        with ZipFile(file, 'r') as plugin_contents:
+            with plugin_contents.open('plugin.yml') as plugin_meta_file:
+                plugin_metadata = yaml.safe_load(plugin_meta_file)
+                plugin_name = plugin_metadata.get('name')
+                plugin_version = plugin_metadata.get('version')
+                if not plugin_name or not plugin_version:
+                    raise ValueError('plugin.yml is not a valid plugin metadata file')
+
+                return {
+                    'name': plugin_name,
+                    'version': plugin_version
+                }
 
     def spigotmc_login(self):
         self.make_request('{}/login'.format(self.base_url))
@@ -113,21 +121,12 @@ class SpigotMcUpdater:
 
         output_folder = os.environ.get('OUTPUT_FOLDER')
         for file_name in tqdm(os.listdir(output_folder), desc='Exploring current versions'):
-            file = '{}/{}'.format(output_folder, file_name)
+            file = os.path.join(output_folder, file_name)
             if file.endswith('.jar'):
                 try:
-                    with ZipFile(file, 'r') as plugin_contents:
-                        with plugin_contents.open('plugin.yml') as plugin_meta_file:
-                            plugin_metadata = yaml.safe_load(plugin_meta_file)
-                            plugin_name = plugin_metadata.get('name')
-                            plugin_version = plugin_metadata.get('version')
-                            if not plugin_name or not plugin_version:
-                                raise ValueError('plugin.yml is not a valid plugin metadata file')
-
-                            plugins[plugin_name] = {
-                                'name': plugin_name,
-                                'version': plugin_version
-                            }
+                    plugin_metadata = self.extract_plugin_info(file)
+                    plugin_name = plugin_metadata['name']
+                    plugins[plugin_name] = plugin_metadata
                 except Exception as e:
                     print('An exception occurred while reading {} ({})'.format(file, e))
 
@@ -172,11 +171,24 @@ class SpigotMcUpdater:
 
         plugin_binary_response = self.download_file(plugin_download_link)
 
-        # TODO REMOVE DEBUG
+        plugin_data = base64.b64decode(plugin_binary_response.content)
 
-        print(plugin_binary_response)
+        zip_handle = io.BytesIO(plugin_data)
 
-        exit(0)
+        file_name = None
+
+        try:
+            plugin_metadata = self.extract_plugin_info(zip_handle)
+            file_name = '{name}.jar'.format(**plugin_metadata)
+        except Exception:
+            # Means it's not a plugin but a zip file
+            plugin['name'] = plugin['display_name']
+            file_name = '{name}.zip'.format(**plugin)
+
+        file_path = os.path.join(os.environ.get('OUTPUT_FOLDER', 'plugins'), file_name)
+
+        with open(file_path, 'wb') as file:
+            file.write(plugin_data)
 
         plugin['name'] = plugin['display_name']
 
@@ -200,11 +212,11 @@ class SpigotMcUpdater:
         watched_plugins = self.get_watched_plugins()
 
         updated_plugins = self.download_plugins(watched_plugins)
-        print(json.dumps(updated_plugins, indent=4))  # TODO remove DEBUG
+
+        return updated_plugins
 
 
 if __name__ == '__main__':
     load_dotenv()
-
     updater = SpigotMcUpdater()
-    updater.run_pipeline()
+    updated_plugins = updater.run_pipeline()
