@@ -170,6 +170,7 @@ class SpigotMcUpdater:
         size_or_external = download_button.find('small', {'class': 'minorText'}).text
 
         if size_or_external == 'Via external site':
+            plugin['name'] = plugin['display_name']
             return plugin
 
         relative_download_link = download_button.find('a').get('href')
@@ -186,6 +187,7 @@ class SpigotMcUpdater:
         try:
             plugin_metadata = self.extract_plugin_info(zip_handle)
             file_name = '{name}.jar'.format(**plugin_metadata)
+            plugin.update(plugin_metadata)
         except Exception:
             # Means it's not a plugin but a zip file
             plugin['name'] = plugin['display_name']
