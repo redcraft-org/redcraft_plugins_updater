@@ -83,18 +83,25 @@ class SpigotMcUpdater:
         return self.make_request(url, expect_download=True)
 
     def extract_plugin_info(self, file):
-        with ZipFile(file, 'r') as plugin_contents:
-            with plugin_contents.open('plugin.yml') as plugin_meta_file:
-                plugin_metadata = yaml.safe_load(plugin_meta_file)
-                plugin_name = plugin_metadata.get('name')
-                plugin_version = plugin_metadata.get('version')
-                if not plugin_name or not plugin_version:
-                    raise ValueError('plugin.yml is not a valid plugin metadata file')
+        possible_plugin_metadata_files = ['plugin.yml', 'bungee.yml']
+        last_exception = None
+        for possible_plugin_metadata_file in possible_plugin_metadata_files:
+            try:
+                with ZipFile(file, 'r') as plugin_contents:
+                    with plugin_contents.open(possible_plugin_metadata_file) as plugin_meta_file:
+                        plugin_metadata = yaml.safe_load(plugin_meta_file)
+                        plugin_name = plugin_metadata.get('name')
+                        plugin_version = plugin_metadata.get('version')
+                        if not plugin_name or not plugin_version:
+                            raise ValueError('{} is not a valid plugin metadata file'.format(possible_plugin_metadata_file))
 
-                return {
-                    'name': plugin_name,
-                    'version': plugin_version
-                }
+                        return {
+                            'name': plugin_name,
+                            'version': plugin_version
+                        }
+            except Exception as e:
+                last_exception = e
+        raise e
 
     def spigotmc_login(self):
         self.make_request('{}/login'.format(self.base_url))
