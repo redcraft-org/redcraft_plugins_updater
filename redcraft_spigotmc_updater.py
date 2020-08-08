@@ -166,7 +166,13 @@ class SpigotMcUpdater:
         plugin_page_response = self.make_request(plugin['url'])
         plugin_page_parser = BeautifulSoup(plugin_page_response.text, features='html.parser')
 
-        relative_download_link = plugin_page_parser.find('label', {'class': 'downloadButton'}).find('a').get('href')
+        download_button = plugin_page_parser.find('label', {'class': 'downloadButton'})
+        size_or_external = download_button.find('small', {'class': 'minorText'}).text
+
+        if size_or_external == 'Via external site':
+            return plugin
+
+        relative_download_link = download_button.find('a').get('href')
         plugin_download_link = '{}/{}'.format(self.base_url, relative_download_link)
 
         plugin_binary_response = self.download_file(plugin_download_link)
