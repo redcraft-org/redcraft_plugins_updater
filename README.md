@@ -6,7 +6,7 @@ RedCraftSpigotMCUpdater is Python 3 tool to download all watched plugins and the
 
 First, you'll need [CloudProxy](https://github.com/NoahCardoza/CloudProxy) installed and running.
 
-If you're running a UNIX based system, it should be as easy as running `./setup.sh`. Make sure you have Python 3 and virtualenv installed (`pip3 install virtualenv`).
+If you're running Linux, macOS, BSD or WSL, it should be as easy as running `./setup.sh`. Make sure you have Python 3 and virtualenv installed (`pip3 install virtualenv`).
 
 Otherwise, create and activate a virtualenv (optional, usually by running `python3 -m venv env` and `source env/bin/activate`), and install requirements using `pip install -r requirements.txt`.
 
