@@ -9,6 +9,7 @@ from spigotmc_client import SpigotMcClient
 if __name__ == '__main__':
     load_dotenv()
 
+    # Get settings from env or the .env file
     login = os.environ.get('LOGIN')
     password = os.environ.get('PASSWORD')
     output_folder = os.environ.get('OUTPUT_FOLDER', 'plugins')
@@ -20,5 +21,6 @@ if __name__ == '__main__':
 
     watched_plugins = client.get_watched_plugins()
 
+    # Download every plugin we watch
     for plugin_data in tqdm(watched_plugins.values(), desc='Downloading plugins'):
         new_plugin_data = client.download_plugin(plugin_data, output_folder)
