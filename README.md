@@ -1,20 +1,22 @@
 # RedCraftSpigotMCUpdater
 
-RedCraftSpigotMCUpdater is Python 3 tool to download all watched plugins and their updates from SpigotMC.org and keep an up to date folder with latest plugins versions, very useful when ran as root.
+RedCraftSpigotMCUpdater is Python 3 tool to download all watched plugins and their updates from [SpigotMC.org](https://spigotmc.org) and keep an up to date folder with latest plugins versions, very useful when ran as root.
 
 ## Setup the project
+
+First, you'll need [CloudProxy](https://github.com/NoahCardoza/CloudProxy) installed and running.
 
 If you're running a UNIX based system, it should be as easy as running `./setup.sh`. Make sure you have Python 3 and virtualenv installed (`pip3 install virtualenv`).
 
 Otherwise, create and activate a virtualenv (optional, usually by running `python3 -m venv env` and `source env/bin/activate`), and install requirements using `pip install -r requirements.txt`.
 
-## Different download methods
-
-By default, the project uses [CloudProxy](https://github.com/NoahCardoza/CloudProxy) to bypass Cloudflare checks, but you can use [cloudscraper](https://github.com/VeNoMouS/cloudscraper) or even plain requests (but that will most likely fail unless you use a proxy to add your own CloudFlare headers)
-
 ## Config
 
 To set your credentials and preferences, copy `.env.example` to `.env` and edit the values as you want.
+
+## How it works
+
+When you run `redcraft_spigotmc_updater.py`, it will log in on [SpigotMC.org](https://spigotmc.org) using [cloudscraper](https://github.com/VeNoMouS/cloudscraper), escalate the CloudFlare tokens with [CloudProxy](https://github.com/NoahCardoza/CloudProxy), and then check your watched plugins and download them in the output folder specified in the config.
 
 ## Limitations
 
