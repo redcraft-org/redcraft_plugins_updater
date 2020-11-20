@@ -10,8 +10,8 @@ if __name__ == '__main__':
     load_dotenv()
 
     # Get settings from env or the .env file
-    login = os.environ.get('LOGIN')
-    password = os.environ.get('PASSWORD')
+    login = os.environ.get('SPIGOTMC_LOGIN')
+    password = os.environ.get('SPIGOTMC_PASSWORD')
     output_folder = os.environ.get('OUTPUT_FOLDER', 'plugins')
     cloudproxy_url = os.environ.get('CLOUDPROXY_URL', 'http://localhost:8191/v1')
 
