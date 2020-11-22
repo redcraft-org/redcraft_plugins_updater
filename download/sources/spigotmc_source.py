@@ -5,10 +5,10 @@ import os
 from bs4 import BeautifulSoup
 from utils.cloudproxy_manager import CloudProxyManager
 
-from download.sources.base_source import BaseSource
+from download.sources.direct_source import DirectSource
 
 
-class SpigotMcSource(BaseSource):
+class SpigotMcSource(DirectSource):
 
     base_url = 'https://www.spigotmc.org'
 

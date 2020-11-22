@@ -162,5 +162,19 @@
         "type": "plugin",
         "source": "jenkins",
         "filter": "BungeeTabListPlus_BukkitBridge-*.jar"
+    },
+    {
+        "name": "RedCraftReboot",
+        "url": "https://github.com/redcraft-org/RedCraftReboot",
+        "type": "plugin",
+        "source": "github",
+        "filter": "RedCraftReboot-*.jar"
+    },
+    {
+        "name": "RedCraftBungeeJsonApi",
+        "url": "https://github.com/redcraft-org/RedCraftBungeeJsonApi",
+        "type": "plugin",
+        "source": "github",
+        "filter": "RedCraftBungeeJsonApi-*.jar"
     }
 ]
