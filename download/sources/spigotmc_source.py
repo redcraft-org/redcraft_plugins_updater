@@ -25,6 +25,7 @@ class SpigotMcSource(DirectSource):
 
         # Initialize our Cloudscraper instance and go on the homepage to get first cookies
         self.session = cloudscraper.create_scraper()
+        self.escalate_token(self.base_url)
         self.session.get('{}/login'.format(self.base_url))
 
         if self.login and self.password:
@@ -44,10 +45,10 @@ class SpigotMcSource(DirectSource):
         else:
             logging.warning('Could not find SpigotMC credentials, will try to download anonymously')
 
-        self.escalate_token()
+        self.escalate_token(self.plugin_to_escalate_token)
 
 
-    def escalate_token(self):
+    def escalate_token(self, url):
         # This method is very important!
         # It is used to bypass a limitation of cloudscraper that returns the following exception:
 
@@ -70,7 +71,7 @@ class SpigotMcSource(DirectSource):
             })
 
         # Do our first request to the protected URL
-        cloudproxy_client.request(self.plugin_to_escalate_token, cookies=cookies)
+        cloudproxy_client.request(url, cookies=cookies)
 
         # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
         escalate_base_cookies_response = cloudproxy_client.request(self.base_url)
@@ -85,7 +86,7 @@ class SpigotMcSource(DirectSource):
             cookie_obj = requests.cookies.create_cookie(cookie['name'], cookie['value'], domain=cookie['domain'])
             self.session.cookies.set_cookie(cookie_obj)
 
-    def download_element(self, url):
+    def download_element(self, url, **kwargs):
         # Browse the plugin page
         plugin_page_response = self.session.get(url)
         plugin_page_parser = BeautifulSoup(plugin_page_response.text, features='html.parser')

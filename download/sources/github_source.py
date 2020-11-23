@@ -12,7 +12,7 @@ class GitHubSource(DirectSource):
     def __init__(self):
         self.session = requests.session()
 
-    def download_element(self, url, filter=None):
+    def download_element(self, url, filter=None, **kwargs):
         filter_regex = re.compile(filter.replace('*', '.+'))
 
         user_repo_id = url.split('github.com/')[1].strip('/')

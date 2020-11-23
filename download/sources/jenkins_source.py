@@ -12,7 +12,7 @@ class JenkinsSource(DirectSource):
     def __init__(self):
         self.session = requests.session()
 
-    def download_element(self, url, filter=None):
+    def download_element(self, url, filter=None, **kwargs):
         filter_regex = re.compile(filter.replace('*', '.+'))
 
         stripped_url = url.strip('/')

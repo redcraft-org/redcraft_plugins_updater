@@ -2,179 +2,181 @@
     {
         "name": "CMI",
         "url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "Panilla",
         "url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "Head Database",
         "url": "https://www.spigotmc.org/resources/head-database.14280/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "AAC",
         "url": "https://www.spigotmc.org/resources/aac-advanced-anti-cheat-hack-kill-aura-blocker.6442/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "Reconnect",
         "url": "https://www.spigotmc.org/resources/bungee-reconnect.16429/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "LiteBans",
         "url": "https://www.spigotmc.org/resources/litebans.3715/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "goPaint",
         "url": "https://www.spigotmc.org/resources/gopaint.27717/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["zip", "plugin"],
+        "archive_filter": "goPaint 1.14*.jar"
     },
     {
         "name": "goBrush",
         "url": "https://www.spigotmc.org/resources/gobrush.23118/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["zip", "plugin"],
+        "archive_filter": "goBrush 1.14*.jar"
     },
     {
         "name": "FarmLimiter",
         "url": "https://www.spigotmc.org/resources/farm-limiter.1419/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "SelectionVisualizer",
         "url": "https://www.spigotmc.org/resources/selection-visualizer.22631/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "PlotSquared",
         "url": "https://www.spigotmc.org/resources/plotsquared-v5.77506/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "EpicWorldGenerator",
         "url": "https://www.spigotmc.org/resources/epicworldgenerator-1-15-1-16-4-%E2%9D%97%EF%B8%8Fsale-%E2%9D%97%EF%B8%8F-20-off.8067/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "ClientStats",
         "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "RedstoneClockDetector",
         "url": "https://www.spigotmc.org/resources/redstoneclockdetector.18475/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "BungeePluginManager",
         "url": "https://www.spigotmc.org/resources/bungeepluginmanager.7288/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "WorldBorder",
         "url": "https://www.spigotmc.org/resources/worldborder-1-15.80466/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "F3NPerm",
         "url": "https://www.spigotmc.org/resources/f3nperm.46461/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "BookExploitFix",
         "url": "https://www.spigotmc.org/resources/bookexploitfix.5897/",
-        "type": "plugin",
-        "source": "spigotmc"
+        "source": "spigotmc",
+        "postprocessors": ["plugin"]
     },
     {
         "name": "ServerListPlus",
         "url": "https://ci.codemc.io/job/Minecrell/job/ServerListPlus/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "ServerListPlus-*-Universal.jar"
     },
     {
         "name": "FastAsyncWorldEdit",
         "url": "https://ci.athion.net/job/FastAsyncWorldEdit-1.16/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "FastAsyncWorldEdit-1.16-*.jar"
     },
     {
         "name": "ViaVersion",
         "url": "https://ci.viaversion.com/job/ViaVersion/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "ViaVersion-*.jar"
     },
     {
         "name": "spark",
         "url": "https://ci.lucko.me/job/spark/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "spark.jar"
     },
     {
         "name": "LuckPerms",
         "url": "https://ci.lucko.me/job/LuckPerms/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "LuckPerms-Bukkit-*.jar"
     },
     {
         "name": "LuckPermsBungee",
         "url": "https://ci.lucko.me/job/LuckPerms/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "LuckPerms-Bungee-*.jar"
     },
     {
         "name": "BungeeTabListPlus",
         "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "BungeeTabListPlus-*.jar"
     },
     {
         "name": "BungeeTabListPlusBridge",
         "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
-        "type": "plugin",
         "source": "jenkins",
+        "postprocessors": ["plugin"],
         "filter": "BungeeTabListPlus_BukkitBridge-*.jar"
     },
     {
         "name": "RedCraftReboot",
         "url": "https://github.com/redcraft-org/RedCraftReboot",
-        "type": "plugin",
         "source": "github",
+        "postprocessors": ["plugin"],
         "filter": "RedCraftReboot-*.jar"
     },
     {
         "name": "RedCraftBungeeJsonApi",
         "url": "https://github.com/redcraft-org/RedCraftBungeeJsonApi",
-        "type": "plugin",
         "source": "github",
+        "postprocessors": ["plugin"],
         "filter": "RedCraftBungeeJsonApi-*.jar"
     }
 ]

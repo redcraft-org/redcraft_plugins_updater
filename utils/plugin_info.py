@@ -1,4 +1,5 @@
 import os
+import io
 from zipfile import ZipFile
 
 import yaml
@@ -12,7 +13,7 @@ def get_existing_plugins(output_folder):
         file = os.path.join(output_folder, file_name)
         if file.endswith('.jar'):
             try:
-                plugin_metadata = extract_plugin_info(file)
+                plugin_metadata = extract_plugin_info_from_file(file)
                 plugin_name = plugin_metadata['name']
                 plugins[plugin_name] = plugin_metadata
             except Exception as e:
@@ -21,9 +22,13 @@ def get_existing_plugins(output_folder):
     return plugins
 
 
-def extract_plugin_info(file):
+def extract_plugin_info_from_binary(bytes_content):
+    return extract_plugin_info_from_file(io.BytesIO(bytes_content))
+
+
+def extract_plugin_info_from_file(file):
     # In order to be compatible with Bukkit and BungeeCord plugins, we need to check two files
-    possible_plugin_metadata_files = ['plugin.yml', 'bungee.yml']
+    possible_plugin_metadata_files = ['bungee.yml', 'plugin.yml']
     last_exception = None
     for possible_plugin_metadata_file in possible_plugin_metadata_files:
         try:
