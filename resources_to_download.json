@@ -1,5 +1,12 @@
 [
     {
+        "name": "Yatopia",
+        "url": "https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.4/",
+        "source": "jenkins",
+        "postprocessors": ["paperclip"],
+        "filter": "yatopia-*.jar"
+    },
+    {
         "name": "CMI",
         "url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
         "source": "spigotmc",

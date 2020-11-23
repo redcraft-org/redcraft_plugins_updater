@@ -7,6 +7,7 @@ from download.sources.spigotmc_source import SpigotMcSource
 from download.sources.jenkins_source import JenkinsSource
 from download.sources.github_source import GitHubSource
 
+from download.postprocessors.paperclip_postprocessor import PaperClipPostprocessor
 from download.postprocessors.plugin_postprocessor import PluginPostprocessor
 from download.postprocessors.zip_postprocessor import ZipPostprocessor
 
@@ -19,6 +20,7 @@ class DownloadManager():
     jenkins_source = None
     github_source = None
 
+    paperclip_postprocessor = None
     plugin_postprocessor = None
     zip_postprocessor = None
 
@@ -30,6 +32,7 @@ class DownloadManager():
         self.jenkins_source = JenkinsSource()
         self.github_source = GitHubSource()
 
+        self.paperclip_postprocessor = PaperClipPostprocessor()
         self.plugin_postprocessor = PluginPostprocessor()
         self.zip_postprocessor = ZipPostprocessor()
 
@@ -51,7 +54,7 @@ class DownloadManager():
         for resource in tqdm(resources):
             try:
                 self.download(**resource)
-            except:
+            except Exception:
                 traceback.print_exc()
 
     def get_source_manager(self, source):
