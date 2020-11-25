@@ -1,6 +1,6 @@
-# RedCraft plugin updater
+# RedCraft plugins updater
 
-RedCraft plugin updater is Python tool to download all your plugins and server engine updates from the following sources:
+RedCraft plugins updater is Python tool to download all your plugins and server engine updates from the following sources:
 
 - SpigotMC.org (Supports premium resources if you log in)
 - Jenkins CI build servers
@@ -22,7 +22,7 @@ Also, all the plugins we want to keep updated need to be in a `.json` file. You 
 
 ## How it works
 
-You just have to run `python redcraft_plugin_updated.py <template_file.json>`, for example `python redcraft_plugin_updated.py test_plugins.json`
+You just have to run `python redcraft_plugins_updated.py <template_file.json>`, for example `python redcraft_plugins_updated.py test_plugins.json`
 
 ## Limitations
 
