@@ -3,7 +3,7 @@ from zipfile import ZipFile
 
 import yaml
 
-class PluginPostprocessor():
+class PluginPostProcessor():
 
     def process(self, downloaded_binary, source, name, url, **kwargs):
         plugin_info = self.extract_plugin_info(downloaded_binary)

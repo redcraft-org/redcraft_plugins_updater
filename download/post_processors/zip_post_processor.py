@@ -2,7 +2,7 @@ import io
 import re
 from zipfile import ZipFile
 
-class ZipPostprocessor():
+class ZipPostProcessor():
 
     def process(self, downloaded_binary, source, name, url, archive_filter=None, **kwargs):
         # Decompress .zip archive and return the content of the matched regex

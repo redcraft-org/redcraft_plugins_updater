@@ -11,7 +11,7 @@ from utils.cloudproxy_manager import CloudProxyManager
 from download.sources.direct_source import DirectSource
 
 
-class SpigotMcSource(DirectSource):
+class SpigotmcSource(DirectSource):
 
     base_url = 'https://www.spigotmc.org'
 

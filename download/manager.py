@@ -3,13 +3,13 @@ import os
 
 from tqdm import tqdm
 
-from download.sources.spigotmc_source import SpigotMcSource
+from download.sources.spigotmc_source import SpigotmcSource
 from download.sources.jenkins_source import JenkinsSource
-from download.sources.github_source import GitHubSource
+from download.sources.github_source import GithubSource
 
-from download.post_processors.paperclip_postprocessor import PaperClipPostprocessor
-from download.post_processors.plugin_postprocessor import PluginPostprocessor
-from download.post_processors.zip_postprocessor import ZipPostprocessor
+from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
+from download.post_processors.plugin_post_processor import PluginPostProcessor
+from download.post_processors.zip_post_processor import ZipPostProcessor
 
 from download.destinations.basic_destination import BasicDestination
 from download.destinations.s3_destination import S3Destination
@@ -20,21 +20,21 @@ class DownloadManager():
     jenkins_source = None
     github_source = None
 
-    paperclip_postprocessor = None
-    plugin_postprocessor = None
-    zip_postprocessor = None
+    paperclip_post_processor = None
+    plugin_post_processor = None
+    zip_post_processor = None
 
     basic_destination = None
     s3_destination = None
 
     def __init__(self):
-        self.spigotmc_source = SpigotMcSource()
+        self.spigotmc_source = SpigotmcSource()
         self.jenkins_source = JenkinsSource()
-        self.github_source = GitHubSource()
+        self.github_source = GithubSource()
 
-        self.paperclip_postprocessor = PaperClipPostprocessor()
-        self.plugin_postprocessor = PluginPostprocessor()
-        self.zip_postprocessor = ZipPostprocessor()
+        self.paperclip_post_processor = PaperclipPostProcessor()
+        self.plugin_post_processor = PluginPostProcessor()
+        self.zip_post_processor = ZipPostProcessor()
 
         self.basic_destination = BasicDestination()
         self.s3_destination = S3Destination()
@@ -45,8 +45,8 @@ class DownloadManager():
         downloaded_binary = source.download_element(url, **kwargs)
 
         # Run post_processors
-        for postprocessor in post_processors:
-            processor = self.get_postprocessing_manager(postprocessor)
+        for post_processor in post_processors:
+            processor = self.get_postprocessing_manager(post_processor)
             downloaded_binary, source, name, url = processor.process(downloaded_binary, source, name, url, **kwargs)
 
         # Save plugin somewhere
@@ -63,8 +63,8 @@ class DownloadManager():
     def get_source_manager(self, source):
         return self.__getattr_safe('source', source)
 
-    def get_postprocessing_manager(self, postprocessor):
-        return self.__getattr_safe('postprocessor', postprocessor)
+    def get_postprocessing_manager(self, post_processor):
+        return self.__getattr_safe('post_processor', post_processor)
 
     def get_destination_manager(self):
         destination = os.environ.get('DESTINATION', 'basic')

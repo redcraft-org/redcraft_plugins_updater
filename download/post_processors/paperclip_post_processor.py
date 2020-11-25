@@ -1,7 +1,7 @@
 import io
 from zipfile import ZipFile
 
-class PaperClipPostprocessor():
+class PaperclipPostProcessor():
 
     def process(self, downloaded_binary, source, name, url, **kwargs):
         with ZipFile(io.BytesIO(downloaded_binary), 'r') as server_jar:

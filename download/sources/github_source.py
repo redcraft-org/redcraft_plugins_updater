@@ -3,7 +3,7 @@ import requests
 from download.sources.direct_source import DirectSource
 
 
-class GitHubSource(DirectSource):
+class GithubSource(DirectSource):
 
     session = None
 
