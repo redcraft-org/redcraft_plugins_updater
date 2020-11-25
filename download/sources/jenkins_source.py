@@ -1,5 +1,3 @@
-import re
-
 import requests
 
 from download.sources.direct_source import DirectSource
@@ -13,7 +11,7 @@ class JenkinsSource(DirectSource):
         self.session = requests.session()
 
     def download_element(self, url, filter=None, **kwargs):
-        filter_regex = re.compile(filter.replace('*', '.+'))
+        filter_regex = self.get_filter_regex(filter)
 
         stripped_url = url.strip('/')
 
