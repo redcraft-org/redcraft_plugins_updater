@@ -2,7 +2,10 @@ import logging
 import cloudscraper
 import requests
 import os
+
 from bs4 import BeautifulSoup
+from tqdm import tqdm
+
 from utils.cloudproxy_manager import CloudProxyManager
 
 from download.sources.direct_source import DirectSource
@@ -17,6 +20,7 @@ class SpigotMcSource(DirectSource):
 
     session = None
     logout_url = None
+    session_escalate_count = 0
 
     def __init__(self, login=None, password=None, cloudproxy_url=None):
         self.login = os.environ.get('SPIGOTMC_LOGIN', login)
@@ -59,32 +63,35 @@ class SpigotMcSource(DirectSource):
         # try to download a plugin (with an external download or CloudProxy will fail) and inject the now escaleted
         # tokens back into our cloudscraper session
 
-        cloudproxy_client = CloudProxyManager(cloudproxy_url=self.cloudproxy_url, user_agent=self.session.headers['User-Agent'])
+        self.session_escalate_count += 1
 
-        # Prepare our cookie object from cloudscraper to CloudProxy
-        cookies = []
-        for cookie in self.session.cookies:
-            cookies.append({
-                'name': cookie.name,
-                'value': cookie.value,
-                'domain': cookie.domain
-            })
+        for _ in tqdm(range(0, 1), desc='Escalating SpigotMC.org token try {}'.format(self.session_escalate_count)):
+            cloudproxy_client = CloudProxyManager(cloudproxy_url=self.cloudproxy_url, user_agent=self.session.headers['User-Agent'])
 
-        # Do our first request to the protected URL
-        cloudproxy_client.request(url, cookies=cookies)
+            # Prepare our cookie object from cloudscraper to CloudProxy
+            cookies = []
+            for cookie in self.session.cookies:
+                cookies.append({
+                    'name': cookie.name,
+                    'value': cookie.value,
+                    'domain': cookie.domain
+                })
 
-        # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
-        escalate_base_cookies_response = cloudproxy_client.request(self.base_url)
+            # Do our first request to the protected URL
+            cloudproxy_client.request(url, cookies=cookies)
 
-        escalated_cookies = escalate_base_cookies_response.json().get('solution', {}).get('cookies', [])
+            # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
+            escalate_base_cookies_response = cloudproxy_client.request(self.base_url)
 
-        cloudproxy_client.clear_cloudproxy_sessions()
+            escalated_cookies = escalate_base_cookies_response.json().get('solution', {}).get('cookies', [])
 
-        # Replace cloudscraper cookies with escalated ones from CloudProxy
-        self.session.cookies.clear()
-        for cookie in escalated_cookies:
-            cookie_obj = requests.cookies.create_cookie(cookie['name'], cookie['value'], domain=cookie['domain'])
-            self.session.cookies.set_cookie(cookie_obj)
+            cloudproxy_client.clear_cloudproxy_sessions()
+
+            # Replace cloudscraper cookies with escalated ones from CloudProxy
+            self.session.cookies.clear()
+            for cookie in escalated_cookies:
+                cookie_obj = requests.cookies.create_cookie(cookie['name'], cookie['value'], domain=cookie['domain'])
+                self.session.cookies.set_cookie(cookie_obj)
 
     def download_element(self, url, **kwargs):
         # Browse the plugin page

@@ -1,6 +1,11 @@
-# RedCraftSpigotMCUpdater
+# RedCraft plugin updater
 
-RedCraftSpigotMCUpdater is Python 3 tool to download all watched plugins and their updates from [SpigotMC.org](https://spigotmc.org) and keep an up to date folder with latest plugins versions, very useful when ran as root.
+RedCraft plugin updater is Python tool to download all your plugins and server engine updates from the following sources:
+
+- SpigotMC.org (Supports premium resources if you log in)
+- Jenkins CI build servers
+- GitHub releases
+- Direct download
 
 ## Setup the project
 
@@ -13,15 +18,17 @@ Otherwise, create and activate a virtualenv (optional, usually by running `pytho
 ## Config
 
 To set your credentials and preferences, copy `.env.example` to `.env` and edit the values as you want.
+Also, all the plugins we want to keep updated need to be in a `.json` file. You can use the `test_plugins.json` file as a template.
 
 ## How it works
 
-When you run `redcraft_spigotmc_updater.py`, it will log in on [SpigotMC.org](https://spigotmc.org) using [cloudscraper](https://github.com/VeNoMouS/cloudscraper), escalate the CloudFlare tokens with [CloudProxy](https://github.com/NoahCardoza/CloudProxy), and then check your watched plugins and download them in the output folder specified in the config.
+You just have to run `python redcraft_plugin_updated.py <template_file.json>`, for example `python redcraft_plugin_updated.py test_plugins.json`
 
 ## Limitations
 
-Currently, this project does not support 2FA. I'm not sure how hard or easy it would be to add 2FA support, feel free to fork it and add this feature if you feel like it.
+Currently, this project does not support 2FA on Spigot's website. I'm not sure how hard or easy it would be to add 2FA support, feel free to fork it and add this feature if you feel like it.
 
 ## Copyright warning
 
-If you fork this project, make sure to NEVER include any Spigot plugin in your repo as this could be a copyright violation. This project alone should only include the files to browse SpigotMC and not its contents.
+If you fork this project, make sure to NEVER include any plugin or resource in your repo as this could be a copyright violation.
+This project should only include the files to browse sources and not their contents.

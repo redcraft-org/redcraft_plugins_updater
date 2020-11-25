@@ -9,10 +9,10 @@ class S3Destination(BasicDestination):
     s3_client = None
 
     def __init__(self):
-        session = boto3.session.Session()
-
         self.s3_bucket = os.environ.get('S3_BUCKET')
-        self.s3_client = session.client(
+
+        # Instantiate and S3 client
+        self.s3_client = boto3.session.Session().client(
             service_name='s3',
             region_name=os.environ.get('S3_REGION'),
             use_ssl=True,

@@ -17,6 +17,7 @@ class GitHubSource(DirectSource):
 
         user_repo_id = url.split('github.com/')[1].strip('/')
 
+        # Get releases on the GitHub API
         github_json_url = 'https://api.github.com/repos/{}/releases'.format(user_repo_id)
 
         github_releases = self.session.get(github_json_url).json()
@@ -25,7 +26,7 @@ class GitHubSource(DirectSource):
             for asset in release.get('assets') or []:
                 if filter_regex.match(asset['name']):
                     asset_url = asset['browser_download_url']
-
+                    # Download and return the release
                     return self.session.get(asset_url).content
 
         raise ValueError('Could not find a matching a matching artifact "{}" at {}'.format(

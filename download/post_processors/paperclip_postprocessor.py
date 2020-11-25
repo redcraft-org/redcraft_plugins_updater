@@ -8,6 +8,7 @@ class PaperClipPostprocessor():
             with server_jar.open('patch.properties') as patch_meta_file:
                 # Load properties file and check metadata
                 properties_content = patch_meta_file.read().decode('utf-8')
+                # UGLY: Could not be bothered to do better
                 version = properties_content.split('version=')[1].split('\n')[0].strip()
 
                 if not version:
