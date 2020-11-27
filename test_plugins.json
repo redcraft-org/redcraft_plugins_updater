@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Yatopia",
+        "url": "https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.4/",
+        "source": "jenkins",
+        "post_processors": ["paperclip"],
+        "filter": "yatopia-*.jar"
+    },
+    {
+        "name": "goBrush",
+        "url": "https://www.spigotmc.org/resources/gobrush.23118/",
+        "source": "spigotmc",
+        "post_processors": ["zip", "plugin"],
+        "archive_filter": "goBrush 1.14*.jar"
+    },
+    {
+        "name": "ClientStats",
+        "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
+        "source": "spigotmc",
+        "post_processors": ["plugin"]
+    },
+    {
+        "name": "spark",
+        "url": "https://ci.lucko.me/job/spark/",
+        "source": "jenkins",
+        "post_processors": ["plugin"],
+        "filter": "spark.jar"
+    },
+    {
+        "name": "RedCraftReboot",
+        "url": "https://github.com/redcraft-org/RedCraftReboot",
+        "source": "github",
+        "post_processors": ["plugin"],
+        "filter": "RedCraftReboot-*.jar"
+    }
+]
