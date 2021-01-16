@@ -8,7 +8,7 @@ from download.manager import DownloadManager
 if __name__ == '__main__':
     load_dotenv()
 
-    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser(description='Update plugins')
     parser.add_argument(
         'plugin_json_file',
         type=argparse.FileType('r'),
