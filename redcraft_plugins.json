@@ -1,7 +1,7 @@
 [
     {
         "name": "Yatopia",
-        "url": "https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.4/",
+        "url": "https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.5/",
         "source": "jenkins",
         "post_processors": ["paperclip"],
         "filter": "yatopia-*.jar"
