@@ -128,7 +128,7 @@
         "url": "https://ci.athion.net/job/FastAsyncWorldEdit-1.16/",
         "source": "jenkins",
         "post_processors": ["plugin"],
-        "filter": "FastAsyncWorldEdit-1.16-*.jar"
+        "filter": "FastAsyncWorldEdit-Bukkit-1.16-*.jar"
     },
     {
         "name": "ViaVersion",
