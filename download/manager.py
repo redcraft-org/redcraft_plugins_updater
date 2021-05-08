@@ -6,6 +6,7 @@ from tqdm import tqdm
 from download.sources.spigotmc_source import SpigotmcSource
 from download.sources.jenkins_source import JenkinsSource
 from download.sources.github_source import GithubSource
+from download.sources.papermc_source import PapermcSource
 
 from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
 from download.post_processors.plugin_post_processor import PluginPostProcessor
@@ -15,10 +16,11 @@ from download.destinations.basic_destination import BasicDestination
 from download.destinations.s3_destination import S3Destination
 
 
-class DownloadManager():
+class DownloadManager:
     spigotmc_source = None
     jenkins_source = None
     github_source = None
+    papermc_source = None
 
     paperclip_post_processor = None
     plugin_post_processor = None
@@ -31,6 +33,7 @@ class DownloadManager():
         self.spigotmc_source = SpigotmcSource()
         self.jenkins_source = JenkinsSource()
         self.github_source = GithubSource()
+        self.papermc_source = PapermcSource()
 
         self.paperclip_post_processor = PaperclipPostProcessor()
         self.plugin_post_processor = PluginPostProcessor()
@@ -47,33 +50,35 @@ class DownloadManager():
         # Run post_processors
         for post_processor in post_processors:
             processor = self.get_postprocessing_manager(post_processor)
-            downloaded_binary, source, name, url = processor.process(downloaded_binary, source, name, url, **kwargs)
+            downloaded_binary, source, name, url = processor.process(
+                downloaded_binary, source, name, url, **kwargs
+            )
 
         # Save plugin somewhere
         destination = self.get_destination_manager()
         destination.save(downloaded_binary, source, name, url, **kwargs)
 
     def download_resources(self, resources):
-        for resource in tqdm(resources, desc='Downloading resources'):
+        for resource in tqdm(resources, desc="Downloading resources"):
             try:
                 self.download(**resource)
             except Exception:
                 traceback.print_exc()
 
     def get_source_manager(self, source):
-        return self.__getattr_safe('source', source)
+        return self.__getattr_safe("source", source)
 
     def get_postprocessing_manager(self, post_processor):
-        return self.__getattr_safe('post_processor', post_processor)
+        return self.__getattr_safe("post_processor", post_processor)
 
     def get_destination_manager(self):
-        destination = os.environ.get('DESTINATION', 'basic')
+        destination = os.environ.get("DESTINATION", "basic")
 
-        return self.__getattr_safe('destination', destination)
+        return self.__getattr_safe("destination", destination)
 
     def __getattr_safe(self, resource_name, value):
         # A simple wrapper to get our resources dynamically
         try:
-            return getattr(self, '{}_{}'.format(value, resource_name))
+            return getattr(self, "{}_{}".format(value, resource_name))
         except AttributeError:
-            raise ValueError('{} {} is not supported'.format(resource_name, value))
+            raise ValueError("{} {} is not supported".format(resource_name, value))
