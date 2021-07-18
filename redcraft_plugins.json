@@ -9,7 +9,7 @@
         "filter": "launcher-airplane.jar"
     },
     {
-        "name": "Waterfall.jar",
+        "name": "Waterfall 1.17.jar",
         "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.17/builds",
         "source": "papermc",
         "post_processors": [],
@@ -73,23 +73,21 @@
     },
     {
         "name": "goPaint",
-        "url": "https://www.spigotmc.org/resources/gopaint.27717/",
-        "source": "spigotmc",
+        "url": "https://ci.athion.net/job/goPaint-1.14+/",
+        "source": "jenkins",
         "post_processors": [
-            "zip",
             "plugin"
         ],
-        "archive_filter": "goPaint 1.14*.jar"
+        "filter": "goPaint-*.jar"
     },
     {
         "name": "goBrush",
-        "url": "https://www.spigotmc.org/resources/gobrush.23118/",
-        "source": "spigotmc",
+        "url": "https://ci.athion.net/job/goBrush-1.13+/",
+        "source": "jenkins",
         "post_processors": [
-            "zip",
             "plugin"
         ],
-        "archive_filter": "goBrush 1.14*.jar"
+        "filter": "goBrush-*.jar"
     },
     {
         "name": "FarmLimiter",

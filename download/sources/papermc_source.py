@@ -19,11 +19,8 @@ class PapermcSource(DirectSource):
 
         last_build = papermc_response["builds"][-1]
 
-        print(last_build)
-
         download = last_build["downloads"]["application"]
         # Find and return the file from the build
-        print(download)
         name = download["name"]
         if filter_regex.match(name):
             artifact_url = "{}/{}/downloads/{}".format(
