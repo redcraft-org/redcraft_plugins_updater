@@ -16,7 +16,7 @@ class SpigotmcSource(DirectSource):
     base_url = "https://www.spigotmc.org"
 
     # Needs to be a popular plugin with an external download
-    plugin_to_escalate_token = "https://www.spigotmc.org/resources/fast-async-worldedit-voxelsniper.13932/download?version=320370"
+    plugin_to_escalate_token = "https://www.spigotmc.org/resources/authmereloaded.6269/download?version=392191"
 
     session = None
     logout_url = None
