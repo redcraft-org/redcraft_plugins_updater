@@ -3,6 +3,7 @@ import os
 
 from tqdm import tqdm
 
+from download.sources.direct_source import DirectSource
 from download.sources.spigotmc_source import SpigotmcSource
 from download.sources.jenkins_source import JenkinsSource
 from download.sources.github_source import GithubSource
@@ -17,6 +18,7 @@ from download.destinations.s3_destination import S3Destination
 
 
 class DownloadManager:
+    direct_source = None
     spigotmc_source = None
     jenkins_source = None
     github_source = None
@@ -30,6 +32,7 @@ class DownloadManager:
     s3_destination = None
 
     def __init__(self):
+        self.direct_source = DirectSource()
         self.spigotmc_source = SpigotmcSource()
         self.jenkins_source = JenkinsSource()
         self.github_source = GithubSource()

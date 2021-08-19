@@ -1,5 +1,13 @@
 [
     {
+        "name": "Purpur",
+        "url": "https://api.pl3x.net/v2/purpur/1.17.1/latest/download",
+        "source": "direct",
+        "post_processors": [
+            "paperclip"
+        ]
+    },
+    {
         "name": "Airplane",
         "url": "https://ci.tivy.ca/job/Airplane-1.17/",
         "source": "jenkins",
