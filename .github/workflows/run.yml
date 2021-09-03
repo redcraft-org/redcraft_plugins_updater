@@ -14,7 +14,7 @@ jobs:
 
     services:
       redis:
-        image: ghcr.io/noahcardoza/cloudproxy:v1.0.1
+        image: ghcr.io/flaresolverr/flaresolverr:latest
         ports:
           - 8191:8191
 
@@ -41,7 +41,7 @@ jobs:
           ./setup.sh
           source env/bin/activate
           python redcraft_plugins_updater.py redcraft_plugins.json
-          
+
       - name: Dump docker logs on failure
         if: failure()
         uses: jwalton/gh-docker-logs@v1
