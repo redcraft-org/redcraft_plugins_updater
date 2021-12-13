@@ -9,7 +9,7 @@ RedCraft plugins updater is Python tool to download all your plugins and server 
 
 ## Setup the project
 
-First, you'll need [CloudProxy](https://github.com/NoahCardoza/CloudProxy) installed and running.
+First, you'll need [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) installed and running.
 
 If you're running Linux, macOS, BSD or WSL, it should be as easy as running `./setup.sh`. Make sure you have Python 3 and virtualenv installed (`pip3 install virtualenv`).
 

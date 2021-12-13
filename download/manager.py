@@ -10,6 +10,7 @@ from download.sources.github_source import GithubSource
 from download.sources.papermc_source import PapermcSource
 
 from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
+from download.post_processors.versionjson_post_processor import VersionjsonPostProcessor
 from download.post_processors.plugin_post_processor import PluginPostProcessor
 from download.post_processors.zip_post_processor import ZipPostProcessor
 
@@ -39,6 +40,7 @@ class DownloadManager:
         self.papermc_source = PapermcSource()
 
         self.paperclip_post_processor = PaperclipPostProcessor()
+        self.versionjson_post_processor = VersionjsonPostProcessor()
         self.plugin_post_processor = PluginPostProcessor()
         self.zip_post_processor = ZipPostProcessor()
 

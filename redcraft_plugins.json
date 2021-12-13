@@ -1,27 +1,18 @@
 [
     {
         "name": "Purpur",
-        "url": "https://api.pl3x.net/v2/purpur/1.17.1/latest/download",
+        "url": "https://api.purpurmc.org/v2/purpur/1.18.1/latest/download",
         "source": "direct",
         "post_processors": [
-            "paperclip"
+            "versionjson"
         ]
     },
     {
-        "name": "Airplane",
-        "url": "https://ci.tivy.ca/job/Airplane-1.17/",
-        "source": "jenkins",
-        "post_processors": [
-            "paperclip"
-        ],
-        "filter": "launcher-airplane.jar"
-    },
-    {
-        "name": "Waterfall 1.17.jar",
-        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.17/builds",
+        "name": "Waterfall 1.18.jar",
+        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.18/builds",
         "source": "papermc",
         "post_processors": [],
-        "filter": "waterfall-1.17-*.jar"
+        "filter": "waterfall-1.18-*.jar"
     },
     {
         "name": "CMI",

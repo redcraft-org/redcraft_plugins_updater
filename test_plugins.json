@@ -1,17 +1,16 @@
 [
     {
-        "name": "Yatopia",
-        "url": "https://ci.codemc.io/job/YatopiaMC/job/Yatopia/job/ver%252F1.16.4/",
-        "source": "jenkins",
-        "post_processors": ["paperclip"],
-        "filter": "yatopia-*.jar"
+        "name": "Purpur",
+        "url": "https://api.purpurmc.org/v2/purpur/1.18.1/latest/download",
+        "source": "direct",
+        "post_processors": ["versionjson"]
     },
     {
         "name": "goBrush",
-        "url": "https://www.spigotmc.org/resources/gobrush.23118/",
-        "source": "spigotmc",
-        "post_processors": ["zip", "plugin"],
-        "archive_filter": "goBrush 1.14*.jar"
+        "url": "https://ci.athion.net/job/goBrush-1.13+/",
+        "source": "jenkins",
+        "post_processors": ["plugin"],
+        "filter": "goBrush*.jar"
     },
     {
         "name": "ClientStats",

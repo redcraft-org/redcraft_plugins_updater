@@ -6,7 +6,7 @@ import os
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-from utils.cloudproxy_manager import CloudProxyManager
+from utils.flaresolverr_manager import FlareSolverrManager
 
 from download.sources.direct_source import DirectSource
 
@@ -22,16 +22,16 @@ class SpigotmcSource(DirectSource):
     logout_url = None
     session_escalate_count = 0
 
-    def __init__(self, login=None, password=None, cloudproxy_url=None):
+    def __init__(self, login=None, password=None, flaresolverr_url=None):
         self.login = os.environ.get("SPIGOTMC_LOGIN", login)
         self.password = os.environ.get("SPIGOTMC_PASSWORD", password)
-        self.cloudproxy_url = os.environ.get(
-            "CLOUDPROXY_URL", cloudproxy_url or "http://localhost:8191/v1"
+        self.flaresolverr_url = os.environ.get(
+            "FLARESOLVERR_URL", flaresolverr_url or "http://localhost:8191/v1"
         )
 
         # Initialize our Cloudscraper instance and go on the homepage to get first cookies
         self.session = cloudscraper.create_scraper()
-        self.escalate_token(self.base_url)
+        self.escalate_token(self.plugin_to_escalate_token)
         self.session.get("{}/login".format(self.base_url))
 
         if self.login and self.password:
@@ -64,8 +64,8 @@ class SpigotmcSource(DirectSource):
         # cloudscraper.exceptions.CloudflareChallengeError
         # Detected a Cloudflare version 2 Captcha challenge, This feature is not available in the opensource (free) version.
 
-        # To bypass this, we copy the cookies and user agent from the cloudscraper session, put it in CloudProxy and
-        # try to download a plugin (with an external download or CloudProxy will fail) and inject the now escaleted
+        # To bypass this, we copy the cookies and user agent from the cloudscraper session, put it in FlareSolverr and
+        # try to download a plugin (with an external download or FlareSolverr will fail) and inject the now escaleted
         # tokens back into our cloudscraper session
 
         self.session_escalate_count += 1
@@ -76,12 +76,11 @@ class SpigotmcSource(DirectSource):
                 self.session_escalate_count
             ),
         ):
-            cloudproxy_client = CloudProxyManager(
-                cloudproxy_url=self.cloudproxy_url,
-                user_agent=self.session.headers["User-Agent"],
+            flaresolverr_client = FlareSolverrManager(
+                flaresolverr_url=self.flaresolverr_url,
             )
 
-            # Prepare our cookie object from cloudscraper to CloudProxy
+            # Prepare our cookie object from cloudscraper to FlareSolverr
             cookies = []
             for cookie in self.session.cookies:
                 cookies.append(
@@ -93,20 +92,20 @@ class SpigotmcSource(DirectSource):
                 )
 
             # Do our first request to the protected URL
-            cloudproxy_client.request(url, cookies=cookies)
+            flaresolverr_client.request(url, cookies=cookies)
 
             # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
-            escalate_base_cookies_response = cloudproxy_client.request(self.base_url)
+            escalate_base_cookies_response = flaresolverr_client.request(self.base_url)
 
-            escalated_cookies = (
-                escalate_base_cookies_response.json()
-                .get("solution", {})
-                .get("cookies", [])
-            )
+            solution = escalate_base_cookies_response.json().get("solution", {})
 
-            cloudproxy_client.clear_cloudproxy_sessions()
+            escalated_cookies = solution.get("cookies", [])
 
-            # Replace cloudscraper cookies with escalated ones from CloudProxy
+            flaresolverr_client.clear_flaresolverr_sessions()
+
+            self.session.headers["User-Agent"] = solution.get("userAgent")
+
+            # Replace cloudscraper cookies with escalated ones from FlareSolverr
             self.session.cookies.clear()
             for cookie in escalated_cookies:
                 cookie_obj = requests.cookies.create_cookie(
