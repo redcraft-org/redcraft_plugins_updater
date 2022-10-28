@@ -206,7 +206,7 @@
         "filter": "spark-*-bukkit.jar"
     },
     {
-        "name": "spark-bungeecord",
+        "name": "sparkbungeecord",
         "url": "https://ci.lucko.me/job/spark/",
         "source": "jenkins",
         "post_processors": [
