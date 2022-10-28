@@ -1,18 +1,18 @@
 [
     {
         "name": "Purpur",
-        "url": "https://api.purpurmc.org/v2/purpur/1.18.1/latest/download",
+        "url": "https://api.purpurmc.org/v2/purpur/1.19.2/latest/download",
         "source": "direct",
         "post_processors": [
             "versionjson"
         ]
     },
     {
-        "name": "Waterfall 1.18.jar",
-        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.18/builds",
+        "name": "Waterfall 1.19.jar",
+        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
         "source": "papermc",
         "post_processors": [],
-        "filter": "waterfall-1.18-*.jar"
+        "filter": "waterfall-1.19-*.jar"
     },
     {
         "name": "CMI",
@@ -146,11 +146,12 @@
     },
     {
         "name": "WorldBorder",
-        "url": "https://www.spigotmc.org/resources/worldborder-1-15.80466/",
-        "source": "spigotmc",
+        "url": "https://github.com/PryPurity/WorldBorder",
+        "source": "github",
         "post_processors": [
             "plugin"
-        ]
+        ],
+        "filter": "WorldBorder.jar"
     },
     {
         "name": "F3NPerm",
@@ -202,7 +203,16 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "spark.jar"
+        "filter": "spark-*-bukkit.jar"
+    },
+    {
+        "name": "spark-bungeecord",
+        "url": "https://ci.lucko.me/job/spark/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "spark-*-bungeecord.jar"
     },
     {
         "name": "LuckPerms",

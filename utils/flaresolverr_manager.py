@@ -1,9 +1,11 @@
 import traceback
+import logging
 import requests
 
 
 class FlareSolverrManager:
     def __init__(self, flaresolverr_url=None):
+        self.logger = logging.getLogger("FlareSolverrManager")
         self.session = requests.session()
         self.flaresolverr_url = flaresolverr_url or "http://localhost:8191/v1"
 
@@ -58,7 +60,8 @@ class FlareSolverrManager:
 
                 break
             except Exception as error:
-                print("FlareSoverr error {}/{}".format(try_count, tries))
+                self.logger.warning(
+                    "FlareSoverr error {}/{}".format(try_count, tries))
                 last_error = error
                 traceback.print_exc()
 

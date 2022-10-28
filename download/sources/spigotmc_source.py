@@ -4,7 +4,6 @@ import requests
 import os
 
 from bs4 import BeautifulSoup
-from tqdm import tqdm
 
 from utils.flaresolverr_manager import FlareSolverrManager
 
@@ -23,6 +22,7 @@ class SpigotmcSource(DirectSource):
     session_escalate_count = 0
 
     def __init__(self, login=None, password=None, flaresolverr_url=None):
+        self.logger = logging.getLogger("SpigotMCSource")
         self.login = os.environ.get("SPIGOTMC_LOGIN", login)
         self.password = os.environ.get("SPIGOTMC_PASSWORD", password)
         self.flaresolverr_url = os.environ.get(
@@ -39,7 +39,8 @@ class SpigotmcSource(DirectSource):
                 "login": self.login,
                 "password": self.password,
                 "register": "0",
-                "remember": "0",
+                "remember": "1",
+                "cookie_check": "1",
             }
 
             # Post our credentials on the login form and try to extract the logout link
@@ -48,14 +49,13 @@ class SpigotmcSource(DirectSource):
             )
             login_parser = BeautifulSoup(login_response.text, features="html.parser")
 
-            if not login_parser.find("a", {"class": "LogOut"}):
+            logout_link = login_parser.find("a", {"class": "LogOut"})
+            if not logout_link:
                 raise ValueError("Couldn't get a logout link, login probably failed.")
         else:
-            logging.warning(
+            self.logger.warning(
                 "Could not find SpigotMC credentials, will try to download anonymously"
             )
-
-        self.escalate_token(self.plugin_to_escalate_token)
 
     def escalate_token(self, url):
         # This method is very important!
@@ -68,50 +68,44 @@ class SpigotmcSource(DirectSource):
         # try to download a plugin (with an external download or FlareSolverr will fail) and inject the now escaleted
         # tokens back into our cloudscraper session
 
-        self.session_escalate_count += 1
+        self.logger.info("Escalating SpigotMC token")
 
-        for _ in tqdm(
-            range(0, 1),
-            desc="Escalating SpigotMC.org token try {}".format(
-                self.session_escalate_count
-            ),
-        ):
-            flaresolverr_client = FlareSolverrManager(
-                flaresolverr_url=self.flaresolverr_url,
+        flaresolverr_client = FlareSolverrManager(
+            flaresolverr_url=self.flaresolverr_url,
+        )
+
+        # Prepare our cookie object from cloudscraper to FlareSolverr
+        cookies = []
+        for cookie in self.session.cookies:
+            cookies.append(
+                {
+                    "name": cookie.name,
+                    "value": cookie.value,
+                    "domain": cookie.domain,
+                }
             )
 
-            # Prepare our cookie object from cloudscraper to FlareSolverr
-            cookies = []
-            for cookie in self.session.cookies:
-                cookies.append(
-                    {
-                        "name": cookie.name,
-                        "value": cookie.value,
-                        "domain": cookie.domain,
-                    }
-                )
+        # Do our first request to the protected URL
+        flaresolverr_client.request(url, cookies=cookies)
 
-            # Do our first request to the protected URL
-            flaresolverr_client.request(url, cookies=cookies)
+        # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
+        escalate_base_cookies_response = flaresolverr_client.request(self.base_url)
 
-            # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
-            escalate_base_cookies_response = flaresolverr_client.request(self.base_url)
+        solution = escalate_base_cookies_response.json().get("solution", {})
 
-            solution = escalate_base_cookies_response.json().get("solution", {})
+        escalated_cookies = solution.get("cookies", [])
 
-            escalated_cookies = solution.get("cookies", [])
+        flaresolverr_client.clear_flaresolverr_sessions()
 
-            flaresolverr_client.clear_flaresolverr_sessions()
+        self.session.headers["User-Agent"] = solution.get("userAgent")
 
-            self.session.headers["User-Agent"] = solution.get("userAgent")
-
-            # Replace cloudscraper cookies with escalated ones from FlareSolverr
-            self.session.cookies.clear()
-            for cookie in escalated_cookies:
-                cookie_obj = requests.cookies.create_cookie(
-                    cookie["name"], cookie["value"], domain=cookie["domain"]
-                )
-                self.session.cookies.set_cookie(cookie_obj)
+        # Replace cloudscraper cookies with escalated ones from FlareSolverr
+        self.session.cookies.clear()
+        for cookie in escalated_cookies:
+            cookie_obj = requests.cookies.create_cookie(
+                cookie["name"], cookie["value"], domain=cookie["domain"]
+            )
+            self.session.cookies.set_cookie(cookie_obj)
 
     def download_element(self, url, **kwargs):
         # Browse the plugin page
