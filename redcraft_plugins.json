@@ -355,5 +355,14 @@
             "plugin"
         ],
         "filter": "VoidGen-*.jar"
+    },
+    {
+        "name": "WorldGuard",
+        "url": "https://builds.enginehub.org/job/worldguard",
+        "source": "enginehub",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "worldguard-bukkit-*.jar"
     }
 ]
