@@ -23,6 +23,14 @@
         ]
     },
     {
+        "name": "CMILib",
+        "url": "https://www.spigotmc.org/resources/cmilib.87610/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
         "name": "CoreProtect",
         "url": "https://www.spigotmc.org/resources/coreprotect.8631/",
         "source": "spigotmc",
@@ -145,6 +153,14 @@
         ]
     },
     {
+        "name": "PlugManX",
+        "url": "https://www.spigotmc.org/resources/plugmanx.88135/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
         "name": "WorldBorder",
         "url": "https://github.com/PryPurity/WorldBorder",
         "source": "github",
@@ -180,12 +196,12 @@
     },
     {
         "name": "FastAsyncWorldEdit",
-        "url": "https://ci.athion.net/job/FastAsyncWorldEdit-1.17/",
+        "url": "https://ci.athion.net/job/FastAsyncWorldEdit/",
         "source": "jenkins",
         "post_processors": [
             "plugin"
         ],
-        "filter": "FastAsyncWorldEdit-Bukkit-1.17-*.jar"
+        "filter": "FastAsyncWorldEdit-Bukkit-*.jar"
     },
     {
         "name": "ViaVersion",
@@ -267,5 +283,77 @@
             "plugin"
         ],
         "filter": "RedCraftBungeeJsonApi-*.jar"
+    },
+    {
+        "name": "RedCraftChat",
+        "url": "https://github.com/redcraft-org/RedCraftChat",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "RedCraftChat-*.jar"
+    },
+    {
+        "name": "DecentHolograms",
+        "url": "https://github.com/DecentSoftware-eu/DecentHolograms",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "DecentHolograms-*.jar"
+    },
+    {
+        "name": " ImageOnMap",
+        "url": "https://github.com/zDevelopers/ImageOnMap",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": " ImageOnMap-*.jar"
+    },
+    {
+        "name": "Multiverse-Core",
+        "url": "https://ci.onarandombox.com/job/Multiverse-Core/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Multiverse-Core-*.jar"
+    },
+    {
+        "name": "Citizens",
+        "url": "https://ci.citizensnpcs.co/job/Citizens2/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Citizens-*.jar"
+    },
+    {
+        "name": "Denizen",
+        "url": "https://ci.citizensnpcs.co/job/Denizen/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Denizen-*.jar"
+    },
+    {
+        "name": "WorldGuard",
+        "url": "https://builds.enginehub.org/job/worldguard",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "worldguard-*.jar"
+    },
+    {
+        "name": "VoidGen",
+        "url": "https://github.com/xtkq-is-not-available/VoidGen",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "VoidGen-*.jar"
     }
 ]
