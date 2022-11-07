@@ -303,13 +303,13 @@
         "filter": "DecentHolograms-*.jar"
     },
     {
-        "name": " ImageOnMap",
+        "name": "ImageOnMap",
         "url": "https://github.com/zDevelopers/ImageOnMap",
         "source": "github",
         "post_processors": [
             "plugin"
         ],
-        "filter": " ImageOnMap-*.jar"
+        "filter": "ImageOnMap-*.jar"
     },
     {
         "name": "Multiverse-Core",
