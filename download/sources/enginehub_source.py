@@ -28,8 +28,6 @@ class EnginehubSource(DirectSource):
 
         enginehub_response = json.loads(enginehub_parser.find("script", id="__NEXT_DATA__").text)
 
-        print(enginehub_parser.find("script", id="__NEXT_DATA__").text)
-
         for artifact in enginehub_response.get("props", {}).get("pageProps", {}).get("build", {}).get("artifacts") or []:
             # Find and return the file from the build
             if filter_regex.match(artifact["name"]):
@@ -38,8 +36,6 @@ class EnginehubSource(DirectSource):
                 artifact_url = "https://ci.enginehub.org/repository/download/{}/{}:id/{}?guest=1".format(
                     build_type, build_id, artifact["name"]
                 )
-
-                print(artifact_url)
 
                 return self.session.get(artifact_url).content
 
