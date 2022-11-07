@@ -1,3 +1,4 @@
+import logging
 import traceback
 import os
 
@@ -33,6 +34,8 @@ class DownloadManager:
     s3_destination = None
 
     def __init__(self):
+        self.logger = logging.getLogger("DownloadManager")
+
         self.direct_source = DirectSource()
         self.spigotmc_source = SpigotmcSource()
         self.jenkins_source = JenkinsSource()
@@ -68,6 +71,7 @@ class DownloadManager:
             try:
                 self.download(**resource)
             except Exception:
+                self.logger.warning('Error while downloading {name} from {url} using source {source}'.format(**resource))
                 traceback.print_exc()
 
     def get_source_manager(self, source):
