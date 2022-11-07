@@ -318,7 +318,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "Multiverse-Core-*.jar"
+        "filter": "Multiverse-Core-*-SNAPSHOT.jar"
     },
     {
         "name": "Citizens",
@@ -337,15 +337,6 @@
             "plugin"
         ],
         "filter": "Denizen-*.jar"
-    },
-    {
-        "name": "WorldGuard",
-        "url": "https://builds.enginehub.org/job/worldguard",
-        "source": "jenkins",
-        "post_processors": [
-            "plugin"
-        ],
-        "filter": "worldguard-*.jar"
     },
     {
         "name": "VoidGen",
