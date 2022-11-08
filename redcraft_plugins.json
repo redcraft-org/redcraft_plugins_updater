@@ -8,7 +8,7 @@
         ]
     },
     {
-        "name": "Waterfall 1.19.jar",
+        "name": "Waterfall-1.19.jar",
         "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
         "source": "papermc",
         "post_processors": [],
