@@ -348,6 +348,15 @@
         "filter": "VoidGen-*.jar"
     },
     {
+        "name": "Plan",
+        "url": "https://github.com/plan-player-analytics/Plan",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Plan-*.jar"
+    },
+    {
         "name": "WorldGuard",
         "url": "https://builds.enginehub.org/job/worldguard",
         "source": "enginehub",
