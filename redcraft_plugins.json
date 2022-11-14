@@ -31,6 +31,14 @@
         ]
     },
     {
+        "name": "CMIB",
+        "url": "https://zrips.net/cmib/",
+        "source": "zrips",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
         "name": "CoreProtect",
         "url": "https://www.spigotmc.org/resources/coreprotect.8631/",
         "source": "spigotmc",

@@ -10,6 +10,7 @@ from download.sources.spigotmc_source import SpigotmcSource
 from download.sources.jenkins_source import JenkinsSource
 from download.sources.github_source import GithubSource
 from download.sources.papermc_source import PapermcSource
+from download.sources.zrips_source import ZripsSource
 
 from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
 from download.post_processors.versionjson_post_processor import VersionjsonPostProcessor
@@ -44,6 +45,7 @@ class DownloadManager:
         self.jenkins_source = JenkinsSource()
         self.github_source = GithubSource()
         self.papermc_source = PapermcSource()
+        self.zrips_source = ZripsSource()
 
         self.paperclip_post_processor = PaperclipPostProcessor()
         self.versionjson_post_processor = VersionjsonPostProcessor()
