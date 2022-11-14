@@ -364,5 +364,14 @@
             "plugin"
         ],
         "filter": "worldguard-bukkit-*.jar"
+    },
+    {
+        "name": "Maintenance",
+        "url": "https://github.com/kennytv/Maintenance",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Maintenance.jar"
     }
 ]
