@@ -381,5 +381,21 @@
             "plugin"
         ],
         "filter": "Maintenance.jar"
+    },
+    {
+        "name": "ViewDistanceTweaks",
+        "url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "NightVisionPlus",
+        "url": "https://www.spigotmc.org/resources/nightvision-1-16-support-with-source-code.58282/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
     }
 ]
