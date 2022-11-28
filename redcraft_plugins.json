@@ -221,6 +221,24 @@
         "filter": "ViaVersion-*.jar"
     },
     {
+        "name": "ViaBackwards",
+        "url": "https://ci.viaversion.com/job/ViaBackwards/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ViaBackwards-*.jar"
+    },
+    {
+        "name": "ViaRewind",
+        "url": "https://ci.viaversion.com/job/ViaRewind/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ViaRewind-*.jar"
+    },
+    {
         "name": "spark",
         "url": "https://ci.lucko.me/job/spark/",
         "source": "jenkins",
