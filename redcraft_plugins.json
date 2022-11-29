@@ -338,6 +338,15 @@
         "filter": "ImageOnMap-*.jar"
     },
     {
+        "name": "ImageMaps",
+        "url": "https://github.com/SydMontague/ImageMaps",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ImageMaps.jar"
+    },
+    {
         "name": "Multiverse-Core",
         "url": "https://ci.onarandombox.com/job/Multiverse-Core/",
         "source": "jenkins",
