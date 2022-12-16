@@ -10,6 +10,8 @@ class VersionjsonPostProcessor:
                 version_json_contents = json.load(version_json_file)
                 # UGLY: Could not be bothered to do better
                 version = version_json_contents.get("release_target")
+                if not version:
+                    version = version_json_contents.get("id")
 
                 if not version:
                     raise ValueError(
