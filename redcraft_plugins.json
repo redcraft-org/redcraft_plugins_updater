@@ -40,8 +40,8 @@
     },
     {
         "name": "CoreProtect",
-        "url": "https://www.spigotmc.org/resources/coreprotect.8631/",
-        "source": "spigotmc",
+        "url": "https://modrinth.com/plugin/coreprotect/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ]

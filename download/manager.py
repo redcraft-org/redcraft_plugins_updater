@@ -8,6 +8,7 @@ from download.sources.direct_source import DirectSource
 from download.sources.enginehub_source import EnginehubSource
 from download.sources.spigotmc_source import SpigotmcSource
 from download.sources.jenkins_source import JenkinsSource
+from download.sources.modrinth_source import ModrinthSource
 from download.sources.github_source import GithubSource
 from download.sources.papermc_source import PapermcSource
 from download.sources.zrips_source import ZripsSource
@@ -26,6 +27,7 @@ class DownloadManager:
     enginehub_source = None
     spigotmc_source = None
     jenkins_source = None
+    modrinth_source = None
     github_source = None
     papermc_source = None
 
@@ -43,6 +45,7 @@ class DownloadManager:
         self.enginehub_source = EnginehubSource()
         self.spigotmc_source = SpigotmcSource()
         self.jenkins_source = JenkinsSource()
+        self.modrinth_source = ModrinthSource()
         self.github_source = GithubSource()
         self.papermc_source = PapermcSource()
         self.zrips_source = ZripsSource()
