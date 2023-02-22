@@ -40,6 +40,8 @@ jobs:
         run: |
           ./setup.sh
           source env/bin/activate
+          echo "Waiting for FlareSolverr..."
+          sleep 60
           python redcraft_plugins_updater.py redcraft_plugins.json
 
       - name: Dump docker logs on failure
