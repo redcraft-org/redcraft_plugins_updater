@@ -26,10 +26,13 @@ class FlareSolverrManager:
             self.flaresolverr_url, json=session_list_request
         )
 
+        sessions = session_list_response.json().get("sessions")
+
         # Clear each session
-        for session_id in session_list_response.json().get("sessions"):
-            session_destroy_request = {"cmd": "sessions.destroy", "session": session_id}
-            requests.post(self.flaresolverr_url, json=session_destroy_request)
+        if sessions:
+            for session_id in sessions:
+                session_destroy_request = {"cmd": "sessions.destroy", "session": session_id}
+                requests.post(self.flaresolverr_url, json=session_destroy_request)
 
     def request(self, url, method="GET", cookies=None, tries=3):
         flaresolverr_request = {

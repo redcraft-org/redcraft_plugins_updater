@@ -32,6 +32,7 @@ class SpigotmcSource(DirectSource):
         # Initialize our Cloudscraper instance and go on the homepage to get first cookies
         self.session = cloudscraper.create_scraper()
         self.escalate_token(self.plugin_to_escalate_token)
+
         self.session.get("{}/login".format(self.base_url))
 
         if self.login and self.password:
@@ -47,6 +48,9 @@ class SpigotmcSource(DirectSource):
             login_response = self.session.post(
                 "{}/login/login".format(self.base_url), data=data
             )
+
+            login_response.raise_for_status()
+
             login_parser = BeautifulSoup(login_response.text, features="html.parser")
 
             logout_link = login_parser.find("a", {"class": "LogOut"})
@@ -91,6 +95,8 @@ class SpigotmcSource(DirectSource):
         # Do our first second to the homepage of SpigotMC.org to get our escalated credentials
         escalate_base_cookies_response = flaresolverr_client.request(self.base_url)
 
+        escalate_base_cookies_response.raise_for_status()
+
         solution = escalate_base_cookies_response.json().get("solution", {})
 
         escalated_cookies = solution.get("cookies", [])
@@ -103,7 +109,11 @@ class SpigotmcSource(DirectSource):
         self.session.cookies.clear()
         for cookie in escalated_cookies:
             cookie_obj = requests.cookies.create_cookie(
-                cookie["name"], cookie["value"], domain=cookie["domain"]
+                cookie["name"],
+                cookie["value"],
+                domain=cookie["domain"],
+                path=cookie["path"],
+                secure=cookie["secure"],
             )
             self.session.cookies.set_cookie(cookie_obj)
 
