@@ -357,7 +357,7 @@
     },
     {
         "name": "Denizen",
-        "url": "https://ci.citizensnpcs.co/job/Denizen/",
+        "url": "https://ci.citizensnpcs.co/job/Denizen_Developmental/",
         "source": "jenkins",
         "post_processors": [
             "plugin"
