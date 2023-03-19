@@ -1,7 +1,7 @@
 [
     {
         "name": "Purpur",
-        "url": "https://api.purpurmc.org/v2/purpur/1.19.3/latest/download",
+        "url": "https://api.purpurmc.org/v2/purpur/1.19.4/latest/download",
         "source": "direct",
         "post_processors": [
             "versionjson"
