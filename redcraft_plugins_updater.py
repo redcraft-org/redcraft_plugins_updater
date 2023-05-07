@@ -21,4 +21,4 @@ if __name__ == "__main__":
     resources = json.load(args.plugin_json_file)
 
     # Download resources
-    DownloadManager().download_resources(resources)
+    DownloadManager.download_resources(resources)
