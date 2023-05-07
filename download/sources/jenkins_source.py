@@ -1,24 +1,21 @@
 import requests
 
-from download.sources.direct_source import DirectSource
+from download.sources.source import Source
 
 
-class JenkinsSource(DirectSource):
+class JenkinsSource(Source):
 
-    session = None
 
-    def __init__(self):
-        self.session = requests.session()
-
-    def download_element(self, url, filter=None, **_):
-        filter_regex = self.get_filter_regex(filter)
+    async def get_release_url(self, url, _filter=None):
+        filter_regex = self.get_filter_regex(_filter)
 
         stripped_url = url.strip("/")
 
         # Get the last successful build
         jenkins_json_url = "{}/lastSuccessfulBuild/api/json".format(stripped_url)
 
-        jenkins_response = self.session.get(jenkins_json_url).json()
+        jenkins_response = await self.client.get(jenkins_json_url)
+        jenkins_response = jenkins_response.json()
 
         for artifact in jenkins_response.get("artifacts") or []:
             # Find and return the file from the build
@@ -27,7 +24,7 @@ class JenkinsSource(DirectSource):
                     stripped_url, artifact["relativePath"]
                 )
 
-                return self.session.get(artifact_url).content
+                return artifact_url
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(

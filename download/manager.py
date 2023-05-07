@@ -1,25 +1,14 @@
 import logging
 import traceback
 import os
-
+import asyncio
 from tqdm import tqdm
 
-from download.sources.direct_source import DirectSource
-from download.sources.enginehub_source import EnginehubSource
-from download.sources.spigotmc_source import SpigotmcSource
-from download.sources.jenkins_source import JenkinsSource
-from download.sources.modrinth_source import ModrinthSource
-from download.sources.github_source import GithubSource
-from download.sources.papermc_source import PapermcSource
-from download.sources.zrips_source import ZripsSource
+from download import sources
 
-from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
-from download.post_processors.versionjson_post_processor import VersionjsonPostProcessor
-from download.post_processors.plugin_post_processor import PluginPostProcessor
-from download.post_processors.zip_post_processor import ZipPostProcessor
+from download import post_processors
 
-from download.destinations.basic_destination import BasicDestination
-from download.destinations.s3_destination import S3Destination
+from download import destinations
 
 
 class DownloadManager:
@@ -43,38 +32,38 @@ class DownloadManager:
 
     SOURCE_DICT = LazyLoader(
         {
-            "direct": DirectSource,
-            "enginehub": EnginehubSource,
-            "spigotmc": SpigotmcSource,
-            "jenkins": JenkinsSource,
-            "modrinth": ModrinthSource,
-            "github": GithubSource,
-            "papermc": PapermcSource,
-            "zrips": ZripsSource,
+            "direct": sources.DirectSource,
+            "enginehub": sources.EnginehubSource,
+            "spigotmc": sources.SpigotmcSource,
+            "jenkins": sources.JenkinsSource,
+            "modrinth": sources.ModrinthSource,
+            "github": sources.GithubSource,
+            "papermc": sources.PapermcSource,
+            "zrips": sources.ZripsSource,
         }
     )
 
     POST_PROCESSOR_DICT = LazyLoader(
         {
-            "paperclip": PaperclipPostProcessor,
-            "versionjson": VersionjsonPostProcessor,
-            "plugin": PluginPostProcessor,
-            "zip": ZipPostProcessor,
+            "paperclip": post_processors.PaperclipPostProcessor,
+            "versionjson": post_processors.VersionjsonPostProcessor,
+            "plugin": post_processors.PluginPostProcessor,
+            "zip": post_processors.ZipPostProcessor,
         }
     )
 
     DESTINATION_DICT = LazyLoader(
         {
-            "basic": BasicDestination,
-            "s3": S3Destination,
+            "basic": destinations.BasicDestination,
+            "s3": destinations.S3Destination,
         }
     )
 
     @classmethod
-    def download(self, source, name, url, post_processors, **kwargs):
+    async def download(self, source, name, url, post_processors, **kwargs):
         # Download file from the right source
         source = self.get_source_manager(source)
-        downloaded_binary = source.download_element(url, **kwargs)
+        downloaded_binary = await source.download_element(url, **kwargs)
 
         # Run post_processors
         for post_processor in post_processors:
@@ -88,17 +77,9 @@ class DownloadManager:
         destination.save(downloaded_binary, source, name, url, **kwargs)
 
     @classmethod
-    def download_resources(self, resources):
-        for resource in tqdm(resources, desc="Downloading resources"):
-            try:
-                self.download(**resource)
-            except Exception:
-                self.logger.warning(
-                    "Error while downloading {name} from {url} using source {source}".format(
-                        **resource
-                    )
-                )
-                traceback.print_exc()
+    async def download_resources(self, resources):
+        tasks = [self.download(**resource) for resource in resources]
+        await asyncio.gather(*tasks)
 
     @classmethod
     def get_source_manager(self, source):
