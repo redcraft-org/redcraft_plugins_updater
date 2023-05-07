@@ -26,6 +26,7 @@ class DownloadManager:
     logger = logging.getLogger("DownloadManager")
 
     class LazyLoader:
+        class_dict: dict
         obj_dict: dict
 
         def __init__(self, class_dict):
