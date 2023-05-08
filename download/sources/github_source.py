@@ -15,7 +15,8 @@ class GithubSource(Source):
             user_repo_id
         )
 
-        response = await self.client.get(github_json_url)
+        # response = await self.client.get(github_json_url)
+        response = requests.get(github_json_url)
         github_releases = response.json()
 
         for release in github_releases:
@@ -24,6 +25,7 @@ class GithubSource(Source):
                     asset_url = asset["browser_download_url"]
                     # Download and return the release
                     return asset_url
+
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(

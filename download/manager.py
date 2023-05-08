@@ -5,9 +5,7 @@ import asyncio
 from tqdm import tqdm
 
 from download import sources
-
 from download import post_processors
-
 from download import destinations
 
 
@@ -49,6 +47,7 @@ class DownloadManager:
             "versionjson": post_processors.VersionjsonPostProcessor,
             "plugin": post_processors.PluginPostProcessor,
             "zip": post_processors.ZipPostProcessor,
+            "fabricmod": post_processors.FabricmodPostProcessor,
         }
     )
 
@@ -92,5 +91,4 @@ class DownloadManager:
     @classmethod
     def get_destination_manager(self):
         destination = os.environ.get("DESTINATION", "basic")
-
         return self.DESTINATION_DICT[destination]
