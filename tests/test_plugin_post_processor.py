@@ -23,5 +23,4 @@ class PluginPostProcessorTests(unittest.TestCase):
             self.fake_plugin_contents
         )
 
-        print(actual_output)
         self.assertEqual(expected_output, actual_output)

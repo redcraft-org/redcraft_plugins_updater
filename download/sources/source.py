@@ -13,7 +13,6 @@ class Source:
         raise NotImplementedError()
 
     async def download_release(self, release_url):
-        print(release_url)
         resp = await self.client.get(release_url)
         return resp.content
 

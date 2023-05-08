@@ -29,7 +29,6 @@ class GithubSource(Source):
             for asset in release.get("assets") or []:
                 if filter_regex.match(asset["name"]):
                     asset_url = asset["browser_download_url"]
-                    # print(asset_url)
                     return asset_url
 
 
