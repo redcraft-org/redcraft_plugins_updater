@@ -32,11 +32,11 @@
         "post_processors": ["plugin"],
         "filter": "RedCraftReboot-*.jar"
     },
-	{
-		"name": "Fabric",
-		"url": "https://github.com/FabricMC/fabric",
-		"source": "github",
-		"post_processors": ["versionjson"],
-		"filter": "fabric-api-0.80.0+1.19.4.jar"
-	}
+    {
+        "name": "Fabric",
+        "url": "https://github.com/FabricMC/fabric",
+        "source": "github",
+        "post_processors": ["versionjson"],
+        "filter": "fabric-api-0.80.0+1.19.4.jar"
+    }
 ]
