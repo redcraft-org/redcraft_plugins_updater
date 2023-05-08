@@ -21,10 +21,8 @@ class EnginehubSource(Source):
         enginehub_parser = BeautifulSoup(
             enginehub_response.text, features="html.parser"
         )
-
-        enginehub_response = json.loads(
-            enginehub_parser.find("script", id="__NEXT_DATA__").text
-        )
+        script_next_data = enginehub_parser.find("script", id="__NEXT_DATA__")
+        enginehub_response = json.loads(script_next_data.next_element)
 
         for artifact in (
             enginehub_response.get("props", {})

@@ -1,6 +1,7 @@
 import httpx
 import re
 
+
 class Source:
     client = httpx.AsyncClient()
 
@@ -14,7 +15,6 @@ class Source:
     async def download_release(self, release_url):
         resp = await self.client.get(release_url)
         return resp.content
-
 
     def get_filter_regex(self, _filter):
         return re.compile(_filter.replace("*", ".+"))
