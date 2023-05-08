@@ -16,6 +16,7 @@ from download.sources.zrips_source import ZripsSource
 from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
 from download.post_processors.versionjson_post_processor import VersionjsonPostProcessor
 from download.post_processors.plugin_post_processor import PluginPostProcessor
+from download.post_processors.fabricmod_post_processor import FabricmodPostProcessor
 from download.post_processors.zip_post_processor import ZipPostProcessor
 
 from download.destinations.basic_destination import BasicDestination
@@ -33,6 +34,7 @@ class DownloadManager:
 
     paperclip_post_processor = None
     plugin_post_processor = None
+    fabricmod_post_processor = None
     zip_post_processor = None
 
     basic_destination = None
@@ -43,7 +45,7 @@ class DownloadManager:
 
         self.direct_source = DirectSource()
         self.enginehub_source = EnginehubSource()
-        self.spigotmc_source = SpigotmcSource()
+        # self.spigotmc_source = SpigotmcSource()
         self.jenkins_source = JenkinsSource()
         self.modrinth_source = ModrinthSource()
         self.github_source = GithubSource()
@@ -53,6 +55,7 @@ class DownloadManager:
         self.paperclip_post_processor = PaperclipPostProcessor()
         self.versionjson_post_processor = VersionjsonPostProcessor()
         self.plugin_post_processor = PluginPostProcessor()
+        self.fabricmod_post_processor = FabricmodPostProcessor()
         self.zip_post_processor = ZipPostProcessor()
 
         self.basic_destination = BasicDestination()
@@ -79,7 +82,11 @@ class DownloadManager:
             try:
                 self.download(**resource)
             except Exception:
-                self.logger.warning('Error while downloading {name} from {url} using source {source}'.format(**resource))
+                self.logger.warning(
+                    "Error while downloading {name} from {url} using source {source}".format(
+                        **resource
+                    )
+                )
                 traceback.print_exc()
 
     def get_source_manager(self, source):
