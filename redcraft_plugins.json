@@ -9,8 +9,8 @@
 		"name": "Fabric",
 		"url": "https://github.com/FabricMC/fabric",
 		"source": "github",
-		"post_processors": ["versionjson"],
-		"filter": "fabric-api-0.80.0+1.19.4.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "fabric-api-*1\\.19\\.4\\.jar"
 	},
 	{
 		"name": "Waterfall-1.19.jar",
@@ -200,7 +200,7 @@
 		"name": "sparkfabric",
 		"url": "https://ci.lucko.me/job/spark/",
 		"source": "jenkins",
-		"post_processors": ["plugin"],
+		"post_processors": ["fabricmod"],
 		"filter": "spark-*-fabric.jar"
 	},
 	{
@@ -338,84 +338,84 @@
 		"name": "alternate-current",
 		"url": "https://github.com/SpaceWalkerRS/alternate-current",
 		"source": "github",
-		"post_processors": ["plugin"],
+		"post_processors": ["quilt"],
 		"filter": "alternate-current-*.jar"
 	},
 	{
 		"name": "fabric",
 		"url": "https://github.com/FabricMC/fabric",
 		"source": "github",
-		"post_processors": ["plugin"],
+		"post_processors": ["fabricmod"],
 		"filter": "fabric-*.jar"
 	},
 	{
 		"name": "fabric-carpet",
 		"url": "https://github.com/gnembon/fabric-carpet",
 		"source": "github",
-		"post_processors": ["plugin"],
+		"post_processors": ["fabricmod"],
 		"filter": "fabric-carpet-*.jar"
 	},
 	{
 		"name": "fabric-language-kotlin",
 		"url": "https://github.com/FabricMC/fabric-language-kotlin",
 		"source": "github",
-		"post_processors": ["plugin"],
+		"post_processors": ["fabricmod"],
 		"filter": "fabric-language-kotlin-*.jar"
 	},
 	{
 		"name": "Indium",
 		"url": "https://github.com/comp500/Indium",
 		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "Indium-*.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "indium-*.jar"
 	},
 	{
 		"name": "InvView",
 		"url": "https://github.com/PotatoPresident/InvView",
 		"source": "github",
-		"post_processors": ["plugin"],
+		"post_processors": ["fabricmod"],
 		"filter": "InvView-*.jar"
 	},
 	{
 		"name": "krypton",
 		"url": "https://github.com/astei/krypton",
 		"source": "github",
-		"post_processors": ["plugin"],
+		"post_processors": ["fabricmod"],
 		"filter": "krypton-*.jar"
 	},
 	{
 		"name": "Ledger",
 		"url": "https://github.com/QuiltServerTools/Ledger",
 		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "Ledger-*.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "ledger-*.jar"
 	},
 	{
 		"name": "Ledger-Databases",
 		"url": "https://github.com/QuiltServerTools/Ledger-Databases",
 		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "Ledger-Databases-*.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "ledger-databases-*.jar"
 	},
 	{
 		"name": "lithium-fabric",
 		"url": "https://github.com/CaffeineMC/lithium-fabric",
 		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "lithium-fabric-*.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "lithium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
 	},
 	{
 		"name": "memoryLeakFix",
 		"url": "https://github.com/fxmorin/memoryLeakFix",
 		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "memoryLeakFix-*.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "memoryleakfix-*.jar"
 	},
 	{
 		"name": "sodium-fabric",
 		"url": "https://github.com/CaffeineMC/sodium-fabric",
 		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "sodium-fabric-*.jar"
+		"post_processors": ["fabricmod"],
+		"filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
 	}
 ]

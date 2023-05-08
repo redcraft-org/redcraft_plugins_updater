@@ -1,3 +1,4 @@
+import os
 import requests
 
 
@@ -15,15 +16,20 @@ class GithubSource(Source):
             user_repo_id
         )
 
-        # response = await self.client.get(github_json_url)
-        response = requests.get(github_json_url)
+        github_token = os.environ.get("GITHUB_TOKEN", None)
+        headers = {
+            "Authorization": f"token {github_token}"
+        }
+
+        response = await self.client.get(github_json_url, headers=headers)
+        # response = requests.get(github_json_url)
         github_releases = response.json()
 
         for release in github_releases:
             for asset in release.get("assets") or []:
                 if filter_regex.match(asset["name"]):
                     asset_url = asset["browser_download_url"]
-                    # Download and return the release
+                    # print(asset_url)
                     return asset_url
 
 

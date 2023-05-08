@@ -1,16 +1,9 @@
 [
 	{
-		"name": "alternate-current",
-		"url": "https://github.com/SpaceWalkerRS/alternate-current",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "alternate-current-*.jar"
-	},
-	{
 		"name": "fabric",
 		"url": "https://github.com/FabricMC/fabric",
 		"source": "github",
-		"post_processors": ["versionjson"],
+		"post_processors": ["fabricmod"],
 		"filter": "fabric-*.jar"
 	},
 	{
@@ -32,7 +25,7 @@
 		"url": "https://github.com/comp500/Indium",
 		"source": "github",
 		"post_processors": ["fabricmod"],
-		"filter": "Indium-*.jar"
+		"filter": "indium-*.jar"
 	},
 	{
 		"name": "InvView",
@@ -53,34 +46,34 @@
 		"url": "https://github.com/QuiltServerTools/Ledger",
 		"source": "github",
 		"post_processors": ["fabricmod"],
-		"filter": "Ledger-*.jar"
+		"filter": "ledger-*.jar"
 	},
 	{
 		"name": "Ledger-Databases",
 		"url": "https://github.com/QuiltServerTools/Ledger-Databases",
 		"source": "github",
 		"post_processors": ["fabricmod"],
-		"filter": "Ledger-Databases-*.jar"
+		"filter": "ledger-databases-*.jar"
 	},
 	{
 		"name": "lithium-fabric",
 		"url": "https://github.com/CaffeineMC/lithium-fabric",
 		"source": "github",
 		"post_processors": ["fabricmod"],
-		"filter": "lithium-fabric-*.jar"
+		"filter": "lithium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
 	},
 	{
 		"name": "memoryLeakFix",
 		"url": "https://github.com/fxmorin/memoryLeakFix",
 		"source": "github",
 		"post_processors": ["fabricmod"],
-		"filter": "memoryLeakFix-*.jar"
+		"filter": "memoryleakfix-*.jar"
 	},
 	{
 		"name": "sodium-fabric",
 		"url": "https://github.com/CaffeineMC/sodium-fabric",
 		"source": "github",
 		"post_processors": ["fabricmod"],
-		"filter": "sodium-fabric-*.jar"
+		"filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
 	}
 ]

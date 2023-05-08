@@ -48,6 +48,7 @@ class DownloadManager:
             "plugin": post_processors.PluginPostProcessor,
             "zip": post_processors.ZipPostProcessor,
             "fabricmod": post_processors.FabricmodPostProcessor,
+            "quilt": post_processors.QuiltPostProcessor,
         }
     )
 
