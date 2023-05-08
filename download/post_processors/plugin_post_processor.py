@@ -6,13 +6,13 @@ import yaml
 
 class PluginPostProcessor:
     def process(self, downloaded_binary, source, name, url, **kwargs):
-        plugin_info = self.extract_plugin_info(downloaded_binary, name)
+        plugin_info = self.extract_plugin_info(downloaded_binary)
 
         name = "{}-{}.jar".format(name, plugin_info["version"])
 
         return downloaded_binary, source, name, url
 
-    def extract_plugin_info(self, downloaded_binary, name):
+    def extract_plugin_info(self, downloaded_binary):
         file_handler = io.BytesIO(downloaded_binary)
         # In order to be compatible with Bukkit and BungeeCord plugins, we need to check two files
         possible_plugin_metadata_files = ["bungee.yml", "plugin.yml"]
