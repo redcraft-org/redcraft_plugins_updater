@@ -31,7 +31,6 @@ class PluginPostProcessor:
                             raise ValueError(
                                 "{} is not a valid plugin metadata file".format(
                                     possible_plugin_metadata_file
-                            download/post_processors/plugin_post_processor.py
                                 )
                             )
                         return {"name": plugin_name, "version": plugin_version}
