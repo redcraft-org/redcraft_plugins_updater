@@ -28,6 +28,6 @@ class PapermcSource(Source):
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                filter, stripped_url
+                _filter, stripped_url
             )
         )

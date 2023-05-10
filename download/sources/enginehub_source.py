@@ -45,6 +45,6 @@ class EnginehubSource(Source):
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                filter, enginehub_json_url
+                _filter, enginehub_json_url
             )
         )

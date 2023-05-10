@@ -34,6 +34,6 @@ class GithubSource(Source):
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                filter, github_json_url
+                _filter, github_json_url
             )
         )

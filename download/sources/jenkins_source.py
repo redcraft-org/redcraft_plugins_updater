@@ -28,6 +28,6 @@ class JenkinsSource(Source):
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                filter, jenkins_json_url
+                _filter, jenkins_json_url
             )
         )
