@@ -6,8 +6,8 @@ from download.sources.source import Source
 
 
 class GithubSource(Source):
-    async def get_release_url(self, url, _filter=None):
-        filter_regex = self.get_filter_regex(_filter)
+    async def get_release_url(self, url, file_filter=None):
+        filter_regex = self.get_filter_regex(file_filter)
 
         user_repo_id = url.split("github.com/")[1].strip("/")
 
@@ -22,7 +22,6 @@ class GithubSource(Source):
             headers["Authorization"] = f"token {github_token}"
 
         response = await self.client.get(github_json_url, headers=headers)
-        # response = requests.get(github_json_url)
         github_releases = response.json()
 
         for release in github_releases:
@@ -34,6 +33,6 @@ class GithubSource(Source):
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                _filter, github_json_url
+                file_filter, github_json_url
             )
         )

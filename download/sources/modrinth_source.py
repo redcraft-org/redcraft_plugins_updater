@@ -8,7 +8,7 @@ from download.sources.source import Source
 
 
 class ModrinthSource(Source):
-    async def get_release_url(self, url, _filter=None):
+    async def get_release_url(self, url, **kwargs):
         modrinth_response = await self.client.get(url)
 
         modrinth_parser = BeautifulSoup(modrinth_response.text, features="html.parser")

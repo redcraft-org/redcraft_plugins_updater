@@ -9,12 +9,12 @@ class Source:
         release_url = await self.get_release_url(url, filter)
         return await self.download_release(release_url)
 
-    async def get_release_url(self, url, _filter):
+    async def get_release_url(self, url, **kwargs):
         raise NotImplementedError()
 
     async def download_release(self, release_url):
         resp = await self.client.get(release_url)
         return resp.content
 
-    def get_filter_regex(self, _filter):
-        return re.compile(_filter.replace("*", ".+"))
+    def get_filter_regex(self, file_filter):
+        return re.compile(file_filter.replace("*", ".+"))

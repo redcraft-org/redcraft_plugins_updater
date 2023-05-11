@@ -8,8 +8,8 @@ from download.sources.source import Source
 
 
 class EnginehubSource(Source):
-    async def get_release_url(self, url, _filter=None):
-        filter_regex = self.get_filter_regex(_filter)
+    async def get_release_url(self, url, file_filter=None):
+        filter_regex = self.get_filter_regex(file_filter)
 
         stripped_url = url.strip("/")
 
@@ -45,6 +45,6 @@ class EnginehubSource(Source):
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                _filter, enginehub_json_url
+                file_filter, enginehub_json_url
             )
         )
