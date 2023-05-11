@@ -14,14 +14,14 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "fabric-api-*1\\.19\\.4\\.jar"
+        "file_filter": "fabric-api-*1\\.19\\.4\\.jar"
     },
     {
         "name": "Waterfall-1.19.jar",
         "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
         "source": "papermc",
         "post_processors": [],
-        "filter": "waterfall-1.19-*.jar"
+        "file_filter": "waterfall-1.19-*.jar"
     },
     {
         "name": "CMI",
@@ -102,7 +102,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "goPaint-*.jar"
+        "file_filter": "goPaint-*.jar"
     },
     {
         "name": "goBrush",
@@ -111,7 +111,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "goBrush-*.jar"
+        "file_filter": "goBrush-*.jar"
     },
     {
         "name": "FarmLimiter",
@@ -184,7 +184,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "WorldBorder.jar"
+        "file_filter": "WorldBorder.jar"
     },
     {
         "name": "F3NPerm",
@@ -209,7 +209,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "ServerListPlus-*-Universal.jar"
+        "file_filter": "ServerListPlus-*-Universal.jar"
     },
     {
         "name": "FastAsyncWorldEdit",
@@ -218,7 +218,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "FastAsyncWorldEdit-Bukkit-*.jar"
+        "file_filter": "FastAsyncWorldEdit-Bukkit-*.jar"
     },
     {
         "name": "ViaVersion",
@@ -227,7 +227,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "ViaVersion-*.jar"
+        "file_filter": "ViaVersion-*.jar"
     },
     {
         "name": "ViaBackwards",
@@ -236,7 +236,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "ViaBackwards-*.jar"
+        "file_filter": "ViaBackwards-*.jar"
     },
     {
         "name": "ViaRewind",
@@ -245,7 +245,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "ViaRewind-*.jar"
+        "file_filter": "ViaRewind-*.jar"
     },
     {
         "name": "spark",
@@ -254,7 +254,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "spark-*-bukkit.jar"
+        "file_filter": "spark-*-bukkit.jar"
     },
     {
         "name": "sparkfabric",
@@ -263,7 +263,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "spark-*-fabric.jar"
+        "file_filter": "spark-*-fabric.jar"
     },
     {
         "name": "sparkbungeecord",
@@ -272,7 +272,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "spark-*-bungeecord.jar"
+        "file_filter": "spark-*-bungeecord.jar"
     },
     {
         "name": "LuckPerms",
@@ -281,7 +281,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "LuckPerms-Bukkit-*.jar"
+        "file_filter": "LuckPerms-Bukkit-*.jar"
     },
     {
         "name": "LuckPermsBungee",
@@ -290,7 +290,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "LuckPerms-Bungee-*.jar"
+        "file_filter": "LuckPerms-Bungee-*.jar"
     },
     {
         "name": "BungeeTabListPlus",
@@ -299,7 +299,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "BungeeTabListPlus-*.jar"
+        "file_filter": "BungeeTabListPlus-*.jar"
     },
     {
         "name": "BungeeTabListPlusBridge",
@@ -308,7 +308,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "BungeeTabListPlus_BukkitBridge-*.jar"
+        "file_filter": "BungeeTabListPlus_BukkitBridge-*.jar"
     },
     {
         "name": "RedCraftReboot",
@@ -317,7 +317,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "RedCraftReboot-*.jar"
+        "file_filter": "RedCraftReboot-*.jar"
     },
     {
         "name": "RedCraftBungeeJsonApi",
@@ -326,7 +326,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "RedCraftBungeeJsonApi-*.jar"
+        "file_filter": "RedCraftBungeeJsonApi-*.jar"
     },
     {
         "name": "RedCraftChat",
@@ -335,7 +335,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "RedCraftChat-*.jar"
+        "file_filter": "RedCraftChat-*.jar"
     },
     {
         "name": "DecentHolograms",
@@ -344,7 +344,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "DecentHolograms-*.jar"
+        "file_filter": "DecentHolograms-*.jar"
     },
     {
         "name": "ImageOnMap",
@@ -353,7 +353,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "ImageOnMap-*.jar"
+        "file_filter": "ImageOnMap-*.jar"
     },
     {
         "name": "Multiverse-Core",
@@ -362,7 +362,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "Multiverse-Core-*-SNAPSHOT.jar"
+        "file_filter": "Multiverse-Core-*-SNAPSHOT.jar"
     },
     {
         "name": "Citizens",
@@ -371,7 +371,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "Citizens-*.jar"
+        "file_filter": "Citizens-*.jar"
     },
     {
         "name": "Denizen",
@@ -380,7 +380,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "Denizen-*.jar"
+        "file_filter": "Denizen-*.jar"
     },
     {
         "name": "VoidGen",
@@ -389,7 +389,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "VoidGen-*.jar"
+        "file_filter": "VoidGen-*.jar"
     },
     {
         "name": "Plan",
@@ -398,7 +398,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "Plan-*.jar"
+        "file_filter": "Plan-*.jar"
     },
     {
         "name": "WorldGuard",
@@ -407,7 +407,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "worldguard-bukkit-*.jar"
+        "file_filter": "worldguard-bukkit-*.jar"
     },
     {
         "name": "Maintenance",
@@ -416,7 +416,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "Maintenance.jar"
+        "file_filter": "Maintenance.jar"
     },
     {
         "name": "ViewDistanceTweaks",
@@ -441,7 +441,7 @@
         "post_processors": [
             "quilt"
         ],
-        "filter": "alternate-current-*.jar"
+        "file_filter": "alternate-current-*.jar"
     },
     {
         "name": "fabric",
@@ -450,7 +450,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "fabric-*1.19.4.jar"
+        "file_filter": "fabric-*1.19.4.jar"
     },
     {
         "name": "fabric-carpet",
@@ -459,7 +459,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "fabric-carpet-*.jar"
+        "file_filter": "fabric-carpet-*.jar"
     },
     {
         "name": "fabric-language-kotlin",
@@ -468,7 +468,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "fabric-language-kotlin-*.jar"
+        "file_filter": "fabric-language-kotlin-*.jar"
     },
     {
         "name": "Indium",
@@ -477,7 +477,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "indium-*.jar"
+        "file_filter": "indium-*.jar"
     },
     {
         "name": "InvView",
@@ -486,7 +486,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "InvView-*.jar"
+        "file_filter": "InvView-*.jar"
     },
     {
         "name": "krypton",
@@ -495,7 +495,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "krypton-*.jar"
+        "file_filter": "krypton-*.jar"
     },
     {
         "name": "Ledger",
@@ -504,7 +504,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "ledger-*.jar"
+        "file_filter": "ledger-*.jar"
     },
     {
         "name": "Ledger-Databases",
@@ -513,7 +513,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "ledger-databases-*.jar"
+        "file_filter": "ledger-databases-*.jar"
     },
     {
         "name": "lithium-fabric",
@@ -522,7 +522,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "lithium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
+        "file_filter": "lithium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
     },
     {
         "name": "memoryLeakFix",
@@ -531,7 +531,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "memoryleakfix-*.jar"
+        "file_filter": "memoryleakfix-*.jar"
     },
     {
         "name": "sodium-fabric",
@@ -540,6 +540,6 @@
         "post_processors": [
             "fabricmod"
         ],
-        "filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
+        "file_filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
     }
 ]

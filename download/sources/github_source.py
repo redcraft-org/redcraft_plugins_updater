@@ -6,7 +6,7 @@ from download.sources.source import Source
 
 
 class GithubSource(Source):
-    async def get_release_url(self, url, file_filter=None):
+    async def get_release_url(self, url, file_filter=None, **kwargs):
         filter_regex = self.get_filter_regex(file_filter)
 
         user_repo_id = url.split("github.com/")[1].strip("/")
