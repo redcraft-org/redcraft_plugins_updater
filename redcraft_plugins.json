@@ -1,421 +1,545 @@
 [
-	{
-		"name": "Purpur",
-		"url": "https://api.purpurmc.org/v2/purpur/1.19.4/latest/download",
-		"source": "direct",
-		"post_processors": ["versionjson"]
-	},
-	{
-		"name": "Fabric",
-		"url": "https://github.com/FabricMC/fabric",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "fabric-api-*1\\.19\\.4\\.jar"
-	},
-	{
-		"name": "Waterfall-1.19.jar",
-		"url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
-		"source": "papermc",
-		"post_processors": [],
-		"filter": "waterfall-1.19-*.jar"
-	},
-	{
-		"name": "CMI",
-		"url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "CMILib",
-		"url": "https://www.spigotmc.org/resources/cmilib.87610/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "CMIB",
-		"url": "https://zrips.net/cmib/",
-		"source": "zrips",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "CoreProtect",
-		"url": "https://modrinth.com/plugin/coreprotect/",
-		"source": "modrinth",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "Panilla",
-		"url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "Head Database",
-		"url": "https://www.spigotmc.org/resources/head-database.14280/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "AAC",
-		"url": "https://www.spigotmc.org/resources/aac-advanced-anti-cheat-hack-kill-aura-blocker.6442/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "Reconnect",
-		"url": "https://www.spigotmc.org/resources/bungee-reconnect.16429/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "LiteBans",
-		"url": "https://www.spigotmc.org/resources/litebans.3715/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "goPaint",
-		"url": "https://ci.athion.net/job/goPaint-1.14+/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "goPaint-*.jar"
-	},
-	{
-		"name": "goBrush",
-		"url": "https://ci.athion.net/job/goBrush-1.13+/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "goBrush-*.jar"
-	},
-	{
-		"name": "FarmLimiter",
-		"url": "https://www.spigotmc.org/resources/farm-limiter.1419/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "SelectionVisualizer",
-		"url": "https://www.spigotmc.org/resources/selection-visualizer.22631/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "PlotSquared",
-		"url": "https://www.spigotmc.org/resources/plotsquared-v5.77506/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "EpicWorldGenerator",
-		"url": "https://www.spigotmc.org/resources/epicworldgenerator-1-15-1-16-4-%E2%9D%97%EF%B8%8Fsale-%E2%9D%97%EF%B8%8F-20-off.8067/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "ClientStats",
-		"url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "RedstoneClockDetector",
-		"url": "https://www.spigotmc.org/resources/redstoneclockdetector.18475/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "BungeePluginManager",
-		"url": "https://www.spigotmc.org/resources/bungeepluginmanager.7288/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "PlugManX",
-		"url": "https://www.spigotmc.org/resources/plugmanx.88135/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "WorldBorder",
-		"url": "https://github.com/PryPurity/WorldBorder",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "WorldBorder.jar"
-	},
-	{
-		"name": "F3NPerm",
-		"url": "https://www.spigotmc.org/resources/f3nperm.46461/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "BookExploitFix",
-		"url": "https://www.spigotmc.org/resources/bookexploitfix.5897/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "ServerListPlus",
-		"url": "https://ci.codemc.io/job/Minecrell/job/ServerListPlus/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "ServerListPlus-*-Universal.jar"
-	},
-	{
-		"name": "FastAsyncWorldEdit",
-		"url": "https://ci.athion.net/job/FastAsyncWorldEdit/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "FastAsyncWorldEdit-Bukkit-*.jar"
-	},
-	{
-		"name": "ViaVersion",
-		"url": "https://ci.viaversion.com/job/ViaVersion/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "ViaVersion-*.jar"
-	},
-	{
-		"name": "ViaBackwards",
-		"url": "https://ci.viaversion.com/job/ViaBackwards/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "ViaBackwards-*.jar"
-	},
-	{
-		"name": "ViaRewind",
-		"url": "https://ci.viaversion.com/job/ViaRewind/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "ViaRewind-*.jar"
-	},
-	{
-		"name": "spark",
-		"url": "https://ci.lucko.me/job/spark/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "spark-*-bukkit.jar"
-	},
-	{
-		"name": "sparkfabric",
-		"url": "https://ci.lucko.me/job/spark/",
-		"source": "jenkins",
-		"post_processors": ["fabricmod"],
-		"filter": "spark-*-fabric.jar"
-	},
-	{
-		"name": "sparkbungeecord",
-		"url": "https://ci.lucko.me/job/spark/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "spark-*-bungeecord.jar"
-	},
-	{
-		"name": "LuckPerms",
-		"url": "https://ci.lucko.me/job/LuckPerms/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "LuckPerms-Bukkit-*.jar"
-	},
-	{
-		"name": "LuckPermsBungee",
-		"url": "https://ci.lucko.me/job/LuckPerms/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "LuckPerms-Bungee-*.jar"
-	},
-	{
-		"name": "BungeeTabListPlus",
-		"url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "BungeeTabListPlus-*.jar"
-	},
-	{
-		"name": "BungeeTabListPlusBridge",
-		"url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "BungeeTabListPlus_BukkitBridge-*.jar"
-	},
-	{
-		"name": "RedCraftReboot",
-		"url": "https://github.com/redcraft-org/RedCraftReboot",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "RedCraftReboot-*.jar"
-	},
-	{
-		"name": "RedCraftBungeeJsonApi",
-		"url": "https://github.com/redcraft-org/RedCraftBungeeJsonApi",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "RedCraftBungeeJsonApi-*.jar"
-	},
-	{
-		"name": "RedCraftChat",
-		"url": "https://github.com/redcraft-org/RedCraftChat",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "RedCraftChat-*.jar"
-	},
-	{
-		"name": "DecentHolograms",
-		"url": "https://github.com/DecentSoftware-eu/DecentHolograms",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "DecentHolograms-*.jar"
-	},
-	{
-		"name": "ImageOnMap",
-		"url": "https://github.com/okocraft/ImageOnMap",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "ImageOnMap-*.jar"
-	},
-	{
-		"name": "Multiverse-Core",
-		"url": "https://ci.onarandombox.com/job/Multiverse-Core/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "Multiverse-Core-*-SNAPSHOT.jar"
-	},
-	{
-		"name": "Citizens",
-		"url": "https://ci.citizensnpcs.co/job/Citizens2/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "Citizens-*.jar"
-	},
-	{
-		"name": "Denizen",
-		"url": "https://ci.citizensnpcs.co/job/Denizen_Developmental/",
-		"source": "jenkins",
-		"post_processors": ["plugin"],
-		"filter": "Denizen-*.jar"
-	},
-	{
-		"name": "VoidGen",
-		"url": "https://github.com/xtkq-is-not-available/VoidGen",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "VoidGen-*.jar"
-	},
-	{
-		"name": "Plan",
-		"url": "https://github.com/plan-player-analytics/Plan",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "Plan-*.jar"
-	},
-	{
-		"name": "WorldGuard",
-		"url": "https://builds.enginehub.org/job/worldguard",
-		"source": "enginehub",
-		"post_processors": ["plugin"],
-		"filter": "worldguard-bukkit-*.jar"
-	},
-	{
-		"name": "Maintenance",
-		"url": "https://github.com/kennytv/Maintenance",
-		"source": "github",
-		"post_processors": ["plugin"],
-		"filter": "Maintenance.jar"
-	},
-	{
-		"name": "ViewDistanceTweaks",
-		"url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "OmegaVision",
-		"url": "https://www.spigotmc.org/resources/omegavision.73013/",
-		"source": "spigotmc",
-		"post_processors": ["plugin"]
-	},
-	{
-		"name": "alternate-current",
-		"url": "https://github.com/SpaceWalkerRS/alternate-current",
-		"source": "github",
-		"post_processors": ["quilt"],
-		"filter": "alternate-current-*.jar"
-	},
-	{
-		"name": "fabric",
-		"url": "https://github.com/FabricMC/fabric",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "fabric-*.jar"
-	},
-	{
-		"name": "fabric-carpet",
-		"url": "https://github.com/gnembon/fabric-carpet",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "fabric-carpet-*.jar"
-	},
-	{
-		"name": "fabric-language-kotlin",
-		"url": "https://github.com/FabricMC/fabric-language-kotlin",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "fabric-language-kotlin-*.jar"
-	},
-	{
-		"name": "Indium",
-		"url": "https://github.com/comp500/Indium",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "indium-*.jar"
-	},
-	{
-		"name": "InvView",
-		"url": "https://github.com/PotatoPresident/InvView",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "InvView-*.jar"
-	},
-	{
-		"name": "krypton",
-		"url": "https://github.com/astei/krypton",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "krypton-*.jar"
-	},
-	{
-		"name": "Ledger",
-		"url": "https://github.com/QuiltServerTools/Ledger",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "ledger-*.jar"
-	},
-	{
-		"name": "Ledger-Databases",
-		"url": "https://github.com/QuiltServerTools/Ledger-Databases",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "ledger-databases-*.jar"
-	},
-	{
-		"name": "lithium-fabric",
-		"url": "https://github.com/CaffeineMC/lithium-fabric",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "lithium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
-	},
-	{
-		"name": "memoryLeakFix",
-		"url": "https://github.com/fxmorin/memoryLeakFix",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "memoryleakfix-*.jar"
-	},
-	{
-		"name": "sodium-fabric",
-		"url": "https://github.com/CaffeineMC/sodium-fabric",
-		"source": "github",
-		"post_processors": ["fabricmod"],
-		"filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
-	}
+    {
+        "name": "Purpur",
+        "url": "https://api.purpurmc.org/v2/purpur/1.19.4/latest/download",
+        "source": "direct",
+        "post_processors": [
+            "versionjson"
+        ]
+    },
+    {
+        "name": "Fabric",
+        "url": "https://github.com/FabricMC/fabric",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "fabric-api-*1\\.19\\.4\\.jar"
+    },
+    {
+        "name": "Waterfall-1.19.jar",
+        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
+        "source": "papermc",
+        "post_processors": [],
+        "filter": "waterfall-1.19-*.jar"
+    },
+    {
+        "name": "CMI",
+        "url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "CMILib",
+        "url": "https://www.spigotmc.org/resources/cmilib.87610/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "CMIB",
+        "url": "https://zrips.net/cmib/",
+        "source": "zrips",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "CoreProtect",
+        "url": "https://modrinth.com/plugin/coreprotect/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Panilla",
+        "url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Head Database",
+        "url": "https://www.spigotmc.org/resources/head-database.14280/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "AAC",
+        "url": "https://www.spigotmc.org/resources/aac-advanced-anti-cheat-hack-kill-aura-blocker.6442/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Reconnect",
+        "url": "https://www.spigotmc.org/resources/bungee-reconnect.16429/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "LiteBans",
+        "url": "https://www.spigotmc.org/resources/litebans.3715/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "goPaint",
+        "url": "https://ci.athion.net/job/goPaint-1.14+/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "goPaint-*.jar"
+    },
+    {
+        "name": "goBrush",
+        "url": "https://ci.athion.net/job/goBrush-1.13+/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "goBrush-*.jar"
+    },
+    {
+        "name": "FarmLimiter",
+        "url": "https://www.spigotmc.org/resources/farm-limiter.1419/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "SelectionVisualizer",
+        "url": "https://www.spigotmc.org/resources/selection-visualizer.22631/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "PlotSquared",
+        "url": "https://www.spigotmc.org/resources/plotsquared-v5.77506/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "EpicWorldGenerator",
+        "url": "https://www.spigotmc.org/resources/epicworldgenerator-1-15-1-16-4-%E2%9D%97%EF%B8%8Fsale-%E2%9D%97%EF%B8%8F-20-off.8067/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "ClientStats",
+        "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "RedstoneClockDetector",
+        "url": "https://www.spigotmc.org/resources/redstoneclockdetector.18475/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "BungeePluginManager",
+        "url": "https://www.spigotmc.org/resources/bungeepluginmanager.7288/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "PlugManX",
+        "url": "https://www.spigotmc.org/resources/plugmanx.88135/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "WorldBorder",
+        "url": "https://github.com/PryPurity/WorldBorder",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "WorldBorder.jar"
+    },
+    {
+        "name": "F3NPerm",
+        "url": "https://www.spigotmc.org/resources/f3nperm.46461/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "BookExploitFix",
+        "url": "https://www.spigotmc.org/resources/bookexploitfix.5897/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "ServerListPlus",
+        "url": "https://ci.codemc.io/job/Minecrell/job/ServerListPlus/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ServerListPlus-*-Universal.jar"
+    },
+    {
+        "name": "FastAsyncWorldEdit",
+        "url": "https://ci.athion.net/job/FastAsyncWorldEdit/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "FastAsyncWorldEdit-Bukkit-*.jar"
+    },
+    {
+        "name": "ViaVersion",
+        "url": "https://ci.viaversion.com/job/ViaVersion/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ViaVersion-*.jar"
+    },
+    {
+        "name": "ViaBackwards",
+        "url": "https://ci.viaversion.com/job/ViaBackwards/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ViaBackwards-*.jar"
+    },
+    {
+        "name": "ViaRewind",
+        "url": "https://ci.viaversion.com/job/ViaRewind/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ViaRewind-*.jar"
+    },
+    {
+        "name": "spark",
+        "url": "https://ci.lucko.me/job/spark/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "spark-*-bukkit.jar"
+    },
+    {
+        "name": "sparkfabric",
+        "url": "https://ci.lucko.me/job/spark/",
+        "source": "jenkins",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "spark-*-fabric.jar"
+    },
+    {
+        "name": "sparkbungeecord",
+        "url": "https://ci.lucko.me/job/spark/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "spark-*-bungeecord.jar"
+    },
+    {
+        "name": "LuckPerms",
+        "url": "https://ci.lucko.me/job/LuckPerms/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "LuckPerms-Bukkit-*.jar"
+    },
+    {
+        "name": "LuckPermsBungee",
+        "url": "https://ci.lucko.me/job/LuckPerms/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "LuckPerms-Bungee-*.jar"
+    },
+    {
+        "name": "BungeeTabListPlus",
+        "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "BungeeTabListPlus-*.jar"
+    },
+    {
+        "name": "BungeeTabListPlusBridge",
+        "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "BungeeTabListPlus_BukkitBridge-*.jar"
+    },
+    {
+        "name": "RedCraftReboot",
+        "url": "https://github.com/redcraft-org/RedCraftReboot",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "RedCraftReboot-*.jar"
+    },
+    {
+        "name": "RedCraftBungeeJsonApi",
+        "url": "https://github.com/redcraft-org/RedCraftBungeeJsonApi",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "RedCraftBungeeJsonApi-*.jar"
+    },
+    {
+        "name": "RedCraftChat",
+        "url": "https://github.com/redcraft-org/RedCraftChat",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "RedCraftChat-*.jar"
+    },
+    {
+        "name": "DecentHolograms",
+        "url": "https://github.com/DecentSoftware-eu/DecentHolograms",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "DecentHolograms-*.jar"
+    },
+    {
+        "name": "ImageOnMap",
+        "url": "https://github.com/okocraft/ImageOnMap",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "ImageOnMap-*.jar"
+    },
+    {
+        "name": "Multiverse-Core",
+        "url": "https://ci.onarandombox.com/job/Multiverse-Core/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Multiverse-Core-*-SNAPSHOT.jar"
+    },
+    {
+        "name": "Citizens",
+        "url": "https://ci.citizensnpcs.co/job/Citizens2/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Citizens-*.jar"
+    },
+    {
+        "name": "Denizen",
+        "url": "https://ci.citizensnpcs.co/job/Denizen_Developmental/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Denizen-*.jar"
+    },
+    {
+        "name": "VoidGen",
+        "url": "https://github.com/xtkq-is-not-available/VoidGen",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "VoidGen-*.jar"
+    },
+    {
+        "name": "Plan",
+        "url": "https://github.com/plan-player-analytics/Plan",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Plan-*.jar"
+    },
+    {
+        "name": "WorldGuard",
+        "url": "https://builds.enginehub.org/job/worldguard",
+        "source": "enginehub",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "worldguard-bukkit-*.jar"
+    },
+    {
+        "name": "Maintenance",
+        "url": "https://github.com/kennytv/Maintenance",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "Maintenance.jar"
+    },
+    {
+        "name": "ViewDistanceTweaks",
+        "url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "OmegaVision",
+        "url": "https://www.spigotmc.org/resources/omegavision.73013/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "alternate-current",
+        "url": "https://github.com/SpaceWalkerRS/alternate-current",
+        "source": "github",
+        "post_processors": [
+            "quilt"
+        ],
+        "filter": "alternate-current-*.jar"
+    },
+    {
+        "name": "fabric",
+        "url": "https://github.com/FabricMC/fabric",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "fabric-*1.19.4.jar"
+    },
+    {
+        "name": "fabric-carpet",
+        "url": "https://github.com/gnembon/fabric-carpet",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "fabric-carpet-*.jar"
+    },
+    {
+        "name": "fabric-language-kotlin",
+        "url": "https://github.com/FabricMC/fabric-language-kotlin",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "fabric-language-kotlin-*.jar"
+    },
+    {
+        "name": "Indium",
+        "url": "https://github.com/comp500/Indium",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "indium-*.jar"
+    },
+    {
+        "name": "InvView",
+        "url": "https://github.com/PotatoPresident/InvView",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "InvView-*.jar"
+    },
+    {
+        "name": "krypton",
+        "url": "https://github.com/astei/krypton",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "krypton-*.jar"
+    },
+    {
+        "name": "Ledger",
+        "url": "https://github.com/QuiltServerTools/Ledger",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "ledger-*.jar"
+    },
+    {
+        "name": "Ledger-Databases",
+        "url": "https://github.com/QuiltServerTools/Ledger-Databases",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "ledger-databases-*.jar"
+    },
+    {
+        "name": "lithium-fabric",
+        "url": "https://github.com/CaffeineMC/lithium-fabric",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "lithium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
+    },
+    {
+        "name": "memoryLeakFix",
+        "url": "https://github.com/fxmorin/memoryLeakFix",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "memoryleakfix-*.jar"
+    },
+    {
+        "name": "sodium-fabric",
+        "url": "https://github.com/CaffeineMC/sodium-fabric",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
+    }
 ]
