@@ -6,7 +6,7 @@ from download.sources.source import Source
 class JenkinsSource(Source):
 
 
-    async def get_release_url(self, url, file_filter=None):
+    async def get_release_url(self, url, file_filter=None, **kwargs):
         filter_regex = self.get_filter_regex(file_filter)
 
         stripped_url = url.strip("/")

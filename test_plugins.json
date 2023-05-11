@@ -12,7 +12,7 @@
         "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
         "source": "papermc",
         "post_processors": [],
-        "filter": "waterfall-1.19-*.jar"
+        "file_filter": "waterfall-1.19-*.jar"
     },
     {
         "name": "goBrush",
@@ -21,7 +21,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "goBrush*.jar"
+        "file_filter": "goBrush*.jar"
     },
     {
         "name": "ClientStats",
@@ -38,7 +38,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "spark.jar"
+        "file_filter": "spark.jar"
     },
     {
         "name": "RedCraftReboot",
@@ -47,7 +47,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "RedCraftReboot-*.jar"
+        "file_filter": "RedCraftReboot-*.jar"
     },
     {
         "name": "Fabric",
@@ -56,7 +56,7 @@
         "post_processors": [
             "versionjson"
         ],
-        "filter": "fabric-*1.19.4.jar"
+        "file_filter": "fabric-*1.19.4.jar"
     },
     {
         "name": "WorldGuard",
@@ -65,7 +65,7 @@
         "post_processors": [
             "plugin"
         ],
-        "filter": "worldguard-bukkit-*.jar"
+        "file_filter": "worldguard-bukkit-*.jar"
     },
     {
         "name": "CoreProtect",
