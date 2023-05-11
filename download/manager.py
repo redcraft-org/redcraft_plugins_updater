@@ -1,70 +1,69 @@
 import logging
 import traceback
 import os
-
+import asyncio
 from tqdm import tqdm
 
-from download.sources.direct_source import DirectSource
-from download.sources.enginehub_source import EnginehubSource
-from download.sources.spigotmc_source import SpigotmcSource
-from download.sources.jenkins_source import JenkinsSource
-from download.sources.modrinth_source import ModrinthSource
-from download.sources.github_source import GithubSource
-from download.sources.papermc_source import PapermcSource
-from download.sources.zrips_source import ZripsSource
-
-from download.post_processors.paperclip_post_processor import PaperclipPostProcessor
-from download.post_processors.versionjson_post_processor import VersionjsonPostProcessor
-from download.post_processors.plugin_post_processor import PluginPostProcessor
-from download.post_processors.fabricmod_post_processor import FabricmodPostProcessor
-from download.post_processors.zip_post_processor import ZipPostProcessor
-
-from download.destinations.basic_destination import BasicDestination
-from download.destinations.s3_destination import S3Destination
+from download import sources
+from download import post_processors
+from download import destinations
 
 
 class DownloadManager:
-    direct_source = None
-    enginehub_source = None
-    spigotmc_source = None
-    jenkins_source = None
-    modrinth_source = None
-    github_source = None
-    papermc_source = None
+    logger = logging.getLogger("DownloadManager")
 
-    paperclip_post_processor = None
-    plugin_post_processor = None
-    fabricmod_post_processor = None
-    zip_post_processor = None
+    class LazyLoader:
+        class_dict: dict
+        obj_dict: dict
 
-    basic_destination = None
-    s3_destination = None
+        def __init__(self, class_dict):
+            self.class_dict = class_dict
+            self.obj_dict = {}
 
-    def __init__(self):
-        self.logger = logging.getLogger("DownloadManager")
+        def __getitem__(self, item):
+            if item in self.obj_dict.keys():
+                return self.obj_dict[item]
 
-        self.direct_source = DirectSource()
-        self.enginehub_source = EnginehubSource()
-        # self.spigotmc_source = SpigotmcSource()
-        self.jenkins_source = JenkinsSource()
-        self.modrinth_source = ModrinthSource()
-        self.github_source = GithubSource()
-        self.papermc_source = PapermcSource()
-        self.zrips_source = ZripsSource()
+            obj = self.class_dict[item]()
+            self.obj_dict[item] = obj
+            return obj
 
-        self.paperclip_post_processor = PaperclipPostProcessor()
-        self.versionjson_post_processor = VersionjsonPostProcessor()
-        self.plugin_post_processor = PluginPostProcessor()
-        self.fabricmod_post_processor = FabricmodPostProcessor()
-        self.zip_post_processor = ZipPostProcessor()
+    SOURCE_DICT = LazyLoader(
+        {
+            "direct": sources.DirectSource,
+            "enginehub": sources.EnginehubSource,
+            "spigotmc": sources.SpigotmcSource,
+            "jenkins": sources.JenkinsSource,
+            "modrinth": sources.ModrinthSource,
+            "github": sources.GithubSource,
+            "papermc": sources.PapermcSource,
+            "zrips": sources.ZripsSource,
+        }
+    )
 
-        self.basic_destination = BasicDestination()
-        self.s3_destination = S3Destination()
+    POST_PROCESSOR_DICT = LazyLoader(
+        {
+            "paperclip": post_processors.PaperclipPostProcessor,
+            "versionjson": post_processors.VersionjsonPostProcessor,
+            "plugin": post_processors.PluginPostProcessor,
+            "zip": post_processors.ZipPostProcessor,
+            "fabricmod": post_processors.FabricmodPostProcessor,
+            "quilt": post_processors.QuiltPostProcessor,
+        }
+    )
 
-    def download(self, source, name, url, post_processors, **kwargs):
+    DESTINATION_DICT = LazyLoader(
+        {
+            "basic": destinations.BasicDestination,
+            "s3": destinations.S3Destination,
+        }
+    )
+
+    @classmethod
+    async def download(self, source, name, url, post_processors, **kwargs):
         # Download file from the right source
         source = self.get_source_manager(source)
-        downloaded_binary = source.download_element(url, **kwargs)
+        downloaded_binary = await source.download_element(url, **kwargs)
 
         # Run post_processors
         for post_processor in post_processors:
@@ -77,32 +76,20 @@ class DownloadManager:
         destination = self.get_destination_manager()
         destination.save(downloaded_binary, source, name, url, **kwargs)
 
-    def download_resources(self, resources):
-        for resource in tqdm(resources, desc="Downloading resources"):
-            try:
-                self.download(**resource)
-            except Exception:
-                self.logger.warning(
-                    "Error while downloading {name} from {url} using source {source}".format(
-                        **resource
-                    )
-                )
-                traceback.print_exc()
+    @classmethod
+    async def download_resources(self, resources):
+        tasks = [self.download(**resource) for resource in resources]
+        await asyncio.gather(*tasks)
 
+    @classmethod
     def get_source_manager(self, source):
-        return self.__getattr_safe("source", source)
+        return self.SOURCE_DICT[source]
 
+    @classmethod
     def get_postprocessing_manager(self, post_processor):
-        return self.__getattr_safe("post_processor", post_processor)
+        return self.POST_PROCESSOR_DICT[post_processor]
 
+    @classmethod
     def get_destination_manager(self):
         destination = os.environ.get("DESTINATION", "basic")
-
-        return self.__getattr_safe("destination", destination)
-
-    def __getattr_safe(self, resource_name, value):
-        # A simple wrapper to get our resources dynamically
-        try:
-            return getattr(self, "{}_{}".format(value, resource_name))
-        except AttributeError:
-            raise ValueError("{} {} is not supported".format(resource_name, value))
+        return self.DESTINATION_DICT[destination]

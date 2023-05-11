@@ -1,0 +1,2 @@
+from download.destinations.basic_destination import BasicDestination
+from download.destinations.s3_destination import S3Destination

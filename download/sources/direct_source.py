@@ -1,11 +1,8 @@
 import re
 
 import requests
+from download.sources.source import Source
 
-
-class DirectSource:
-    def download_element(self, url):
-        return requests.get(url).content
-
-    def get_filter_regex(self, filter):
-        return re.compile(filter.replace("*", ".+"))
+class DirectSource(Source):
+    async def get_release_url(self, url, _filter):
+        return url

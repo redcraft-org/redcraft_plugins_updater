@@ -4,20 +4,14 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from download.sources.direct_source import DirectSource
+from download.sources.source import Source
 
 
-class ZripsSource(DirectSource):
+class ZripsSource(Source):
+    async def get_release_url(self, url, _filter=None):
+        zrips_response = await self.client.get(url)
 
-    session = None
+        zrips_parser = BeautifulSoup(zrips_response.text, features="html.parser")
 
-    def __init__(self):
-        self.session = requests.session()
-
-    def download_element(self, url, **_):
-        zrips_response = self.session.get(url)
-
-        zrips_parser = BeautifulSoup(
-            zrips_response.text, features="html.parser")
-
-        return self.session.get(url + zrips_parser.find("a").get("href")).content
+        url = url + zrips_parser.find("a").get("href")
+        return url

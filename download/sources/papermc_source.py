@@ -1,21 +1,16 @@
 import requests
 
-from download.sources.direct_source import DirectSource
+from download.sources.source import Source
 
 
-class PapermcSource(DirectSource):
-
-    session = None
-
-    def __init__(self):
-        self.session = requests.session()
-
-    def download_element(self, url, filter=None, **_):
-        filter_regex = self.get_filter_regex(filter)
+class PapermcSource(Source):
+    async def get_release_url(self, url, _filter=None):
+        filter_regex = self.get_filter_regex(_filter)
 
         stripped_url = url.strip("/")
 
-        papermc_response = self.session.get(stripped_url).json()
+        papermc_response = await self.client.get(stripped_url)
+        papermc_response = papermc_response.json()
 
         last_build = papermc_response["builds"][-1]
 
@@ -29,10 +24,10 @@ class PapermcSource(DirectSource):
                 name,
             )
 
-            return self.session.get(artifact_url).content
+            return artifact_url
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                filter, stripped_url
+                _filter, stripped_url
             )
         )

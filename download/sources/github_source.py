@@ -1,17 +1,13 @@
+import os
 import requests
 
-from download.sources.direct_source import DirectSource
+
+from download.sources.source import Source
 
 
-class GithubSource(DirectSource):
-
-    session = None
-
-    def __init__(self):
-        self.session = requests.session()
-
-    def download_element(self, url, filter=None, **_):
-        filter_regex = self.get_filter_regex(filter)
+class GithubSource(Source):
+    async def get_release_url(self, url, _filter=None):
+        filter_regex = self.get_filter_regex(_filter)
 
         user_repo_id = url.split("github.com/")[1].strip("/")
 
@@ -20,17 +16,24 @@ class GithubSource(DirectSource):
             user_repo_id
         )
 
-        github_releases = self.session.get(github_json_url).json()
+        github_token = os.environ.get("GITHUB_TOKEN", None)
+        headers = {}
+        if github_token is None:
+            headers["Authorization"] = f"token {github_token}"
+
+        response = await self.client.get(github_json_url, headers=headers)
+        # response = requests.get(github_json_url)
+        github_releases = response.json()
 
         for release in github_releases:
             for asset in release.get("assets") or []:
                 if filter_regex.match(asset["name"]):
                     asset_url = asset["browser_download_url"]
-                    # Download and return the release
-                    return self.session.get(asset_url).content
+                    return asset_url
+
 
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
-                filter, github_json_url
+                _filter, github_json_url
             )
         )

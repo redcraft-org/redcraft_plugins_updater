@@ -117,7 +117,7 @@ class SpigotmcSource(DirectSource):
             )
             self.session.cookies.set_cookie(cookie_obj)
 
-    def download_element(self, url, **kwargs):
+    async def get_release_url(self, url, **kwargs):
         # Browse the plugin page
         plugin_page_response = self.session.get(url)
         plugin_page_parser = BeautifulSoup(
@@ -137,6 +137,8 @@ class SpigotmcSource(DirectSource):
         relative_download_link = download_button.find("a").get("href")
         plugin_download_link = "{}/{}".format(self.base_url, relative_download_link)
 
-        # Download plugin
-        plugin_binary_response = self.session.get(plugin_download_link)
-        return plugin_binary_response.content
+        return plugin_download_link
+
+    async def download_release(self, release_url):
+        resp = self.session.get(release_url)
+        return resp.content
