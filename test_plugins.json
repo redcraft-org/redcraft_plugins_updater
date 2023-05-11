@@ -3,40 +3,84 @@
         "name": "Purpur",
         "url": "https://api.purpurmc.org/v2/purpur/1.18.1/latest/download",
         "source": "direct",
-        "post_processors": ["versionjson"]
+        "post_processors": [
+            "versionjson"
+        ]
+    },
+    {
+        "name": "Waterfall-1.19.jar",
+        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
+        "source": "papermc",
+        "post_processors": [],
+        "filter": "waterfall-1.19-*.jar"
     },
     {
         "name": "goBrush",
         "url": "https://ci.athion.net/job/goBrush-1.13+/",
         "source": "jenkins",
-        "post_processors": ["plugin"],
+        "post_processors": [
+            "plugin"
+        ],
         "filter": "goBrush*.jar"
     },
     {
         "name": "ClientStats",
         "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
         "source": "spigotmc",
-        "post_processors": ["plugin"]
+        "post_processors": [
+            "plugin"
+        ]
     },
     {
         "name": "spark",
         "url": "https://ci.lucko.me/job/spark/",
         "source": "jenkins",
-        "post_processors": ["plugin"],
+        "post_processors": [
+            "plugin"
+        ],
         "filter": "spark.jar"
     },
     {
         "name": "RedCraftReboot",
         "url": "https://github.com/redcraft-org/RedCraftReboot",
         "source": "github",
-        "post_processors": ["plugin"],
+        "post_processors": [
+            "plugin"
+        ],
         "filter": "RedCraftReboot-*.jar"
     },
     {
         "name": "Fabric",
         "url": "https://github.com/FabricMC/fabric",
         "source": "github",
-        "post_processors": ["versionjson"],
-        "filter": "fabric-api-0.80.0+1.19.4.jar"
+        "post_processors": [
+            "versionjson"
+        ],
+        "filter": "fabric-*1.19.4.jar"
+    },
+    {
+        "name": "WorldGuard",
+        "url": "https://builds.enginehub.org/job/worldguard",
+        "source": "enginehub",
+        "post_processors": [
+            "plugin"
+        ],
+        "filter": "worldguard-bukkit-*.jar"
+    },
+    {
+        "name": "CoreProtect",
+        "url": "https://modrinth.com/plugin/coreprotect/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "CMIB",
+        "url": "https://zrips.net/cmib/",
+        "source": "zrips",
+        "post_processors": [
+            "plugin"
+        ]
     }
 ]

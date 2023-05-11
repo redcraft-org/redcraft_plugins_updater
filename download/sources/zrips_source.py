@@ -8,7 +8,7 @@ from download.sources.source import Source
 
 
 class ZripsSource(Source):
-    async def get_release_url(self, url, _filter=None):
+    async def get_release_url(self, url, **kwargs):
         zrips_response = await self.client.get(url)
 
         zrips_parser = BeautifulSoup(zrips_response.text, features="html.parser")
