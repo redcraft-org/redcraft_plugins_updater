@@ -13,7 +13,8 @@ class Source:
         raise NotImplementedError()
 
     async def download_release(self, release_url):
-        resp = await self.client.get(release_url)
+        resp = await self.client.get(release_url, follow_redirects=True)
+        resp.raise_for_status()
         return resp.content
 
     def get_filter_regex(self, file_filter):

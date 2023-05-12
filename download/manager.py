@@ -2,7 +2,6 @@ import logging
 import traceback
 import os
 import asyncio
-from tqdm import tqdm
 
 from download import sources
 from download import post_processors
@@ -65,6 +64,9 @@ class DownloadManager:
             # Download file from the right source
             source = self.get_source_manager(source)
             downloaded_binary = await source.download_element(url, **kwargs)
+
+            if not downloaded_binary:
+                raise ValueError("Downloaded empty binary for {} from {}".format(name, url))
 
             # Run post_processors
             for post_processor in post_processors:
