@@ -61,20 +61,28 @@ class DownloadManager:
 
     @classmethod
     async def download(self, source, name, url, post_processors, **kwargs):
-        # Download file from the right source
-        source = self.get_source_manager(source)
-        downloaded_binary = await source.download_element(url, **kwargs)
+        try:
+            # Download file from the right source
+            source = self.get_source_manager(source)
+            downloaded_binary = await source.download_element(url, **kwargs)
 
-        # Run post_processors
-        for post_processor in post_processors:
-            processor = self.get_postprocessing_manager(post_processor)
-            downloaded_binary, source, name, url = processor.process(
-                downloaded_binary, source, name, url, **kwargs
+            # Run post_processors
+            for post_processor in post_processors:
+                processor = self.get_postprocessing_manager(post_processor)
+                downloaded_binary, source, name, url = processor.process(
+                    downloaded_binary, source, name, url, **kwargs
+                )
+
+            # Save plugin somewhere
+            destination = self.get_destination_manager()
+            destination.save(downloaded_binary, source, name, url, **kwargs)
+        except Exception:
+            self.logger.error(
+                "Error downloading {} from {} with post_processors {}".format(
+                    name, url, post_processors
+                )
             )
-
-        # Save plugin somewhere
-        destination = self.get_destination_manager()
-        destination.save(downloaded_binary, source, name, url, **kwargs)
+            self.logger.error(traceback.format_exc())
 
     @classmethod
     async def download_resources(self, resources):

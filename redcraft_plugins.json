@@ -24,22 +24,6 @@
         "file_filter": "waterfall-1.19-*.jar"
     },
     {
-        "name": "CMI",
-        "url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "CMILib",
-        "url": "https://www.spigotmc.org/resources/cmilib.87610/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
         "name": "CMIB",
         "url": "https://zrips.net/cmib/",
         "source": "zrips",
@@ -51,46 +35,6 @@
         "name": "CoreProtect",
         "url": "https://modrinth.com/plugin/coreprotect/",
         "source": "modrinth",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "Panilla",
-        "url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "Head Database",
-        "url": "https://www.spigotmc.org/resources/head-database.14280/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "AAC",
-        "url": "https://www.spigotmc.org/resources/aac-advanced-anti-cheat-hack-kill-aura-blocker.6442/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "Reconnect",
-        "url": "https://www.spigotmc.org/resources/bungee-reconnect.16429/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "LiteBans",
-        "url": "https://www.spigotmc.org/resources/litebans.3715/",
-        "source": "spigotmc",
         "post_processors": [
             "plugin"
         ]
@@ -114,70 +58,6 @@
         "file_filter": "goBrush-*.jar"
     },
     {
-        "name": "FarmLimiter",
-        "url": "https://www.spigotmc.org/resources/farm-limiter.1419/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "SelectionVisualizer",
-        "url": "https://www.spigotmc.org/resources/selection-visualizer.22631/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "PlotSquared",
-        "url": "https://www.spigotmc.org/resources/plotsquared-v5.77506/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "EpicWorldGenerator",
-        "url": "https://www.spigotmc.org/resources/epicworldgenerator-1-15-1-16-4-%E2%9D%97%EF%B8%8Fsale-%E2%9D%97%EF%B8%8F-20-off.8067/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "ClientStats",
-        "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "RedstoneClockDetector",
-        "url": "https://www.spigotmc.org/resources/redstoneclockdetector.18475/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "BungeePluginManager",
-        "url": "https://www.spigotmc.org/resources/bungeepluginmanager.7288/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "PlugManX",
-        "url": "https://www.spigotmc.org/resources/plugmanx.88135/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
         "name": "WorldBorder",
         "url": "https://github.com/PryPurity/WorldBorder",
         "source": "github",
@@ -185,22 +65,6 @@
             "plugin"
         ],
         "file_filter": "WorldBorder.jar"
-    },
-    {
-        "name": "F3NPerm",
-        "url": "https://www.spigotmc.org/resources/f3nperm.46461/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "BookExploitFix",
-        "url": "https://www.spigotmc.org/resources/bookexploitfix.5897/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
     },
     {
         "name": "ServerListPlus",
@@ -419,22 +283,6 @@
         "file_filter": "Maintenance.jar"
     },
     {
-        "name": "ViewDistanceTweaks",
-        "url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "OmegaVision",
-        "url": "https://www.spigotmc.org/resources/omegavision.73013/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
         "name": "alternate-current",
         "url": "https://github.com/SpaceWalkerRS/alternate-current",
         "source": "github",
@@ -541,5 +389,157 @@
             "fabricmod"
         ],
         "file_filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
+    },
+    {
+        "name": "CMI",
+        "url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "CMILib",
+        "url": "https://www.spigotmc.org/resources/cmilib.87610/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Panilla",
+        "url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Head Database",
+        "url": "https://www.spigotmc.org/resources/head-database.14280/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "AAC",
+        "url": "https://www.spigotmc.org/resources/aac-advanced-anti-cheat-hack-kill-aura-blocker.6442/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Reconnect",
+        "url": "https://www.spigotmc.org/resources/bungee-reconnect.16429/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "LiteBans",
+        "url": "https://www.spigotmc.org/resources/litebans.3715/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "FarmLimiter",
+        "url": "https://www.spigotmc.org/resources/farm-limiter.1419/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "SelectionVisualizer",
+        "url": "https://www.spigotmc.org/resources/selection-visualizer.22631/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "PlotSquared",
+        "url": "https://www.spigotmc.org/resources/plotsquared-v5.77506/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "EpicWorldGenerator",
+        "url": "https://www.spigotmc.org/resources/epicworldgenerator-1-15-1-16-4-%E2%9D%97%EF%B8%8Fsale-%E2%9D%97%EF%B8%8F-20-off.8067/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "ClientStats",
+        "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "RedstoneClockDetector",
+        "url": "https://www.spigotmc.org/resources/redstoneclockdetector.18475/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "BungeePluginManager",
+        "url": "https://www.spigotmc.org/resources/bungeepluginmanager.7288/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "PlugManX",
+        "url": "https://www.spigotmc.org/resources/plugmanx.88135/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "F3NPerm",
+        "url": "https://www.spigotmc.org/resources/f3nperm.46461/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "BookExploitFix",
+        "url": "https://www.spigotmc.org/resources/bookexploitfix.5897/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "ViewDistanceTweaks",
+        "url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "OmegaVision",
+        "url": "https://www.spigotmc.org/resources/omegavision.73013/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
     }
 ]

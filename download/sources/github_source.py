@@ -22,6 +22,7 @@ class GithubSource(Source):
             headers["Authorization"] = f"token {github_token}"
 
         response = await self.client.get(github_json_url, headers=headers)
+        response.raise_for_status()
         github_releases = response.json()
 
         for release in github_releases:
