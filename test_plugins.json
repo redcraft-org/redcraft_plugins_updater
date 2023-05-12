@@ -38,7 +38,7 @@
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "spark.jar"
+        "file_filter": "spark-*-bukkit.jar"
     },
     {
         "name": "RedCraftReboot",

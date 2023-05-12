@@ -18,7 +18,7 @@ class GithubSource(Source):
 
         github_token = os.environ.get("GITHUB_TOKEN", None)
         headers = {}
-        if github_token is None:
+        if github_token is not None:
             headers["Authorization"] = f"token {github_token}"
 
         response = await self.client.get(github_json_url, headers=headers)
