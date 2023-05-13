@@ -16,7 +16,9 @@ class EnginehubSource(Source):
         # Get the last successful build
         enginehub_json_url = "{}/last-successful".format(stripped_url)
 
-        enginehub_response = await self.client.get(enginehub_json_url)
+        enginehub_response = await self.client.get(enginehub_json_url, follow_redirects=True)
+
+        enginehub_response.raise_for_status()
 
         enginehub_parser = BeautifulSoup(
             enginehub_response.text, features="html.parser"

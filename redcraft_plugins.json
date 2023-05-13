@@ -541,5 +541,21 @@
         "post_processors": [
             "plugin"
         ]
+    },
+    {
+        "name": "Geyser",
+        "url": "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/bungeecord",
+        "source": "direct",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "Floodgate",
+        "url": "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/bungee",
+        "source": "direct",
+        "post_processors": [
+            "plugin"
+        ]
     }
 ]
