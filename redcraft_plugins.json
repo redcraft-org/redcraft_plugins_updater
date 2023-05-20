@@ -557,5 +557,14 @@
         "post_processors": [
             "plugin"
         ]
+    },
+    {
+        "name": "RedstoneUtility",
+        "url": "https://github.com/redcraft-org/RedstoneUtility",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "redstoneutility-*.jar"
     }
 ]
