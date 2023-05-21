@@ -559,12 +559,12 @@
         ]
     },
     {
-        "name": "RedstoneUtility",
-        "url": "https://github.com/redcraft-org/RedstoneUtility",
+        "name": "RedCraftRedstoneUtility",
+        "url": "https://github.com/redcraft-org/RedCraftRedstoneUtility",
         "source": "github",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "redstoneutility-*.jar"
+        "file_filter": "RedCraftRedstoneUtility-*.jar"
     }
 ]
