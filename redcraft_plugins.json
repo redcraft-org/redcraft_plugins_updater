@@ -9,12 +9,11 @@
     },
     {
         "name": "Fabric",
-        "url": "https://github.com/FabricMC/fabric",
-        "source": "github",
+        "url": "https://meta.fabricmc.net/v2/versions/loader/1.19.4",
+        "source": "fabricmc",
         "post_processors": [
-            "fabricmod"
-        ],
-        "file_filter": "fabric-api-*1\\.19\\.4\\.jar"
+            "fabricmc"
+        ]
     },
     {
         "name": "Waterfall-1.19.jar",
