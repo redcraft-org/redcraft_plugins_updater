@@ -273,6 +273,15 @@
         "file_filter": "Plan-*.jar"
     },
     {
+        "name": "PlanFabric",
+        "url": "https://github.com/plan-player-analytics/Plan",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "PlanFabric-*.jar"
+    },
+    {
         "name": "WorldGuard",
         "url": "https://builds.enginehub.org/job/worldguard",
         "source": "enginehub",
@@ -315,7 +324,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": " FabricProxy-Legacy-*.jar "
+        "file_filter": "FabricProxy-Legacy-*.jar "
     },
     {
         "name": "carpet",
