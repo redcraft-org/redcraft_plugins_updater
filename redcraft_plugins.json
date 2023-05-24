@@ -324,7 +324,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "fabric-carpet-*.jar"
+        "file_filter": "fabric-carpet-1.19.*.jar"
     },
     {
         "name": "fabrickotlin",
