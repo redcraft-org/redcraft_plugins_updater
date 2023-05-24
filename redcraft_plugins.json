@@ -396,7 +396,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "memoryleakfix-*.jar"
+        "file_filter": "memoryleakfix-*\\d.jar"
     },
     {
         "name": "sodium",
