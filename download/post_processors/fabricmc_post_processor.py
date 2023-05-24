@@ -8,7 +8,7 @@ class FabricmcPostProcessor:
     INFO_FILE_NAME = "install.properties"
 
     def process(
-        self, downloaded_binary, source, name, url, archive_filter=None, **kwargs
+        self, downloaded_binary, source, name, url, **kwargs
     ):
         file_handler = io.BytesIO(downloaded_binary)
         properties = Properties()
