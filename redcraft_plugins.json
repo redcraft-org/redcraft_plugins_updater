@@ -291,13 +291,13 @@
         "file_filter": "alternate-current-*.jar"
     },
     {
-        "name": "fabric",
+        "name": "fabric-api",
         "url": "https://github.com/FabricMC/fabric",
         "source": "github",
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "fabric-*1.19.4.jar"
+        "file_filter": "fabric-api-*1.19.4.jar"
     },
     {
         "name": "fabric-carpet",
