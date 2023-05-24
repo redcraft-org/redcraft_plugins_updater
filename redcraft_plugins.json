@@ -309,6 +309,15 @@
         "file_filter": "fabric-api-*1.19.4.jar"
     },
     {
+        "name": "FabricProxyLegacy",
+        "url": "https://github.com/voruti/FabricProxy-Legacy",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": " FabricProxy-Legacy-*.jar "
+    },
+    {
         "name": "carpet",
         "url": "https://github.com/gnembon/fabric-carpet",
         "source": "github",
