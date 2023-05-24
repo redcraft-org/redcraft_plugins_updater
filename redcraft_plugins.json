@@ -363,7 +363,7 @@
         "file_filter": "ledger-*.jar"
     },
     {
-        "name": "Ledger-Databases",
+        "name": "LedgerDatabases",
         "url": "https://github.com/QuiltServerTools/Ledger-Databases",
         "source": "github",
         "post_processors": [
