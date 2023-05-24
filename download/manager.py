@@ -37,6 +37,7 @@ class DownloadManager:
             "github": sources.GithubSource,
             "papermc": sources.PapermcSource,
             "zrips": sources.ZripsSource,
+            "fabricmc": sources.FabricmcSource,
         }
     )
 
@@ -48,6 +49,7 @@ class DownloadManager:
             "zip": post_processors.ZipPostProcessor,
             "fabricmod": post_processors.FabricmodPostProcessor,
             "quilt": post_processors.QuiltPostProcessor,
+            "fabricmc": post_processors.FabricmcPostProcessor,
         }
     )
 

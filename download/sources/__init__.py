@@ -6,3 +6,4 @@ from download.sources.modrinth_source import ModrinthSource
 from download.sources.github_source import GithubSource
 from download.sources.papermc_source import PapermcSource
 from download.sources.zrips_source import ZripsSource
+from download.sources.fabricmc_source import FabricmcSource
