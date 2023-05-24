@@ -7,7 +7,7 @@ from download.sources.source import Source
 
 class FabricmcSource(Source):
     INSTALLERS_URL = "https://meta.fabricmc.net/v2/versions/installer"
-    async def get_release_url(self, url, file_filter=None, **kwargs):
+    async def get_release_url(self, url, **kwargs):
         # Get fabric version
         response = await self.client.get(url)
         fabric_versions = response.json()
