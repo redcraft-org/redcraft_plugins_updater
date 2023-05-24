@@ -160,7 +160,7 @@
         "url": "https://ci.lucko.me/job/LuckPerms/",
         "source": "jenkins",
         "post_processors": [
-            "plugin"
+            "fabricmod"
         ],
         "file_filter": "LuckPerms-Fabric-*.jar"
     },
