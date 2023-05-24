@@ -156,6 +156,15 @@
         "file_filter": "LuckPerms-Bungee-*.jar"
     },
     {
+        "name": "LuckPermsFabric",
+        "url": "https://ci.lucko.me/job/LuckPerms/",
+        "source": "jenkins",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "LuckPerms-Fabric-*.jar"
+    },
+    {
         "name": "BungeeTabListPlus",
         "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
         "source": "jenkins",
