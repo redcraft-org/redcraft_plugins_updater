@@ -291,7 +291,7 @@
         "file_filter": "Maintenance.jar"
     },
     {
-        "name": "alternate-current",
+        "name": "alternatecurrent",
         "url": "https://github.com/SpaceWalkerRS/alternate-current",
         "source": "github",
         "post_processors": [
@@ -300,7 +300,7 @@
         "file_filter": "alternate-current-*.jar"
     },
     {
-        "name": "fabric-api",
+        "name": "fabricapi",
         "url": "https://github.com/FabricMC/fabric",
         "source": "github",
         "post_processors": [
@@ -309,7 +309,7 @@
         "file_filter": "fabric-api-*1.19.4.jar"
     },
     {
-        "name": "fabric-carpet",
+        "name": "carpet",
         "url": "https://github.com/gnembon/fabric-carpet",
         "source": "github",
         "post_processors": [
@@ -318,7 +318,7 @@
         "file_filter": "fabric-carpet-*.jar"
     },
     {
-        "name": "fabric-language-kotlin",
+        "name": "fabrickotlin",
         "url": "https://github.com/FabricMC/fabric-language-kotlin",
         "source": "github",
         "post_processors": [
@@ -372,7 +372,7 @@
         "file_filter": "ledger-databases-*.jar"
     },
     {
-        "name": "lithium-fabric",
+        "name": "lithium",
         "url": "https://github.com/CaffeineMC/lithium-fabric",
         "source": "github",
         "post_processors": [
@@ -390,7 +390,7 @@
         "file_filter": "memoryleakfix-*.jar"
     },
     {
-        "name": "sodium-fabric",
+        "name": "sodium",
         "url": "https://github.com/CaffeineMC/sodium-fabric",
         "source": "github",
         "post_processors": [
