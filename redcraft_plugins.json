@@ -39,6 +39,14 @@
         ]
     },
     {
+        "name": "ViaFabric",
+        "url": "https://modrinth.com/mod/viafabric/",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ]
+    },
+    {
         "name": "goPaint",
         "url": "https://ci.athion.net/job/goPaint-1.14+/",
         "source": "jenkins",
