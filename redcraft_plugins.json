@@ -47,6 +47,22 @@
         ]
     },
     {
+        "name": "AntiXray",
+        "url": "https://modrinth.com/mod/anti-xray/",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ]
+    },
+    {
+        "name": "Holograms",
+        "url": "https://modrinth.com/mod/holograms/",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ]
+    },
+    {
         "name": "goPaint",
         "url": "https://ci.athion.net/job/goPaint-1.14+/",
         "source": "jenkins",
