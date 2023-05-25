@@ -165,6 +165,15 @@
         "file_filter": "LuckPerms-Fabric-*.jar"
     },
     {
+        "name": "minecraftcommandpermissions",
+        "url": "https://github.com/lucko/minecraft-command-permissions-fabric",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "minecraft-command-permissions-*.jar"
+    },
+    {
         "name": "BungeeTabListPlus",
         "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
         "source": "jenkins",
