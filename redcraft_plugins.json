@@ -344,7 +344,7 @@
         "url": "https://github.com/SpaceWalkerRS/alternate-current",
         "source": "github",
         "post_processors": [
-            "quilt"
+            "fabricmod"
         ],
         "file_filter": "alternate-current-*.jar"
     },
