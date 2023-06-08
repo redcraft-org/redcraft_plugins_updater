@@ -364,7 +364,7 @@
         "source": "direct",
         "post_processors": [
             "fabricmod"
-        ],
+        ]
     },
     {
         "name": "FabricProxyLegacy",
