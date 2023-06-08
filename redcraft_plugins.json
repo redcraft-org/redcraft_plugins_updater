@@ -358,6 +358,15 @@
         "file_filter": "fabric-api-*1.19.4.jar"
     },
     {
+        
+        "name": "fabricapi-mc1.20",
+        "url": "https://github.com/FabricMC/fabric/releases/download/0.83.0%2B1.20/fabric-api-0.83.0+1.20.jar",
+        "source": "direct",
+        "post_processors": [
+            "fabricmod"
+        ],
+    },
+    {
         "name": "FabricProxyLegacy",
         "url": "https://github.com/voruti/FabricProxy-Legacy",
         "source": "github",
@@ -373,7 +382,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "fabric-carpet-1.19.*.jar"
+        "file_filter": "fabric-carpet-1.20-*.jar"
     },
     {
         "name": "fabrickotlin",
