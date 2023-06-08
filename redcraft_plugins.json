@@ -346,8 +346,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "alternate-current-mc1.20-*.jar
-"
+        "file_filter": "alternate-current-mc1.20-*.jar"
     },
     {
         "name": "fabricapi",
