@@ -403,6 +403,15 @@
         "file_filter": "InvView-*.jar"
     },
     {
+        "name": "VanillaPermissions",
+        "url": "https://modrinth.com/mod/vanilla-permissions",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "vanilla-permissions-*.jar"
+    },
+    {
         "name": "krypton",
         "url": "https://github.com/astei/krypton",
         "source": "github",
