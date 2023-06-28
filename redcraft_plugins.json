@@ -1,7 +1,7 @@
 [
     {
         "name": "Purpur",
-        "url": "https://api.purpurmc.org/v2/purpur/1.19.4/latest/download",
+        "url": "https://api.purpurmc.org/v2/purpur/1.20.1/latest/download",
         "source": "direct",
         "post_processors": [
             "versionjson"
@@ -9,18 +9,11 @@
     },
     {
         "name": "Fabric",
-        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20",
+        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.1",
         "source": "fabricmc",
         "post_processors": [
             "fabricmc"
         ]
-    },
-    {
-        "name": "Waterfall-1.19.jar",
-        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.19/builds",
-        "source": "papermc",
-        "post_processors": [],
-        "file_filter": "waterfall-1.19-*.jar"
     },
     {
         "name": "Waterfall-1.20.jar",
@@ -350,7 +343,7 @@
     },
     {
         "name": "fabricapi",
-        "url": "https://github.com/FabricMC/fabric/releases/download/0.83.0%2B1.20/fabric-api-0.83.0+1.20.jar",
+        "url": "https://github.com/FabricMC/fabric/releases/download/0.84.0%2B1.20.1/fabric-api-0.84.0+1.20.1.jar",
         "source": "direct",
         "post_processors": [
             "fabricmod"
@@ -444,7 +437,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "lithium-fabric-mc1.20-(?!.*api(-dev)?.jar$).*.(jar)"
+        "file_filter": "lithium-fabric-mc1.20.1-(?!.*api(-dev)?.jar$).*.(jar)"
     },
     {
         "name": "memoryLeakFix",
