@@ -437,7 +437,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "lithium-fabric-mc1.20.1-(?!.*api(-dev)?.jar$).*.(jar)"
+        "file_filter": "lithium-fabric-mc1\\.20\\.1-.+\\d+\\.jar"
     },
     {
         "name": "memoryLeakFix",

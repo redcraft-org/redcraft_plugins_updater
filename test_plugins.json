@@ -51,12 +51,11 @@
     },
     {
         "name": "Fabric",
-        "url": "https://github.com/FabricMC/fabric",
-        "source": "github",
+        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.1",
+        "source": "fabricmc",
         "post_processors": [
-            "versionjson"
-        ],
-        "file_filter": "fabric-*1.19.4.jar"
+            "fabricmc"
+        ]
     },
     {
         "name": "WorldGuard",
@@ -82,5 +81,14 @@
         "post_processors": [
             "plugin"
         ]
+    },
+    {
+        "name": "lithium",
+        "url": "https://github.com/CaffeineMC/lithium-fabric",
+        "source": "github",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "lithium-fabric-mc1\\.20\\.1-.+\\d+\\.jar"
     }
 ]
