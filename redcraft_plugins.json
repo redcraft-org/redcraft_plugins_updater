@@ -413,6 +413,15 @@
         "file_filter": "chunk-debug-*.jar"
     },
     {
+        "name": "VeryManyPlayers",
+        "url": "https://modrinth.com/mod/vmp-fabric",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "vmp-fabric-mc*.jar"
+    },
+    {
         "name": "krypton",
         "url": "https://github.com/astei/krypton",
         "source": "github",
