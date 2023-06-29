@@ -404,6 +404,15 @@
         "file_filter": "vanilla-permissions-*.jar"
     },
     {
+        "name": "ChunkDebug",
+        "url": "https://modrinth.com/mod/chunkdebug",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "chunk-debug-*.jar"
+    },
+    {
         "name": "krypton",
         "url": "https://github.com/astei/krypton",
         "source": "github",
