@@ -653,7 +653,7 @@
         "file_filter": "RedCraftRedstoneUtility-*.jar"
     },
     {
-        "name": "BlueMap-cli",
+        "name": "BlueMap-cli.jar",
         "url": "https://github.com/BlueMap-Minecraft/BlueMap",
         "source": "github",
         "post_processors": [],
