@@ -658,5 +658,13 @@
         "source": "github",
         "post_processors": [],
         "file_filter": "BlueMap-*-cli.jar"
+    },
+    {
+        "name": "MCSync",
+        "url": "https://mcsync.live/assets/download/MCSync-v1.2.0.jar",
+        "source": "direct",
+        "post_processors": [
+            "plugin"
+        ]
     }
 ]
