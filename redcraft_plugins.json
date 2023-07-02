@@ -449,6 +449,15 @@
         "file_filter": "ledger-databases-*.jar"
     },
     {
+        "name": "Carpet-TIS",
+        "url": "https://modrinth.com/mod/carpet-tis-addition",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "carpet-tis-addition-*.jar"
+    },
+    {
         "name": "lithium",
         "url": "https://github.com/CaffeineMC/lithium-fabric",
         "source": "github",
