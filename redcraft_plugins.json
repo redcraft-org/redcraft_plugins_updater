@@ -449,7 +449,7 @@
         "file_filter": "ledger-databases-*.jar"
     },
     {
-        "name": "Carpet-TIS",
+        "name": "CarpetTIS",
         "url": "https://modrinth.com/mod/carpet-tis-addition",
         "source": "modrinth",
         "post_processors": [
