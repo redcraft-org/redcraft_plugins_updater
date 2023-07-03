@@ -458,6 +458,15 @@
         "file_filter": "carpet-tis-addition-*.jar"
     },
     {
+        "name": "CarpetExtra",
+        "url": "https://modrinth.com/mod/carpet-extra",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "carpet-extra-*.jar"
+    },
+    {
         "name": "lithium",
         "url": "https://github.com/CaffeineMC/lithium-fabric",
         "source": "github",
