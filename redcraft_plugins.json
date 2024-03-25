@@ -1,7 +1,7 @@
 [
     {
         "name": "Purpur",
-        "url": "https://api.purpurmc.org/v2/purpur/1.20.1/latest/download",
+        "url": "https://api.purpurmc.org/v2/purpur/1.20.4/latest/download",
         "source": "direct",
         "post_processors": [
             "versionjson"
@@ -9,7 +9,7 @@
     },
     {
         "name": "Fabric",
-        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.1",
+        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.4",
         "source": "fabricmc",
         "post_processors": [
             "fabricmc"
@@ -343,7 +343,7 @@
     },
     {
         "name": "fabricapi",
-        "url": "https://github.com/FabricMC/fabric/releases/download/0.84.0%2B1.20.1/fabric-api-0.84.0+1.20.1.jar",
+        "url": "https://github.com/FabricMC/fabric/releases/download/0.96.11%2B1.20.4/fabric-api-0.96.11+1.20.4.jar",
         "source": "direct",
         "post_processors": [
             "fabricmod"
@@ -455,7 +455,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "carpet-tis-addition-mc1.20.1-*.jar"
+        "file_filter": "carpet-tis-addition-mc1.20.4-*.jar"
     },
     {
         "name": "CarpetExtra",

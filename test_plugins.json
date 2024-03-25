@@ -51,7 +51,7 @@
     },
     {
         "name": "Fabric",
-        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.1",
+        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.4",
         "source": "fabricmc",
         "post_processors": [
             "fabricmc"
