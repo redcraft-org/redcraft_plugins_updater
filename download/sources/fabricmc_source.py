@@ -7,6 +7,7 @@ from download.sources.source import Source
 
 class FabricmcSource(Source):
     INSTALLERS_URL = "https://meta.fabricmc.net/v2/versions/installer"
+
     async def get_release_url(self, url, **kwargs):
         # Get fabric version
         response = await self.client.get(url)
@@ -27,6 +28,6 @@ class FabricmcSource(Source):
             installer_version = installer_version["version"]
         else:
             raise Exception("INSTALLERS_URL `{self.INSTALLERS_URL}` unvalid")
-        
+
         # Create url lastest fabric
         return f"{url}/{fabric_version}/{installer_version}/server/jar"

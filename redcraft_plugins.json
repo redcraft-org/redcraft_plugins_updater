@@ -607,11 +607,12 @@
     },
     {
         "name": "PlugManX",
-        "url": "https://www.spigotmc.org/resources/plugmanx.88135/",
-        "source": "spigotmc",
+        "url": "https://github.com/TheBlackEntity/PlugManX",
+        "source": "github",
         "post_processors": [
             "plugin"
-        ]
+        ],
+        "file_filter": "PlugManX.jar"
     },
     {
         "name": "F3NPerm",

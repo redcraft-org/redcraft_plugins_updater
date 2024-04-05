@@ -15,8 +15,7 @@ class VersionjsonPostProcessor:
 
                 if not version:
                     raise ValueError(
-                        "{} does not contain a valid version.json file".format(
-                            name)
+                        "{} does not contain a valid version.json file".format(name)
                     )
 
                 name = "{}-{}.jar".format(name, version)

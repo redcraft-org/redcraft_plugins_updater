@@ -31,7 +31,10 @@ class FlareSolverrManager:
         # Clear each session
         if sessions:
             for session_id in sessions:
-                session_destroy_request = {"cmd": "sessions.destroy", "session": session_id}
+                session_destroy_request = {
+                    "cmd": "sessions.destroy",
+                    "session": session_id,
+                }
                 requests.post(self.flaresolverr_url, json=session_destroy_request)
 
     def request(self, url, method="GET", cookies=None, tries=3):
@@ -58,13 +61,14 @@ class FlareSolverrManager:
 
                 if status_code >= 500:
                     raise ValueError(
-                        "FlareSolverr request failed, got status code {}: {}".format(status_code, flaresolverr_response.content)
+                        "FlareSolverr request failed, got status code {}: {}".format(
+                            status_code, flaresolverr_response.content
+                        )
                     )
 
                 break
             except Exception as error:
-                self.logger.warning(
-                    "FlareSoverr error {}/{}".format(try_count, tries))
+                self.logger.warning("FlareSoverr error {}/{}".format(try_count, tries))
                 last_error = error
                 traceback.print_exc()
 
