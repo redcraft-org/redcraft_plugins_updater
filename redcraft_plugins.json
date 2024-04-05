@@ -365,7 +365,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "fabric-carpet-1.20-*.jar"
+        "file_filter": "fabric-carpet-1.20.3-*.jar"
     },
     {
         "name": "fabrickotlin",
@@ -464,7 +464,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "carpet-extra-1.20-*.jar"
+        "file_filter": "carpet-extra-1.20.3-*.jar"
     },
     {
         "name": "lithium",
@@ -473,7 +473,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "lithium-fabric-mc1\\.20\\.1-.+\\d+\\.jar"
+        "file_filter": "lithium-fabric-mc1\\.20\\.4-.+\\d+\\.jar"
     },
     {
         "name": "memoryLeakFix",
