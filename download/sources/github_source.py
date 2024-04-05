@@ -31,7 +31,6 @@ class GithubSource(Source):
                     asset_url = asset["browser_download_url"]
                     return asset_url
 
-
         raise ValueError(
             'Could not find a matching a matching artifact "{}" at {}'.format(
                 file_filter, github_json_url

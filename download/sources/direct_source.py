@@ -3,6 +3,7 @@ import re
 import requests
 from download.sources.source import Source
 
+
 class DirectSource(Source):
     async def get_release_url(self, url, **kwargs):
         return url

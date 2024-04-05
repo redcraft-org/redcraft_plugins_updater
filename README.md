@@ -24,10 +24,6 @@ Also, all the plugins we want to keep updated need to be in a `.json` file. You 
 
 You just have to run `python redcraft_plugins_updated.py <template_file.json>`, for example `python redcraft_plugins_updated.py test_plugins.json`
 
-## Limitations
-
-Currently, this project does not support 2FA on Spigot's website. I'm not sure how hard or easy it would be to add 2FA support, feel free to fork it and add this feature if you feel like it.
-
 ## Copyright warning
 
 If you fork this project, make sure to NEVER include any plugin or resource in your repo as this could be a copyright violation.

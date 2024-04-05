@@ -3,6 +3,7 @@ import cloudscraper
 import requests
 import os
 
+import pyotp
 from bs4 import BeautifulSoup
 
 from utils.flaresolverr_manager import FlareSolverrManager
@@ -14,24 +15,26 @@ class SpigotmcSource(DirectSource):
 
     base_url = "https://www.spigotmc.org"
 
-    # Needs to be a popular plugin with an external download
-    plugin_to_escalate_token = "https://www.spigotmc.org/resources/authmereloaded.6269/download?version=392191"
-
     session = None
     logout_url = None
     session_escalate_count = 0
 
-    def __init__(self, login=None, password=None, flaresolverr_url=None):
+    def __init__(
+        self,
+        login=None,
+        password=None,
+        totp_secret=None,
+        flaresolverr_url="http://localhost:8191/v1",
+    ):
         self.logger = logging.getLogger("SpigotMCSource")
         self.login = os.environ.get("SPIGOTMC_LOGIN", login)
         self.password = os.environ.get("SPIGOTMC_PASSWORD", password)
-        self.flaresolverr_url = os.environ.get(
-            "FLARESOLVERR_URL", flaresolverr_url or "http://localhost:8191/v1"
-        )
+        self.totp_secret = os.environ.get("SPIGOTMC_TOTP_SECRET", totp_secret)
+        self.flaresolverr_url = os.environ.get("FLARESOLVERR_URL", flaresolverr_url)
 
         # Initialize our Cloudscraper instance and go on the homepage to get first cookies
         self.session = cloudscraper.create_scraper()
-        self.escalate_token(self.plugin_to_escalate_token)
+        self.escalate_token(self.base_url)
 
         self.session.get("{}/login".format(self.base_url))
 
@@ -42,6 +45,7 @@ class SpigotmcSource(DirectSource):
                 "register": "0",
                 "remember": "1",
                 "cookie_check": "1",
+                "code": pyotp.TOTP(self.totp_secret).now(),
             }
 
             # Post our credentials on the login form and try to extract the logout link
@@ -53,7 +57,34 @@ class SpigotmcSource(DirectSource):
 
             login_parser = BeautifulSoup(login_response.text, features="html.parser")
 
-            logout_link = login_parser.find("a", {"class": "LogOut"})
+            if login_parser.find("input", {"id": "ctrl_totp_code"}):
+                data = {
+                    "code": pyotp.TOTP(self.totp_secret).now(),
+                    "trust": "1",
+                    "provider": "totp",
+                    "_xfConfirm": "1",
+                    "_xfToken": "",
+                    "remember": "1",
+                    "redirect": "https://www.spigotmc.org/",
+                    "save": "Confirm",
+                    "_xfRequestUri": "/login/two-step?redirect=https%3A%2F%2Fwww.spigotmc.org%2F&remember=1",
+                    "_xfNoRedirect": "1",
+                    "_xfResponseType": "json",
+                }
+
+                mfa_response = self.session.post(
+                    "{}/login/two-step".format(self.base_url), data=data
+                )
+
+                mfa_response.raise_for_status()
+
+            home_page_response = self.session.get(self.base_url)
+
+            home_page_parser = BeautifulSoup(
+                home_page_response.text, features="html.parser"
+            )
+
+            logout_link = home_page_parser.find("a", {"class": "LogOut"})
             if not logout_link:
                 raise ValueError("Couldn't get a logout link, login probably failed.")
         else:
@@ -75,7 +106,7 @@ class SpigotmcSource(DirectSource):
         self.logger.info("Escalating SpigotMC token")
 
         flaresolverr_client = FlareSolverrManager(
-            flaresolverr_url=self.flaresolverr_url,
+            flaresolverr_url=self.flaresolverr_url
         )
 
         # Prepare our cookie object from cloudscraper to FlareSolverr

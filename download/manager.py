@@ -68,7 +68,9 @@ class DownloadManager:
             downloaded_binary = await source.download_element(url, **kwargs)
 
             if not downloaded_binary:
-                raise ValueError("Downloaded empty binary for {} from {}".format(name, url))
+                raise ValueError(
+                    "Downloaded empty binary for {} from {}".format(name, url)
+                )
 
             # Run post_processors
             for post_processor in post_processors:
@@ -80,6 +82,7 @@ class DownloadManager:
             # Save plugin somewhere
             destination = self.get_destination_manager()
             destination.save(downloaded_binary, source, name, url, **kwargs)
+            self.logger.info("Downloaded {} from {}".format(name, url))
         except Exception:
             self.logger.error(
                 "Error downloading {} from {} with post_processors {}".format(
