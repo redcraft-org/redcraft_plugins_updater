@@ -330,7 +330,7 @@
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "Maintenance.jar"
+        "file_filter": "Maintenance-4*.jar"
     },
     {
         "name": "alternatecurrent",

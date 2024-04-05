@@ -131,3 +131,4 @@ dmypy.json
 # Exclude actual plugins from the versionning
 plugins/*
 .history
+.env.production
