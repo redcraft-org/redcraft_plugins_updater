@@ -1,5 +1,6 @@
 import json
 import argparse
+import logging
 from dotenv import load_dotenv
 
 import asyncio
@@ -9,6 +10,8 @@ from download.manager import DownloadManager
 
 if __name__ == "__main__":
     load_dotenv()
+
+    logging.basicConfig(level=logging.INFO)
 
     parser = argparse.ArgumentParser(description="Update plugins")
     parser.add_argument(

@@ -2,6 +2,7 @@ import logging
 import traceback
 import os
 import asyncio
+import time
 
 from download import sources
 from download import post_processors
@@ -61,35 +62,43 @@ class DownloadManager:
     )
 
     @classmethod
-    async def download(self, source, name, url, post_processors, **kwargs):
-        try:
-            # Download file from the right source
-            source = self.get_source_manager(source)
-            downloaded_binary = await source.download_element(url, **kwargs)
+    async def download(self, source, name, url, post_processors, max_tries=5, **kwargs):
+        tries = 0
+        while True:
+            try:
+                # Download file from the right source
+                source_manager = self.get_source_manager(source)
+                downloaded_binary = await source_manager.download_element(url, **kwargs)
 
-            if not downloaded_binary:
-                raise ValueError(
-                    "Downloaded empty binary for {} from {}".format(name, url)
-                )
+                if not downloaded_binary:
+                    raise ValueError(
+                        "Downloaded empty binary for {} from {}".format(name, url)
+                    )
 
-            # Run post_processors
-            for post_processor in post_processors:
-                processor = self.get_postprocessing_manager(post_processor)
-                downloaded_binary, source, name, url = processor.process(
-                    downloaded_binary, source, name, url, **kwargs
-                )
+                # Run post_processors
+                for post_processor in post_processors:
+                    processor = self.get_postprocessing_manager(post_processor)
+                    downloaded_binary, source_manager, name, url = processor.process(
+                        downloaded_binary, source_manager, name, url, **kwargs
+                    )
 
-            # Save plugin somewhere
-            destination = self.get_destination_manager()
-            destination.save(downloaded_binary, source, name, url, **kwargs)
-            self.logger.info("Downloaded {} from {}".format(name, url))
-        except Exception:
-            self.logger.error(
-                "Error downloading {} from {} with post_processors {}".format(
-                    name, url, post_processors
-                )
-            )
-            self.logger.error(traceback.format_exc())
+                # Save plugin somewhere
+                destination = self.get_destination_manager()
+                destination.save(downloaded_binary, source_manager, name, url, **kwargs)
+                self.logger.info("Downloaded {} from {}".format(name, url))
+                break
+            except Exception:
+                tries += 1
+                if tries >= max_tries:
+                    self.logger.error(
+                        "Error downloading {} from {} with post_processors {}".format(
+                            name, url, post_processors
+                        )
+                    )
+                    self.logger.error(traceback.format_exc())
+                    break
+                else:
+                    time.sleep(5 * tries)
 
     @classmethod
     async def download_resources(self, resources):
