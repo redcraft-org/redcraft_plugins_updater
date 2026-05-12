@@ -7,7 +7,6 @@ import asyncio
 
 from download.manager import DownloadManager
 
-
 if __name__ == "__main__":
     load_dotenv()
 

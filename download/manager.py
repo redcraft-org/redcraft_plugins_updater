@@ -1,8 +1,8 @@
 import logging
+import threading
 import traceback
 import os
 import asyncio
-import time
 
 from download import sources
 from download import post_processors
@@ -19,14 +19,18 @@ class DownloadManager:
         def __init__(self, class_dict):
             self.class_dict = class_dict
             self.obj_dict = {}
+            # Serialize instantiation so concurrent download tasks (running in
+            # threads via asyncio.to_thread) don't create duplicate singletons.
+            self._lock = threading.Lock()
 
         def __getitem__(self, item):
-            if item in self.obj_dict.keys():
-                return self.obj_dict[item]
+            with self._lock:
+                if item in self.obj_dict:
+                    return self.obj_dict[item]
 
-            obj = self.class_dict[item]()
-            self.obj_dict[item] = obj
-            return obj
+                obj = self.class_dict[item]()
+                self.obj_dict[item] = obj
+                return obj
 
     SOURCE_DICT = LazyLoader(
         {
@@ -63,11 +67,14 @@ class DownloadManager:
 
     @classmethod
     async def download(self, source, name, url, post_processors, max_tries=5, **kwargs):
+        self.logger.info("Starting download of {} (source={}) from {}".format(name, source, url))
         tries = 0
         while True:
             try:
-                # Download file from the right source
-                source_manager = self.get_source_manager(source)
+                # Download file from the right source. Source instantiation may
+                # perform blocking I/O (e.g. SpigotMC login via FlareSolverr), so
+                # run it on a thread to avoid stalling the event loop.
+                source_manager = await asyncio.to_thread(self.get_source_manager, source)
                 downloaded_binary = await source_manager.download_element(url, **kwargs)
 
                 if not downloaded_binary:
@@ -87,18 +94,23 @@ class DownloadManager:
                 destination.save(downloaded_binary, source_manager, name, url, **kwargs)
                 self.logger.info("Downloaded {} from {}".format(name, url))
                 break
-            except Exception:
+            except Exception as exc:
                 tries += 1
                 if tries >= max_tries:
                     self.logger.error(
-                        "Error downloading {} from {} with post_processors {}".format(
-                            name, url, post_processors
+                        "Giving up on {} from {} after {} attempts (post_processors={}): {}: {}".format(
+                            name, url, tries, post_processors, type(exc).__name__, exc
                         )
                     )
                     self.logger.error(traceback.format_exc())
                     break
                 else:
-                    time.sleep(5 * tries)
+                    self.logger.warning(
+                        "Attempt {}/{} failed for {} from {}: {}: {} - retrying in {}s".format(
+                            tries, max_tries, name, url, type(exc).__name__, exc, 5 * tries
+                        )
+                    )
+                    await asyncio.sleep(5 * tries)
 
     @classmethod
     async def download_resources(self, resources):

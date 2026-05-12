@@ -3,7 +3,7 @@ import re
 
 
 class Source:
-    client = httpx.AsyncClient(timeout=60)
+    client = httpx.AsyncClient(timeout=60, follow_redirects=True)
 
     async def download_element(self, url, **kwargs):
         release_url = await self.get_release_url(url, **kwargs)
