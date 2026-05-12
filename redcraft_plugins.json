@@ -510,24 +510,8 @@
         ]
     },
     {
-        "name": "Panilla",
-        "url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
         "name": "Head Database",
         "url": "https://www.spigotmc.org/resources/head-database.14280/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "AAC",
-        "url": "https://www.spigotmc.org/resources/aac-advanced-anti-cheat-hack-kill-aura-blocker.6442/",
         "source": "spigotmc",
         "post_processors": [
             "plugin"
@@ -568,14 +552,6 @@
     {
         "name": "PlotSquared",
         "url": "https://www.spigotmc.org/resources/plotsquared-v5.77506/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "EpicWorldGenerator",
-        "url": "https://www.spigotmc.org/resources/epicworldgenerator-1-15-1-16-4-%E2%9D%97%EF%B8%8Fsale-%E2%9D%97%EF%B8%8F-20-off.8067/",
         "source": "spigotmc",
         "post_processors": [
             "plugin"
@@ -633,14 +609,6 @@
     {
         "name": "ViewDistanceTweaks",
         "url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "OmegaVision",
-        "url": "https://www.spigotmc.org/resources/omegavision.73013/",
         "source": "spigotmc",
         "post_processors": [
             "plugin"
