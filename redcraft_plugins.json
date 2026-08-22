@@ -618,6 +618,22 @@
         ]
     },
     {
+        "name": "Panilla",
+        "url": "https://www.spigotmc.org/resources/panilla-prevent-hacked-items.65694/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
+        "name": "OmegaVision",
+        "url": "https://www.spigotmc.org/resources/omegavision.73013/",
+        "source": "spigotmc",
+        "post_processors": [
+            "plugin"
+        ]
+    },
+    {
         "name": "Geyser",
         "url": "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/bungeecord",
         "source": "direct",
