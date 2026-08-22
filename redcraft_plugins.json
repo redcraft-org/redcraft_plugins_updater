@@ -1,7 +1,7 @@
 [
     {
         "name": "Purpur",
-        "url": "https://api.purpurmc.org/v2/purpur/1.20.4/latest/download",
+        "url": "https://api.purpurmc.org/v2/purpur/26.2/latest/download",
         "source": "direct",
         "post_processors": [
             "versionjson"
@@ -9,18 +9,18 @@
     },
     {
         "name": "Fabric",
-        "url": "https://meta.fabricmc.net/v2/versions/loader/1.20.4",
+        "url": "https://meta.fabricmc.net/v2/versions/loader/26.2",
         "source": "fabricmc",
         "post_processors": [
             "fabricmc"
         ]
     },
     {
-        "name": "Waterfall-1.20.jar",
-        "url": "https://papermc.io/api/v2/projects/waterfall/version_group/1.20/builds",
+        "name": "Velocity-4.0.0.jar",
+        "url": "https://fill.papermc.io/v3/projects/velocity/versions/4.0.0",
         "source": "papermc",
         "post_processors": [],
-        "file_filter": "waterfall-1.20-*.jar"
+        "file_filter": "velocity-4\\.0\\.0-\\d+\\.jar"
     },
     {
         "name": "CMIB",
@@ -154,13 +154,13 @@
         "file_filter": "spark-*-fabric.jar"
     },
     {
-        "name": "sparkbungeecord",
+        "name": "sparkvelocity",
         "url": "https://ci.lucko.me/job/spark/",
         "source": "jenkins",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "spark-*-bungeecord.jar"
+        "file_filter": "spark-*-velocity.jar"
     },
     {
         "name": "LuckPerms",
@@ -172,13 +172,13 @@
         "file_filter": "LuckPerms-Bukkit-*.jar"
     },
     {
-        "name": "LuckPermsBungee",
+        "name": "LuckPermsVelocity",
         "url": "https://ci.lucko.me/job/LuckPerms/",
         "source": "jenkins",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "LuckPerms-Bungee-*.jar"
+        "file_filter": "LuckPerms-Velocity-*.jar"
     },
     {
         "name": "LuckPermsFabric",
@@ -205,7 +205,7 @@
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "BungeeTabListPlus-*.jar"
+        "file_filter": "BungeeTabListPlus-Velocity-*.jar"
     },
     {
         "name": "BungeeTabListPlusBridge",
@@ -333,7 +333,7 @@
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "Maintenance-4*.jar"
+        "file_filter": "Maintenance-Velocity-*.jar"
     },
     {
         "name": "alternatecurrent",
@@ -619,7 +619,7 @@
     },
     {
         "name": "Geyser",
-        "url": "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/bungeecord",
+        "url": "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/velocity",
         "source": "direct",
         "post_processors": [
             "plugin"
@@ -627,7 +627,7 @@
     },
     {
         "name": "Floodgate",
-        "url": "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/bungee",
+        "url": "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/velocity",
         "source": "direct",
         "post_processors": [
             "plugin"
