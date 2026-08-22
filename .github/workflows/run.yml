@@ -39,8 +39,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Settings
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+          RELEASES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
+          echo "$ENV_FILE" | grep -v '^GITHUB_TOKEN=' > .env
+          echo "GITHUB_TOKEN=$RELEASES_TOKEN" >> .env
 
       - name: Run
         run: |
