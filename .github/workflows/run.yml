@@ -8,6 +8,10 @@ on:
     - cron: "0 3 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   run:
     runs-on: ubuntu-24.04
@@ -49,3 +53,9 @@ jobs:
       - name: Dump docker logs on failure
         if: failure()
         uses: jwalton/gh-docker-logs@v2
+
+      - name: Keepalive
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X PUT repos/${{ github.repository }}/actions/workflows/run.yml/enable
