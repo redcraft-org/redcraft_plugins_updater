@@ -1,4 +1,5 @@
 import io
+import json
 from zipfile import ZipFile
 
 import yaml
@@ -14,8 +15,13 @@ class PluginPostProcessor:
 
     def extract_plugin_info(self, downloaded_binary):
         file_handler = io.BytesIO(downloaded_binary)
-        # In order to be compatible with Bukkit and BungeeCord plugins, we need to check two files
-        possible_plugin_metadata_files = ["bungee.yml", "plugin.yml"]
+        # In order to be compatible with Bukkit, BungeeCord and Velocity plugins,
+        # we need to check multiple files, yml files first then the Velocity JSON manifest
+        possible_plugin_metadata_files = [
+            "bungee.yml",
+            "plugin.yml",
+            "velocity-plugin.json",
+        ]
         last_exception = None
         for possible_plugin_metadata_file in possible_plugin_metadata_files:
             try:
@@ -23,9 +29,13 @@ class PluginPostProcessor:
                     with plugin_contents.open(
                         possible_plugin_metadata_file
                     ) as plugin_meta_file:
-                        # Load yml file and check metadata
-                        plugin_metadata = yaml.safe_load(plugin_meta_file)
-                        plugin_name = plugin_metadata.get("name")
+                        # Load metadata file, Velocity uses JSON with an "id" field
+                        if possible_plugin_metadata_file.endswith(".json"):
+                            plugin_metadata = json.load(plugin_meta_file)
+                            plugin_name = plugin_metadata.get("id")
+                        else:
+                            plugin_metadata = yaml.safe_load(plugin_meta_file)
+                            plugin_name = plugin_metadata.get("name")
                         plugin_version = plugin_metadata.get("version")
                         if not plugin_name or not plugin_version:
                             raise ValueError(
