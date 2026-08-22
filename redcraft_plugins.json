@@ -57,14 +57,6 @@
         "file_filter": "antixray-fabric-*26.*.jar"
     },
     {
-        "name": "Holograms",
-        "url": "https://modrinth.com/mod/holograms/",
-        "source": "modrinth",
-        "post_processors": [
-            "fabricmod"
-        ]
-    },
-    {
         "name": "goPaint",
         "url": "https://ci.athion.net/job/goPaint-1.14+/",
         "source": "jenkins",
@@ -83,22 +75,22 @@
         "file_filter": "goBrush-*.jar"
     },
     {
-        "name": "WorldBorder",
-        "url": "https://github.com/PryPurity/WorldBorder",
-        "source": "github",
+        "name": "Chunky",
+        "url": "https://modrinth.com/plugin/chunky/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "WorldBorder.jar"
+        "file_filter": "Chunky-Bukkit-*.jar"
     },
     {
-        "name": "ServerListPlus",
-        "url": "https://ci.codemc.io/job/Minecrell/job/ServerListPlus/",
-        "source": "jenkins",
+        "name": "MiniMOTD",
+        "url": "https://modrinth.com/plugin/minimotd/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "ServerListPlus-*-Universal.jar"
+        "file_filter": "minimotd-velocity-*.jar"
     },
     {
         "name": "FastAsyncWorldEdit",
@@ -191,15 +183,6 @@
         "file_filter": "LuckPerms-Fabric-*.jar"
     },
     {
-        "name": "minecraftcommandpermissions",
-        "url": "https://github.com/lucko/minecraft-command-permissions-fabric",
-        "source": "github",
-        "post_processors": [
-            "fabricmod"
-        ],
-        "file_filter": "minecraft-command-permissions-*.jar"
-    },
-    {
         "name": "BungeeTabListPlus",
         "url": "https://ci.codecrafter47.de/job/BungeeTabListPlus/",
         "source": "jenkins",
@@ -254,13 +237,13 @@
         "file_filter": "DecentHolograms-*.jar"
     },
     {
-        "name": "ImageOnMap",
-        "url": "https://github.com/okocraft/ImageOnMap",
-        "source": "github",
+        "name": "ImageFrame",
+        "url": "https://modrinth.com/plugin/imageframe/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "ImageOnMap-*.jar"
+        "file_filter": "ImageFrame-*.jar"
     },
     {
         "name": "Multiverse-Core",
@@ -290,15 +273,6 @@
             "plugin"
         ],
         "archive_filter": "target/Denizen-*.jar"
-    },
-    {
-        "name": "VoidGen",
-        "url": "https://github.com/xtkq-is-not-available/VoidGen",
-        "source": "github",
-        "post_processors": [
-            "plugin"
-        ],
-        "file_filter": "VoidGen-*.jar"
     },
     {
         "name": "Plan",
@@ -355,13 +329,13 @@
         "file_filter": "fabric-api-*+26.2.jar"
     },
     {
-        "name": "FabricProxyLegacy",
-        "url": "https://github.com/voruti/FabricProxy-Legacy",
-        "source": "github",
+        "name": "FabricProxyLite",
+        "url": "https://modrinth.com/mod/fabricproxy-lite/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "FabricProxy-Legacy-*.jar"
+        "file_filter": "FabricProxy-Lite-*.jar"
     },
     {
         "name": "carpet",
@@ -380,15 +354,6 @@
             "fabricmod"
         ],
         "file_filter": "fabric-language-kotlin-*.jar"
-    },
-    {
-        "name": "Indium",
-        "url": "https://github.com/comp500/Indium",
-        "source": "github",
-        "post_processors": [
-            "fabricmod"
-        ],
-        "file_filter": "indium-*.jar"
     },
     {
         "name": "InvView",
@@ -481,15 +446,6 @@
         "file_filter": "lithium-fabric-*+mc26.2.jar"
     },
     {
-        "name": "memoryLeakFix",
-        "url": "https://github.com/fxmorin/memoryLeakFix",
-        "source": "github",
-        "post_processors": [
-            "fabricmod"
-        ],
-        "file_filter": "memoryleakfix-*\\d.jar"
-    },
-    {
         "name": "sodium",
         "url": "https://modrinth.com/mod/sodium/",
         "source": "modrinth",
@@ -517,14 +473,6 @@
     {
         "name": "Head Database",
         "url": "https://www.spigotmc.org/resources/head-database.14280/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "Reconnect",
-        "url": "https://www.spigotmc.org/resources/bungee-reconnect.16429/",
         "source": "spigotmc",
         "post_processors": [
             "plugin"
@@ -563,61 +511,31 @@
         ]
     },
     {
-        "name": "ClientStats",
-        "url": "https://www.spigotmc.org/resources/clientstats-bungee.27919/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "RedstoneClockDetector",
-        "url": "https://www.spigotmc.org/resources/redstoneclockdetector.18475/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "BungeePluginManager",
-        "url": "https://www.spigotmc.org/resources/bungeepluginmanager.7288/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
-        "name": "PlugManX",
-        "url": "https://github.com/TheBlackEntity/PlugManX",
+        "name": "AntiRedstoneClock",
+        "url": "https://github.com/OneLiteFeatherNET/AntiRedstoneClock-Remastered",
         "source": "github",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "PlugManX.jar"
+        "file_filter": "AntiRedstoneClock-Remastered-*.jar"
     },
     {
-        "name": "F3NPerm",
-        "url": "https://www.spigotmc.org/resources/f3nperm.46461/",
-        "source": "spigotmc",
+        "name": "PlugManX",
+        "url": "https://modrinth.com/plugin/plugmanx/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
-        ]
+        ],
+        "file_filter": "PlugManX-*.jar"
     },
     {
-        "name": "BookExploitFix",
-        "url": "https://www.spigotmc.org/resources/bookexploitfix.5897/",
-        "source": "spigotmc",
+        "name": "F3F4Perms",
+        "url": "https://github.com/Lumine1909/F3F4Perms",
+        "source": "github",
         "post_processors": [
             "plugin"
-        ]
-    },
-    {
-        "name": "ViewDistanceTweaks",
-        "url": "https://www.spigotmc.org/resources/view-distance-tweaks-1-14-1-19.75164/",
-        "source": "spigotmc",
-        "post_processors": [
-            "plugin"
-        ]
+        ],
+        "file_filter": "F3F4Perms-*.jar"
     },
     {
         "name": "Geyser",
