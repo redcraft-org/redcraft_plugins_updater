@@ -44,7 +44,8 @@
         "source": "modrinth",
         "post_processors": [
             "fabricmod"
-        ]
+        ],
+        "file_filter": "ViaFabric-*-26.x.jar"
     },
     {
         "name": "AntiXray",
@@ -101,39 +102,39 @@
     },
     {
         "name": "FastAsyncWorldEdit",
-        "url": "https://ci.athion.net/job/FastAsyncWorldEdit/",
-        "source": "jenkins",
+        "url": "https://modrinth.com/plugin/fastasyncworldedit/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "FastAsyncWorldEdit-Bukkit-*.jar"
+        "file_filter": "FastAsyncWorldEdit-Paper-*.jar"
     },
     {
         "name": "ViaVersion",
-        "url": "https://ci.viaversion.com/job/ViaVersion/",
-        "source": "jenkins",
+        "url": "https://modrinth.com/plugin/viaversion/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "ViaVersion-*.jar"
+        "file_filter": "ViaVersion-5\\.11\\.\\d+\\.jar"
     },
     {
         "name": "ViaBackwards",
-        "url": "https://ci.viaversion.com/job/ViaBackwards/",
-        "source": "jenkins",
+        "url": "https://modrinth.com/plugin/viabackwards/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "ViaBackwards-*.jar"
+        "file_filter": "ViaBackwards-5\\.11\\.\\d+\\.jar"
     },
     {
         "name": "ViaRewind",
-        "url": "https://ci.viaversion.com/job/ViaRewind/",
-        "source": "jenkins",
+        "url": "https://modrinth.com/plugin/viarewind/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "ViaRewind-*.jar"
+        "file_filter": "ViaRewind-4\\.1\\.\\d+\\.jar"
     },
     {
         "name": "spark",
@@ -268,7 +269,7 @@
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "multiverse-core-*.jar"
+        "file_filter": "multiverse-core-\\d+\\.\\d+\\.\\d+\\.jar"
     },
     {
         "name": "Citizens",
@@ -319,8 +320,8 @@
     },
     {
         "name": "WorldGuard",
-        "url": "https://builds.enginehub.org/job/worldguard",
-        "source": "enginehub",
+        "url": "https://modrinth.com/plugin/worldguard/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
@@ -337,20 +338,21 @@
     },
     {
         "name": "alternatecurrent",
-        "url": "https://github.com/SpaceWalkerRS/alternate-current",
-        "source": "github",
+        "url": "https://modrinth.com/mod/alternate-current/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "alternate-current-mc1.20-*.jar"
+        "file_filter": "alternate-current-mc26.2-*.jar"
     },
     {
         "name": "fabricapi",
-        "url": "https://github.com/FabricMC/fabric/releases/download/0.96.11%2B1.20.4/fabric-api-0.96.11+1.20.4.jar",
-        "source": "direct",
+        "url": "https://modrinth.com/mod/fabric-api/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
-        ]
+        ],
+        "file_filter": "fabric-api-*+26.2.jar"
     },
     {
         "name": "FabricProxyLegacy",
@@ -363,12 +365,12 @@
     },
     {
         "name": "carpet",
-        "url": "https://github.com/gnembon/fabric-carpet",
-        "source": "github",
+        "url": "https://modrinth.com/mod/carpet/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "fabric-carpet-1.20.3-*.jar"
+        "file_filter": "fabric-carpet-26.2+*.jar"
     },
     {
         "name": "fabrickotlin",
@@ -395,7 +397,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "InvView-*.jar"
+        "file_filter": "InvView-*-26.2+.jar"
     },
     {
         "name": "VanillaPermissions",
@@ -413,7 +415,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "ChunkDebug-*.jar"
+        "file_filter": "ChunkDebug-*+26.2.jar"
     },
     {
         "name": "VeryManyPlayers",
@@ -422,7 +424,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "vmp-fabric-mc*.jar"
+        "file_filter": "vmp-fabric-mc26.2-*.jar"
     },
     {
         "name": "krypton",
@@ -458,7 +460,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "carpet-tis-addition-mc1.20.4-*.jar"
+        "file_filter": "carpet-tis-addition-*-mc26.2.jar"
     },
     {
         "name": "CarpetExtra",
@@ -467,7 +469,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "carpet-extra-1.20.3-*.jar"
+        "file_filter": "carpet-extra-*-26.2.jar"
     },
     {
         "name": "lithium",
@@ -476,7 +478,7 @@
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "lithium-fabric-mc1\\.20\\.4-.+\\d+\\.jar"
+        "file_filter": "lithium-fabric-*+mc26.2.jar"
     },
     {
         "name": "memoryLeakFix",
@@ -489,12 +491,12 @@
     },
     {
         "name": "sodium",
-        "url": "https://github.com/CaffeineMC/sodium-fabric",
-        "source": "github",
+        "url": "https://modrinth.com/mod/sodium/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "sodium-fabric-(?!.*api(-dev)?.jar$).*.(jar)"
+        "file_filter": "sodium-fabric-*+mc26.2.jar"
     },
     {
         "name": "CMI",
@@ -647,6 +649,6 @@
         "url": "https://github.com/BlueMap-Minecraft/BlueMap",
         "source": "github",
         "post_processors": [],
-        "file_filter": "BlueMap-*-cli.jar"
+        "file_filter": "bluemap-*-cli.jar"
     }
 ]
