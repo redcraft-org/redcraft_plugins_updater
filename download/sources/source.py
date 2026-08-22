@@ -1,5 +1,6 @@
 import httpx
-import re
+
+from utils.file_filters import compile_file_filter
 
 
 class Source:
@@ -18,4 +19,4 @@ class Source:
         return resp.content
 
     def get_filter_regex(self, file_filter):
-        return re.compile(file_filter.replace("*", ".+"))
+        return compile_file_filter(file_filter)

@@ -1,6 +1,7 @@
 import io
-import re
 from zipfile import ZipFile
+
+from utils.file_filters import compile_file_filter
 
 
 class ZipPostProcessor:
@@ -8,7 +9,7 @@ class ZipPostProcessor:
         self, downloaded_binary, source, name, url, archive_filter=None, **kwargs
     ):
         # Decompress .zip archive and return the content of the matched regex
-        filter_regex = re.compile(archive_filter.replace("*", ".+"))
+        filter_regex = compile_file_filter(archive_filter)
         file_handler = io.BytesIO(downloaded_binary)
 
         with ZipFile(file_handler, "r") as file_contents:
