@@ -52,7 +52,8 @@
         "source": "modrinth",
         "post_processors": [
             "fabricmod"
-        ]
+        ],
+        "file_filter": "antixray-fabric-*26.*.jar"
     },
     {
         "name": "Holograms",
@@ -262,30 +263,32 @@
     },
     {
         "name": "Multiverse-Core",
-        "url": "https://ci.onarandombox.com/job/Multiverse-Core/",
-        "source": "jenkins",
+        "url": "https://modrinth.com/plugin/multiverse-core/",
+        "source": "modrinth",
         "post_processors": [
             "plugin"
         ],
-        "file_filter": "Multiverse-Core-*-SNAPSHOT.jar"
+        "file_filter": "multiverse-core-*.jar"
     },
     {
         "name": "Citizens",
-        "url": "https://ci.citizensnpcs.co/job/Citizens2/",
-        "source": "jenkins",
+        "url": "https://ci.citizensnpcs.co/job/Citizens2/lastSuccessfulBuild/artifact/dist/target/*zip*/target.zip",
+        "source": "direct",
         "post_processors": [
+            "zip",
             "plugin"
         ],
-        "file_filter": "Citizens-*.jar"
+        "archive_filter": "target/Citizens-*.jar"
     },
     {
         "name": "Denizen",
-        "url": "https://ci.citizensnpcs.co/job/Denizen_Developmental/",
-        "source": "jenkins",
+        "url": "https://ci.citizensnpcs.co/job/Denizen_Developmental/lastSuccessfulBuild/artifact/target/*zip*/target.zip",
+        "source": "direct",
         "post_processors": [
+            "zip",
             "plugin"
         ],
-        "file_filter": "Denizen-*.jar"
+        "archive_filter": "target/Denizen-*.jar"
     },
     {
         "name": "VoidGen",
@@ -405,12 +408,12 @@
     },
     {
         "name": "ChunkDebug",
-        "url": "https://modrinth.com/mod/chunkdebug",
+        "url": "https://modrinth.com/mod/chunk-debug",
         "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
-        "file_filter": "chunk-debug-*.jar"
+        "file_filter": "ChunkDebug-*.jar"
     },
     {
         "name": "VeryManyPlayers",
@@ -645,13 +648,5 @@
         "source": "github",
         "post_processors": [],
         "file_filter": "BlueMap-*-cli.jar"
-    },
-    {
-        "name": "MCSync",
-        "url": "https://mcsync.live/assets/download/MCSync-v1.2.0.jar",
-        "source": "direct",
-        "post_processors": [
-            "plugin"
-        ]
     }
 ]
