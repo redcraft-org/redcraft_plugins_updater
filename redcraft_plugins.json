@@ -446,15 +446,6 @@
         "file_filter": "lithium-fabric-*+mc26.2.jar"
     },
     {
-        "name": "sodium",
-        "url": "https://modrinth.com/mod/sodium/",
-        "source": "modrinth",
-        "post_processors": [
-            "fabricmod"
-        ],
-        "file_filter": "sodium-fabric-*+mc26.2.jar"
-    },
-    {
         "name": "CMI",
         "url": "https://www.spigotmc.org/resources/cmi-270-commands-insane-kits-portals-essentials-economy-mysql-sqlite-much-more.3742/",
         "source": "spigotmc",
