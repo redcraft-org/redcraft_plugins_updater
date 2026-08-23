@@ -31,14 +31,6 @@
         ]
     },
     {
-        "name": "CoreProtect",
-        "url": "https://modrinth.com/plugin/coreprotect/",
-        "source": "modrinth",
-        "post_processors": [
-            "plugin"
-        ]
-    },
-    {
         "name": "ViaFabric",
         "url": "https://modrinth.com/mod/viafabric/",
         "source": "modrinth",
@@ -402,8 +394,8 @@
     },
     {
         "name": "Ledger",
-        "url": "https://github.com/QuiltServerTools/Ledger",
-        "source": "github",
+        "url": "https://modrinth.com/mod/ledger/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
@@ -411,8 +403,8 @@
     },
     {
         "name": "LedgerDatabases",
-        "url": "https://github.com/QuiltServerTools/Ledger-Databases",
-        "source": "github",
+        "url": "https://modrinth.com/mod/ledger-databases/",
+        "source": "modrinth",
         "post_processors": [
             "fabricmod"
         ],
@@ -568,5 +560,23 @@
         "source": "github",
         "post_processors": [],
         "file_filter": "bluemap-*-cli.jar"
+    },
+    {
+        "name": "Prism",
+        "url": "https://modrinth.com/plugin/prism/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "prism-paper-*.jar"
+    },
+    {
+        "name": "NBTAPI",
+        "url": "https://modrinth.com/plugin/nbtapi/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "item-nbt-api-plugin-*.jar"
     }
 ]
