@@ -520,6 +520,15 @@
         "file_filter": "PlugManX-*.jar"
     },
     {
+        "name": "PacketEvents",
+        "url": "https://modrinth.com/plugin/packetevents/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "packetevents-spigot-*.jar"
+    },
+    {
         "name": "F3F4Perms",
         "url": "https://github.com/Lumine1909/F3F4Perms",
         "source": "github",
