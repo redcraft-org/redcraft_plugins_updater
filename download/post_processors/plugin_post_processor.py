@@ -15,11 +15,14 @@ class PluginPostProcessor:
 
     def extract_plugin_info(self, downloaded_binary):
         file_handler = io.BytesIO(downloaded_binary)
-        # In order to be compatible with Bukkit, BungeeCord and Velocity plugins,
-        # we need to check multiple files, yml files first then the Velocity JSON manifest
+        # In order to be compatible with Bukkit, Paper, BungeeCord and Velocity
+        # plugins, we need to check multiple files, yml files first then the
+        # Velocity JSON manifest. paper-plugin.yml comes after plugin.yml so
+        # plugins shipping both keep resolving exactly as they did before.
         possible_plugin_metadata_files = [
             "bungee.yml",
             "plugin.yml",
+            "paper-plugin.yml",
             "velocity-plugin.json",
         ]
         last_exception = None
