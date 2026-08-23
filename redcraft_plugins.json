@@ -16,11 +16,11 @@
         ]
     },
     {
-        "name": "Velocity-4.0.0.jar",
-        "url": "https://fill.papermc.io/v3/projects/velocity/versions/4.0.0",
+        "name": "Velocity-4.1.0-SNAPSHOT.jar",
+        "url": "https://fill.papermc.io/v3/projects/velocity/versions/4.1.0-SNAPSHOT",
         "source": "papermc",
         "post_processors": [],
-        "file_filter": "velocity-4\\.0\\.0-\\d+\\.jar"
+        "file_filter": "velocity-4\\.1\\.0-SNAPSHOT-\\d+\\.jar"
     },
     {
         "name": "CMIB",
@@ -578,5 +578,14 @@
             "plugin"
         ],
         "file_filter": "item-nbt-api-plugin-*.jar"
+    },
+    {
+        "name": "Velocitab",
+        "url": "https://modrinth.com/plugin/velocitab/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "Velocitab-*.jar"
     }
 ]
