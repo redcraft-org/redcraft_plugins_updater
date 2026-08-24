@@ -587,5 +587,14 @@
             "plugin"
         ],
         "file_filter": "Velocitab-*.jar"
+    },
+    {
+        "name": "ServerPermissions",
+        "url": "https://modrinth.com/plugin/serverpermissions/",
+        "source": "modrinth",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "ServerPermissions-*.jar"
     }
 ]
