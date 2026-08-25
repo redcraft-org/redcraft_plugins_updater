@@ -76,6 +76,15 @@
         "file_filter": "Chunky-Bukkit-*.jar"
     },
     {
+        "name": "ChunkyFabric",
+        "url": "https://modrinth.com/plugin/chunky/",
+        "source": "modrinth",
+        "post_processors": [
+            "fabricmod"
+        ],
+        "file_filter": "Chunky-Fabric-*.jar"
+    },
+    {
         "name": "MiniMOTD",
         "url": "https://modrinth.com/plugin/minimotd/",
         "source": "modrinth",
