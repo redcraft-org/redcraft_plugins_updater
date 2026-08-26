@@ -211,6 +211,15 @@
         "file_filter": "RedCraftReboot-*.jar"
     },
     {
+        "name": "SchematioConnector",
+        "url": "https://github.com/Schem-at/SchematioConnector",
+        "source": "github",
+        "post_processors": [
+            "plugin"
+        ],
+        "file_filter": "SchematioConnector-Paper-*.jar"
+    },
+    {
         "name": "RedCraftBungeeJsonApi",
         "url": "https://github.com/redcraft-org/RedCraftBungeeJsonApi",
         "source": "github",
